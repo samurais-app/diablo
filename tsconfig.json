@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "module": "commonjs",
+    "module": "esnext",
     "lib": [
-      "DOM",
-      "es2017"
+      "dom",
+      "esnext"
     ],
     "declaration": true,
     "noImplicitAny": false,
@@ -15,15 +15,20 @@
     "removeComments": true,
     "esModuleInterop": true,
     "noLib": false,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es2017",
+    "target": "esnext",
     "sourceMap": false,
     "allowJs": false,
     "strict": true,
     "strictNullChecks": false
   },
   "include": [
+    "./src/**/*",
+    "./gatsby-node.ts",
+    "./gatsby-config.ts",
+    "./plugins/**/*",
     "packages/**/*"
   ],
   "exclude": [

@@ -4,3 +4,4 @@ packages/**/build/**/**.*
 packages/**/**/build/**/**.*
 coverage
 .eslintcache
+.cache

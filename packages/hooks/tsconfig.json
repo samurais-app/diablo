@@ -4,11 +4,14 @@
     "baseUrl": ".",
     "jsx": "react",
     "outDir": "./build",
-    "resolveJsonModule": true,
     "esModuleInterop": true,
+    "target": "es2017",
+    "module": "commonjs",
     "lib": [
-      "DOM"
+      "DOM",
+      "es2017",
     ],
+    "moduleResolution": "classic",
     "paths": {
       "@/*": [
         "./src/*"

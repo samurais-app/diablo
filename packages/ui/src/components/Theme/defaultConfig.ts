@@ -1,8 +1,8 @@
 /* eslint-disable indent */
 
-import { Theme } from '@/interfaces';
+import { Theme } from '@ui/interfaces';
 
-const themeConfig: Theme = {
+export default {
     size: 10,
     unit: 'px',
     mobile: false,
@@ -22,6 +22,4 @@ const themeConfig: Theme = {
         radius: [4, 6, 8, 10, 12],
         padding: [8, 12, 18, 26, 36]
     }
-};
-
-export default themeConfig;
+} as Theme;

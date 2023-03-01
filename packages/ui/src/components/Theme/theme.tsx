@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import deepmerge from 'deepmerge';
 import { createGlobalStyle, ThemedStyledProps, ThemeProvider } from 'styled-components';
 import { ThemeContent } from './context';
-import themeConfig from './defaultConfig';
+import defaultConfig from './defaultConfig';
 import { complementaryColor } from '@frade-sam/samtools';
 import { useMobile } from '@diablo/hooks';
-import { Theme } from '@/interfaces';
+import { Theme } from '@ui/interfaces';
 
-export interface ThemeContextProps {
+export interface IThemeContextProps {
     theme?: Omit<Theme, 'Size' | 'unit' | 'mobile'>;
     children: JSX.Element | JSX.Element;
 }
@@ -43,9 +43,9 @@ const Global = createGlobalStyle<ThemedStyledProps<any, Theme>>`
     }
 `;
 
-export default function ThemeConfig(props: ThemeContextProps) {
+export default function ThemeConfig(props: IThemeContextProps) {
     const isMobile = useMobile();
-    const [theme, setTheme] = useState<Theme>(deepmerge(themeConfig, { mobile: isMobile, unit: isMobile ? 'rem' : 'px', ...props.theme } || {}));
+    const [theme, setTheme] = useState<Theme>(deepmerge(defaultConfig, { mobile: isMobile, unit: isMobile ? 'rem' : 'px', ...props.theme } || {}));
 
     const update = (the: Theme) => {
         setTheme((data) => {

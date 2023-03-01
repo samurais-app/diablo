@@ -1,16 +1,16 @@
-import { FieldProps, Size } from '@/interfaces';
-import { Theme } from '@/interfaces';
+import { FieldProps, Size } from '@ui/interfaces';
+import { Theme } from '@ui/interfaces';
 import { ThemedStyledProps } from 'styled-components';
 
 
-export interface MenuBaseProps extends Omit<React.InputHTMLAttributes<HTMLUListElement>, 'value' | 'onChange' | 'size'>, Omit<FieldProps, 'error'> {
+export interface IMenuBaseProps extends Omit<React.InputHTMLAttributes<HTMLUListElement>, 'value' | 'onChange' | 'size'>, Omit<FieldProps, 'error'> {
   size?: keyof typeof Size
 }
 
-export interface MenuItemBaseProps extends Omit<React.InputHTMLAttributes<HTMLLIElement>, 'value' | 'onChange' | 'size'> {
+export interface IMenuItemBaseProps extends Omit<React.InputHTMLAttributes<HTMLLIElement>, 'value' | 'onChange' | 'size'> {
   size?: keyof typeof Size;
   background?: boolean;
 }
 
-export type ThemeWithMenuBaseProps = ThemedStyledProps<MenuBaseProps, Theme>;
-export type ThemeWithMenuItemBaseProps = ThemedStyledProps<MenuItemBaseProps, Theme>;
+export type ThemeWithMenuBaseProps = ThemedStyledProps<IMenuBaseProps, Theme>;
+export type ThemeWithMenuItemBaseProps = ThemedStyledProps<IMenuItemBaseProps, Theme>;

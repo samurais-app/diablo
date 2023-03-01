@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "module": "esnext",
+    "module": "CommonJS",
     "lib": [
       "dom",
       "esnext"
@@ -9,27 +9,42 @@
     "declaration": true,
     "noImplicitAny": false,
     "skipLibCheck": true,
+    "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": false,
-    "importHelpers": false,
+    "importHelpers": true,
     "removeComments": true,
     "esModuleInterop": true,
     "noLib": false,
+    "baseUrl": ".",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "esnext",
+    "allowSyntheticDefaultImports": true,
+    "target": "ES5",
     "sourceMap": false,
     "allowJs": false,
     "strict": true,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "paths": {
+      "@ui/*": [
+        "./packages/ui/src/*"
+      ]
+    }
   },
   "include": [
-    "./src/**/*",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./src/**/*.js",
+    "./src/**/*.jsx",
     "./gatsby-node.ts",
     "./gatsby-config.ts",
     "./plugins/**/*",
-    "packages/**/*"
+    "./packages/**/*.ts",
+    "./packages/**/*.tsx",
+    "./packages/**/*.js",
+    "./packages/**/*.jsx"
   ],
   "exclude": [
     "node_modules",

@@ -1,21 +1,22 @@
+/* eslint-disable indent */
 import React, { useCallback } from 'react';
 import { InputStyled, InputContainerStyled } from './input.styled';
-import { InputBaseProps } from 'src/interfaces';
+import { IInputBaseProps } from '@ui/interfaces';
 
-export interface InputNumberProps extends InputBaseProps {
+export interface IInputNumberProps extends IInputBaseProps {
     type?: 'number';
 };
 
-export function InputNumber(props: InputNumberProps) {
-    const { 
-        size = 'small', 
+export function InputNumber(props: IInputNumberProps) {
+    const {
+        size = 'small',
         error,
         onChange,
-        ..._props 
+        ..._props
     } = props;
     const _change = useCallback((event) => {
-        if(typeof onChange !== 'function') return;
-        if(!/(^[\-0-9][0-9]*(\.[0-9]+|\.)?)$/.test(event.target.value)) {
+        if (typeof onChange !== 'function') return;
+        if (!/(^[\-0-9][0-9]*(\.[0-9]+|\.)?)$/.test(event.target.value)) {
             event.target.value = '';
         }
         onChange(event);

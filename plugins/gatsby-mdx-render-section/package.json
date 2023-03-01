@@ -1,0 +1,9 @@
+{
+    "name": "gatsby-mdx-render-section",
+    "description": "This is a personal website powered by Gatsby",
+    "version": "0.1.1",
+    "author": "",
+    "dependencies": {
+        "gatsby-mdx-render-section": "^0.1.1"
+    }
+}

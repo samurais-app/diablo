@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { InputBaseProps } from 'src/interfaces';
-import { inputBgColor, inputBorder, inputBorderRadius, inputFontSize, inputPadding } from 'src/foundation';
+import { IInputBaseProps } from '@ui/interfaces';
+import { inputBgColor, inputBorder, inputBorderRadius, inputFontSize, inputPadding } from '@ui/foundation';
 
 
-export const InputContainerStyled = styled.div<InputBaseProps>`
+export const InputContainerStyled = styled.div<IInputBaseProps>`
   box-sizing: border-box;
   width: 100%;
   background-color: ${inputBgColor};

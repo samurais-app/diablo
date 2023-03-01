@@ -7,13 +7,13 @@
     "esModuleInterop": true,
     "target": "es2017",
     "module": "commonjs",
-    "moduleResolution": "classic",
+    "moduleResolution": "node",
     "lib": [
       "DOM",
       "es2017",
     ],
     "paths": {
-      "@/*": [
+      "@ui/*": [
         "./src/*"
       ]
     }

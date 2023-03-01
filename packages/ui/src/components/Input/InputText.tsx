@@ -1,22 +1,22 @@
+/* eslint-disable indent */
 import React, { useCallback } from 'react';
 import { InputStyled, InputContainerStyled } from './input.styled';
-import { InputBaseProps } from 'src/interfaces';
+import { IInputBaseProps } from '@ui/interfaces';
 
-export interface InputTextProps extends InputBaseProps {
-    type?: 'text'
+export interface IInputTextProps extends IInputBaseProps {
     maxLength?: number
 };
 
-export function InputText(props: InputTextProps) {
-    const { 
+export function InputText(props: IInputTextProps) {
+    const {
         size = 'small',
         error,
         onChange,
-        ..._props 
+        ..._props
     } = props;
     const _change = useCallback((event) => {
-        if(typeof onChange !== 'function') return;
-        if(props.maxLength && event.target.value.length>props.maxLength) {
+        if (typeof onChange !== 'function') return;
+        if (props.maxLength && event.target.value.length > props.maxLength) {
             event.target.value = props.value as unknown as string;
         }
         onChange(event);

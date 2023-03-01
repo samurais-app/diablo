@@ -1,8 +1,10 @@
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
+  pathPrefix: '/',
   siteMetadata: {
     title: 'diablo',
+    siteUrl: `https://www.example.com`,
     description: '通过以用户为中心、内容优先、人性化的设计系统，创建一致、美观、易于使用和高效的用户体验',
     author: 'Diablo Team',
   },
@@ -14,14 +16,14 @@ const config: GatsbyConfig = {
     "gatsby-plugin-svgr",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-styled-components",
-    "gatsby-plugin-google-gtag",
+    // "gatsby-plugin-google-gtag",
     "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
     'gatsby-plugin-remove-serviceworker',
-    "gatsby-plugin-mdx",
     "gatsby-transformer-remark",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    "gatsby-plugin-tsconfig-paths",
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -34,15 +36,31 @@ const config: GatsbyConfig = {
         "name": "images",
         "path": "./src/images/"
       },
-      __key: "images"
-    }, {
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'content',
+        path: `${__dirname}/content/`,
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         "name": "pages",
-        "path": "./src/pages/"
+        "path": `${__dirname}/src/pages/`
       },
-      __key: "pages"
-    }, {
+    },
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        extensions: ['.mdx', '.md'],
+        gatsbyRemarkPlugins: [
+          { resolve: "gatsby-mdx-render-section" }
+        ],
+      }
+    },
+    {
       resolve: 'gatsby-plugin-typescript',
       options: {
         isTSX: true, // defaults to false

@@ -1,9 +1,12 @@
 src/**/*.test.ts
 test/**
 build
+plugins
+scripts
 commitlint.config.js
 jest.config.base.js
 jest.config.js
 jest-setup.js
 .eslintrc.js
 gatsby-config.ts
+gatsby-ssr.ts

@@ -1,5 +1,5 @@
-export interface FieldProps {
-    value?: any;
-    error?: string;
-    onChange?:(event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
-  }
+export interface IFieldProps<V = any> {
+  value?: V;
+  error?: string;
+  onChange?: (event: V) => void;
+}

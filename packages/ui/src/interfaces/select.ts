@@ -1,28 +1,28 @@
 import { Strategy } from '@floating-ui/react-dom';
 import { ThemedStyledProps } from 'styled-components';
-import { FieldProps, Size } from '@/interfaces';
-import { Theme } from '@/interfaces';
-export interface Option {
+import { FieldProps, Size } from '@ui/interfaces';
+import { Theme } from '@ui/interfaces';
+export interface IOption {
     name: string;
     key?: string | number;
     value: string | number | any;
 }
 
-export interface SearchParams {
+export interface ISearchParams {
     page?: number;
     size?: number;
     search?: string;
 };
 
-export interface SelectBaseProps extends Pick<React.InputHTMLAttributes<HTMLInputElement>, 'placeholder'>, FieldProps {
-    options?: Option[];
+export interface ISelectBaseProps extends Pick<React.InputHTMLAttributes<HTMLInputElement>, 'placeholder'>, FieldProps {
+    options?: IOption[];
     multiple?: boolean;
     size?: keyof typeof Size;
     error?: string;
-    fetch?: (params: SearchParams) => Promise<Option[]>
+    fetch?: (params: ISearchParams) => Promise<IOption[]>
 }
 
-export interface OptionBoxBaseProps extends Omit<React.InputHTMLAttributes<HTMLDivElement>, 'size' | 'width' | 'position' | 'top' | 'left' | 'onChange'> {
+export interface IOptionBoxBaseProps extends Omit<React.InputHTMLAttributes<HTMLDivElement>, 'size' | 'width' | 'position' | 'top' | 'left' | 'onChange'> {
     show?: boolean;
     value?: string | number;
     width: number;
@@ -33,15 +33,15 @@ export interface OptionBoxBaseProps extends Omit<React.InputHTMLAttributes<HTMLD
 }
 
 
-export interface OptionBaseProps {
+export interface IOptionBaseProps {
     size?: keyof typeof Size;
     isActive?: boolean;
     key?: any;
     value: string | number;
 }
 
-export type ThemeWithSelectBaseProps = ThemedStyledProps<SelectBaseProps, Theme>;
+export type ThemeWithSelectBaseProps = ThemedStyledProps<ISelectBaseProps, Theme>;
 
-export type ThemeWithOptionBaseProps = ThemedStyledProps<OptionBaseProps, Theme>;
+export type ThemeWithOptionBaseProps = ThemedStyledProps<IOptionBaseProps, Theme>;
 
-export type ThemeWithOptionBoxBaseProps = ThemedStyledProps<OptionBoxBaseProps, Theme>;
+export type ThemeWithOptionBoxBaseProps = ThemedStyledProps<IOptionBoxBaseProps, Theme>;

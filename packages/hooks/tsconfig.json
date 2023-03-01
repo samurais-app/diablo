@@ -11,7 +11,7 @@
       "DOM",
       "es2017",
     ],
-    "moduleResolution": "classic",
+    "moduleResolution": "node",
     "paths": {
       "@/*": [
         "./src/*"

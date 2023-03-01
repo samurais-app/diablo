@@ -1,3 +1,3 @@
 export * from './context';
 export { default as ThemeConfig } from './theme';
-export { default as defaultThemeConfig } from './defaultConfig';
+export { default as defaultConfig } from './defaultConfig';

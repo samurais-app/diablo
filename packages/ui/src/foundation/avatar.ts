@@ -1,6 +1,6 @@
 /* eslint-disable indent */
-import { ThemeWithAvatarBaseProps } from 'src/interfaces';
-import { defaultThemeConfig } from '@/components/Theme';
+import { ThemeWithAvatarBaseProps } from '@ui/interfaces';
+import { defaultConfig } from '@ui/components/Theme';
 
 
 export function avatarBorderRadius(props: ThemeWithAvatarBaseProps) {
@@ -12,6 +12,6 @@ export function avatarSize(props: ThemeWithAvatarBaseProps) {
 }
 
 export function avatarTextMarginLeft(props: ThemeWithAvatarBaseProps) {
-    const theme = props?.theme ?? defaultThemeConfig;
+    const theme = props?.theme ?? defaultConfig;
     return `${theme.Size(theme.spacing.spacing[1])}${theme.unit}`;
 }

@@ -17,8 +17,11 @@
     "build:site": "cross-env NODE_ENV=production node ./node_modules/gatsby/cli.js build --prefix-paths --verbose",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "link": "lerna run link --parallel",
-    "build": "lerna run build --parallel"
+    "build:tool": "lerna run build --scope=@diablo/tool --parallel",
+    "build:ui": "lerna run build --scope=@diablo/ui --parallel",
+    "build:hooks": "lerna run build --scope=@diablo/hooks --parallel",
+    "build": "npm run build:tool && npm run build:hooks && npm run build:ui",
+    "link": "lerna run link"
   },
   "repository": {
     "type": "git",

@@ -30,14 +30,20 @@ jobs:
       - name: Npm Version
         run: npm --version
 
-      - name: Packages link
-        run: npm run link
-
       - name: Install
         run: npm run bootstrap
 
-      - name: Build Packages
-        run: npm run build
+      - name: Build Tool
+        run: npm run build:tool
+
+      - name: Packages link
+        run: npm run link
+
+      - name: Build hooks
+        run: npm run build:hooks
+
+      - name: Build ui
+        run: npm run build:ui
 
       - name: Build Site
         run: npm run build:site

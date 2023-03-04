@@ -1,13 +1,11 @@
 
-name: deploy
+name: Deploy
 
 on:
   push:
-    paths:
-      - apps/server/*
-      - libs/*
     tags:
       - "v*"
+  
 
 jobs:
   deploy:

@@ -1,6 +1,6 @@
 import { Strategy } from '@floating-ui/react-dom';
 import { ThemedStyledProps } from 'styled-components';
-import { FieldProps, Size } from '@ui/interfaces';
+import { IFieldProps, Size } from '@ui/interfaces';
 import { Theme } from '@ui/interfaces';
 export interface IOption {
     name: string;
@@ -14,7 +14,7 @@ export interface ISearchParams {
     search?: string;
 };
 
-export interface ISelectBaseProps extends Pick<React.InputHTMLAttributes<HTMLInputElement>, 'placeholder'>, FieldProps {
+export interface ISelectBaseProps extends Pick<React.InputHTMLAttributes<HTMLInputElement>, 'placeholder'>, IFieldProps {
     options?: IOption[];
     multiple?: boolean;
     size?: keyof typeof Size;

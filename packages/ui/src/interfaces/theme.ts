@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { ThemedStyledProps } from 'styled-components';
 
 export interface ThemeColor {
@@ -5,6 +6,11 @@ export interface ThemeColor {
   background?: string;
   transparent?: string;
   error?: string;
+  border?: string;
+  text?: string;
+  active?: ThemeColor;
+  hover?: ThemeColor;
+  focus?: ThemeColor;
 }
 
 type Size = (num: number) => number;
@@ -21,7 +27,7 @@ export interface ThemeSpacing {
 export interface Theme {
   size?: number;
   mobile?: boolean;
-  unit?: string;
+  unit?: 'rem' | 'px';
   Size?: Size;
   borderRadius?: boolean;
   color?: ThemeColor;

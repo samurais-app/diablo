@@ -1564,6 +1564,7 @@ type MdxFieldSelector = {
 type MdxFields = {
   readonly absolutePath: Maybe<Scalars['String']>;
   readonly locale: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
   readonly slug: Maybe<Scalars['String']>;
   readonly type: Maybe<Scalars['String']>;
   readonly typeOrder: Maybe<Scalars['Int']>;
@@ -1572,6 +1573,7 @@ type MdxFields = {
 type MdxFieldsFieldSelector = {
   readonly absolutePath: InputMaybe<FieldSelectorEnum>;
   readonly locale: InputMaybe<FieldSelectorEnum>;
+  readonly name: InputMaybe<FieldSelectorEnum>;
   readonly slug: InputMaybe<FieldSelectorEnum>;
   readonly type: InputMaybe<FieldSelectorEnum>;
   readonly typeOrder: InputMaybe<FieldSelectorEnum>;
@@ -1580,6 +1582,7 @@ type MdxFieldsFieldSelector = {
 type MdxFieldsFilterInput = {
   readonly absolutePath: InputMaybe<StringQueryOperatorInput>;
   readonly locale: InputMaybe<StringQueryOperatorInput>;
+  readonly name: InputMaybe<StringQueryOperatorInput>;
   readonly slug: InputMaybe<StringQueryOperatorInput>;
   readonly type: InputMaybe<StringQueryOperatorInput>;
   readonly typeOrder: InputMaybe<IntQueryOperatorInput>;
@@ -1588,6 +1591,7 @@ type MdxFieldsFilterInput = {
 type MdxFieldsSortInput = {
   readonly absolutePath: InputMaybe<SortOrderEnum>;
   readonly locale: InputMaybe<SortOrderEnum>;
+  readonly name: InputMaybe<SortOrderEnum>;
   readonly slug: InputMaybe<SortOrderEnum>;
   readonly type: InputMaybe<SortOrderEnum>;
   readonly typeOrder: InputMaybe<SortOrderEnum>;

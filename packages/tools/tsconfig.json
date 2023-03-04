@@ -1,0 +1,31 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "react",
+    "outDir": "./build",
+    "esModuleInterop": true,
+    "target": "es2017",
+    "module": "commonjs",
+    "lib": [
+      "DOM",
+      "es2017",
+    ],
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "src/*.ts",
+    "src/**/*.ts",
+    "src/*.tsx",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
+}

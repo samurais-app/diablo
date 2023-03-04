@@ -30,6 +30,15 @@
     "paths": {
       "@ui/*": [
         "./packages/ui/src/*"
+      ],
+      "@tools/*": [
+        "./packages/tools/src/*"
+      ],
+      "@hooks/*": [
+        "./packages/hooks/src/*"
+      ],
+      "components/*": [
+        "./src/components/*"
       ]
     }
   },

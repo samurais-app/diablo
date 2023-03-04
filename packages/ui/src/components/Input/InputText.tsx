@@ -12,6 +12,7 @@ export function InputText(props: IInputTextProps) {
         size = 'small',
         error,
         onChange,
+        border,
         ..._props
     } = props;
     const _change = useCallback((event) => {
@@ -23,7 +24,7 @@ export function InputText(props: IInputTextProps) {
     }, [_props.value]);
 
     return (
-        <InputContainerStyled size={size} error={error}>
+        <InputContainerStyled size={size} error={error} border={border}>
             <InputStyled onChange={_change} {..._props} />
         </InputContainerStyled>
     );

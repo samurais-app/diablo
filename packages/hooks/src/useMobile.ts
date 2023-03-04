@@ -1,18 +1,9 @@
-/* eslint-disable indent */
-import { useState, useEffect } from 'react';
-import { isMobile } from './utils';
+import { useMemo } from 'react';
+import { DOM } from '@diablo/tools';
+import { useSize } from './useSize';
 
 
 export function useMobile() {
-    const [status, setStatus] = useState(isMobile());
-    const update = () => {
-        setStatus(isMobile());
-    };
-
-    useEffect(() => {
-        window.addEventListener('resize', update);
-        return () => window.removeEventListener('resize', update);
-    }, []);
-
-    return status;
+    const { width } = useSize(typeof window !== 'undefined' ? document.body : undefined);
+    return useMemo(() => DOM.isMobile(width), [width]);
 }

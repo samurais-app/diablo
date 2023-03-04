@@ -1,9 +1,9 @@
-import { FieldProps, Size } from '@ui/interfaces';
+import { IFieldProps, Size } from '@ui/interfaces';
 import { Theme } from '@ui/interfaces';
 import { ThemedStyledProps } from 'styled-components';
 
 
-export interface IMenuBaseProps extends Omit<React.InputHTMLAttributes<HTMLUListElement>, 'value' | 'onChange' | 'size'>, Omit<FieldProps, 'error'> {
+export interface IMenuBaseProps extends Omit<React.InputHTMLAttributes<HTMLUListElement>, 'value' | 'onChange' | 'size'>, Omit<IFieldProps, 'error'> {
   size?: keyof typeof Size
 }
 

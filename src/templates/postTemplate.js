@@ -1,48 +1,44 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Compare from 'components/Compare';
-import CodeBlock from 'components/CodeBlock';
+import get from 'lodash.get';
+import { components } from './nodes';
 import { Remarkable } from 'remarkable';
 import RemarkableReactRenderer from 'remarkable-react';
+import styled from 'styled-components';
 
-const components = {
-  Compare,
-  code: ({children }) => {
-    console.log(children);
-    return (<CodeBlock code={ children}  />);
-  },
-  section: ({ children }) => {
-    let id = '';
 
-    if (Array.isArray(children)) {
-      if (children[0].props.originalType === 'h2') {
-        id = children[0] ? children[0].props.children : '';
-      }
-    } else {
-      id = children.props.children;
-    }
+const Box = styled.div`
+  padding: 40px 20px;
+`;
+const Title = styled.div`
+  font-size: 18px;
+  line-height: 1.33;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+`;
+const TinyTitle = styled.div`
+  font-size: 40px;
+  line-height: 1.2;
+  font-weight: 600;
+  margin: 16px 0 24px 0;
+`;
 
-    return <section className="markdown md anchor-section gatsby-section">{children}</section>;
-  },
-  // h1: ({ children }) => {
-  //   return (<h2>1</h2>);
-  // },
-  // h2: ({ children }) => {
-  //   return (<h2>1</h2>);
-  // },
-  // h3: ({ children }) => {
-  //   return (<h2>1</h2>);
-  // }
-};
 const md = new Remarkable();
-md.renderer = new RemarkableReactRenderer({components});
+md.renderer = new RemarkableReactRenderer({ components });
 
 export default function PostTemplate(args) {
-  const { pageContext, data, children, location } = args;
+  const { data } = args;
   const { current } = data;
-  return (<div className="main-article">
-    {md.render(current.body)}
-  </div>);
+  const category = get(data, 'current.frontmatter.category', '');
+  const title = get(data, 'current.frontmatter.title', '');
+  const name = get(data, 'current.fields.name', '');
+  return (
+    <Box>
+      <Title>{`${category}·${name}`}</Title>
+      <TinyTitle>{title}</TinyTitle>
+      {md.render(current.body)}
+    </Box>
+  );
 }
 
 export const query = graphql`
@@ -53,9 +49,11 @@ export const query = graphql`
         order
         brief
         icon
+        category
       }
       fields {
         type
+        name
       }
       tableOfContents
       body

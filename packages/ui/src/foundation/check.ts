@@ -21,7 +21,7 @@ export function checkBgColor(props: ThemeWithCheckBaseProps) {
 
 export function checkBorder(props: ThemeWithCheckBaseProps) {
     const theme = props.theme ?? defaultConfig;
-    return props.error ? theme.color.error : theme.color.transparent;
+    return props['error'] ? theme.color.error : theme.color.transparent;
 }
 
 export function checkActiveColor(props: ThemeWithCheckBaseProps) {

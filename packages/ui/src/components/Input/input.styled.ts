@@ -9,7 +9,7 @@ export const InputContainerStyled = styled.div<IInputBaseProps>`
   background-color: ${inputBgColor};
   padding: ${inputPadding};
   border-radius: ${inputBorderRadius};
-  border: 1px solid ${inputBorder};
+  border: ${inputBorder};
   transition: all 0.2s ease 0s;
   display: flex;
   flex-direction: row;

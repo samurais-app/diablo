@@ -7,6 +7,7 @@ export type InputType = 'text' | 'number' | 'password'
 export interface IInputBaseProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type' | 'value' | 'onChange' | 'max' | 'min'>, IFieldProps {
     type?: InputType;
     size?: keyof typeof Size;
+    border?: boolean;
 }
 
 export interface IInputTextProps extends IInputBaseProps {

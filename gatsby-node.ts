@@ -23,6 +23,8 @@ export const onCreateWebpackConfig = ({ actions }) => {
     resolve: {
       alias: {
         '@ui': path.resolve(__dirname, './packages/ui/src'),
+        '@tools': path.resolve(__dirname, './packages/tools/src'),
+        '@hooks': path.resolve(__dirname, './packages/hooks/src'),
         'components': path.resolve(__dirname, './src/components'),
         chalk: path.resolve(__dirname, './scripts/chalk.js'),
         process: path.resolve(__dirname, './scripts/process.js'),
@@ -49,7 +51,7 @@ export const onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       node,
       name: 'slug',
-      value: `${locale}/${levels[0]}/${levels[1]}`, // eg: zh-CN/chart/area
+      value: `${levels[0]}/${levels[1]}`, // eg: zh-CN/chart/area
     });
 
     createNodeField({
@@ -57,7 +59,11 @@ export const onCreateNode = ({ node, getNode, actions }) => {
       name: 'absolutePath',
       value: mdxNode.absolutePath
     });
-
+    createNodeField({
+      node,
+      name: 'name',
+      value: `${levels[1]}`,
+    });
     createNodeField({
       node,
       name: 'type',
@@ -78,11 +84,11 @@ export const onCreateNode = ({ node, getNode, actions }) => {
   }
 };
 
-export const onPreBootstrap = () => {
-  const orderFunc = require('./scripts/order');
-  console.log('starting order mdx');
-  orderFunc();
-};
+// export const onPreBootstrap = () => {
+//   const orderFunc = require('./scripts/order');
+//   console.log('starting order mdx');
+//   orderFunc();
+// };
 
 export const createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;

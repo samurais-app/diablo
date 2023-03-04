@@ -12,6 +12,7 @@ export function InputNumber(props: IInputNumberProps) {
         size = 'small',
         error,
         onChange,
+        border,
         ..._props
     } = props;
     const _change = useCallback((event) => {
@@ -23,7 +24,7 @@ export function InputNumber(props: IInputNumberProps) {
     }, []);
 
     return (
-        <InputContainerStyled size={size} error={error}>
+        <InputContainerStyled size={size} error={error} border={border}>
             <InputStyled type="number" onChange={_change} {..._props} />
         </InputContainerStyled>
     );

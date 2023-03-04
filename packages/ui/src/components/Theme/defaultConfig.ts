@@ -3,18 +3,20 @@
 import { Theme } from '@ui/interfaces';
 
 export default {
-    size: 10,
-    unit: 'px',
+    size: 16,
+    unit: 'rem',
     mobile: false,
     borderRadius: true,
     Size: function (num: number) {
-        return this.mobile ? num / this.size : num;
+        return this.unit === 'rem' ? Number(num / this.size).toFixed(2) : num;
     },
     color: {
         primary: '#0A992E',
         transparent: 'transparent',
         error: '#fb1f6a',
-        background: '#FFFFFF'
+        background: '#FFFFFF',
+        border: '#eeeeee',
+        text: '#292929'
     },
     spacing: {
         fontSize: [12, 16, 22, 30, 40],

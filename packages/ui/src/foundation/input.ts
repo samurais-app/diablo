@@ -6,7 +6,8 @@ import deepmerge from 'deepmerge';
 
 export function inputBorder(props: ThemeWithInputBaseProps) {
     const theme = deepmerge(props?.theme, defaultConfig);
-    return props.error ? theme.color.error : theme.color.transparent;
+    const color = props.error ? theme.color.error : props.border ? theme.color.border : theme.color.transparent;
+    return `1px solid ${color}`;
 }
 
 export function inputPadding(props: ThemeWithInputBaseProps) {
@@ -27,5 +28,11 @@ export function inputBorderRadius(props?: ThemeWithInputBaseProps) {
 
 export function inputBgColor(props?: ThemeWithInputBaseProps) {
     const theme = deepmerge(props?.theme, defaultConfig);
-    return opacity(complementaryColor(theme.color.background), 0.05);
+    return props.border ? 'none' : opacity(complementaryColor(theme.color.background), 0.05);
+}
+
+export function inputActiveBorder(props?: ThemeWithInputBaseProps) {
+    const theme = deepmerge(props?.theme, defaultConfig);
+
+    return;
 }

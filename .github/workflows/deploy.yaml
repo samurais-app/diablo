@@ -10,7 +10,7 @@ on:
 jobs:
   deploy:
     name: deploy
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Setup repo
         uses: actions/checkout@v3
@@ -24,25 +24,11 @@ jobs:
         id: version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
 
-      # - name: cache node_modules
-      #   uses: actions/cache@v1
-      #   id: cache
-      #   with:
-      #     path: node_modules
-      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-node-
-
       - name: Npm Version
         run: npm --version
 
-
       - name: Install
-        if: steps.cache.outputs.cache-hit != 'true'
         run: npm run bootstrap
-
-      - name: Bootstrap
-        run: npx lerna bootstrap
 
       - name: Build Packages
         run: npm run build

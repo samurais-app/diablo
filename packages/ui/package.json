@@ -5,6 +5,7 @@
   "author": "刘伟 <lemonpaimc@126.com>",
   "homepage": "https://github.com/samurais-app/diablo/tree/main/packages/ui#readme",
   "license": "MIT",
+  "type": "build/index.d.ts",
   "main": "build/index.js",
   "lib": "build/index.js",
   "directories": {

@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "jsx": "react",
     "outDir": "./build",
+    "declaration": true,
     "esModuleInterop": true,
     "target": "es2017",
     "module": "commonjs",

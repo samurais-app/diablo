@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.26",
+    "ts-lib": "^0.0.5",
     "tsc-alias": "^1.8.2",
     "typescript": "^4.9.5"
   }

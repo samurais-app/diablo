@@ -25,6 +25,9 @@ jobs:
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
 
       - name: Npm Version
+        run: npm install npm@8.19.3 -g
+
+      - name: Npm Version
         run: npm --version
 
       - name: Install

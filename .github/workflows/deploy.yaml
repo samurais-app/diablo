@@ -45,7 +45,7 @@ jobs:
         run: npm run bootstrap
 
       - name: Bootstrap
-        run: lerna bootstrap
+        run: npx lerna bootstrap
 
       - name: Build Packages
         run: npm run build

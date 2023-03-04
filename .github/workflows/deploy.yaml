@@ -30,6 +30,9 @@ jobs:
       - name: Npm Version
         run: npm --version
 
+      - name: Packages link
+        run: npm run link
+
       - name: Install
         run: npm run bootstrap
 

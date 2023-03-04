@@ -17,6 +17,7 @@
     "build:site": "cross-env NODE_ENV=production node ./node_modules/gatsby/cli.js build --prefix-paths --verbose",
     "test": "jest",
     "test:coverage": "jest --coverage",
+    "link": "lerna run link --parallel",
     "build": "lerna run build --parallel"
   },
   "repository": {

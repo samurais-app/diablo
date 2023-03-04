@@ -7,7 +7,6 @@
   "license": "MIT",
   "types": "build/index.d.ts",
   "main": "build/index.js",
-  "lib": "build/index.js",
   "files": [
     "build"
   ],

@@ -40,5 +40,8 @@
     "tsc-alias": "^1.8.2",
     "typescript": "^4.9.5"
   },
-  "gitHead": "b141367402371c5014acc8afadf3ecbc1329fe4b"
+  "gitHead": "b141367402371c5014acc8afadf3ecbc1329fe4b",
+  "dependencies": {
+    "@diablo/tool": "^0.0.1"
+  }
 }

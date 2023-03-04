@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "workspaces": [
-    "packages/*"
+    "packages/hooks",
+    "packages/tools",
+    "packages/ui"
   ],
   "scripts": {
     "sharp:bug": "cd ./node_modules/sharp && npm run install",
@@ -15,7 +17,7 @@
     "build:site": "cross-env NODE_ENV=production node ./node_modules/gatsby/cli.js build --prefix-paths --verbose",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "build": "lerna run build"
+    "build": "lerna run build --parallel"
   },
   "repository": {
     "type": "git",

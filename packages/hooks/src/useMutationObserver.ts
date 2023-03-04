@@ -1,4 +1,4 @@
-import { DOM } from '@diablo/tools';
+import { DOM } from '@diabloo/tool';
 import { useDeepCompareEffectWithTarget } from './useDeepCompareEffectWithTarget';
 import { useLatest } from './useLatest';
 

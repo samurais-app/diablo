@@ -1,5 +1,5 @@
 {
-  "name": "@diablo/tools",
+  "name": "@diablo/tool",
   "version": "0.0.1",
   "description": "> TODO: description",
   "author": "刘伟 <lemonpaimc@126.com>",
@@ -8,16 +8,9 @@
   "type": "build/index.d.ts",
   "main": "build/index.js",
   "lib": "build/index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
   "files": [
-    "lib"
+    "build"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmmirror.com/"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/samurais-app/diablo.git"
@@ -36,5 +29,6 @@
   "peerDependencies": {
     "lodash.isequal": "^4.5.0",
     "react": "^18.2.0"
-  }
+  },
+  "gitHead": "b141367402371c5014acc8afadf3ecbc1329fe4b"
 }

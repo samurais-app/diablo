@@ -1,6 +1,6 @@
 import type { DependencyList, EffectCallback } from 'react';
 import { useRef } from 'react';
-import { DOM, isEqual } from '@diablo/tools';
+import { DOM, isEqual } from '@diabloo/tool';
 import useEffectWithTarget from './useEffectWithTarget';
 
 const depsEqual = (aDeps: DependencyList, bDeps: DependencyList = []) => {

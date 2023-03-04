@@ -2,7 +2,7 @@ import type { DependencyList, EffectCallback, useEffect, useLayoutEffect } from 
 import { useRef } from 'react';
 import useUnmount from './useUnmount';
 import { diffDependencys } from './utils';
-import { DOM } from '@diablo/tools';
+import { DOM } from '@diabloo/tool';
 
 const createEffectWithTarget = (useEffectType: typeof useEffect | typeof useLayoutEffect) => {
   /**

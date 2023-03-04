@@ -1,6 +1,6 @@
 import ResizeObserver from 'resize-observer-polyfill';
 import { useRafState } from './useRafState';
-import { DOM } from '@diablo/tools';
+import { DOM } from '@diabloo/tool';
 import useIsomorphicLayoutEffectWithTarget from './useIsomorphicLayoutEffectWithTarget';
 
 type Size = { width: number; height: number };

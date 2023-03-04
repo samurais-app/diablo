@@ -3,5 +3,5 @@ const base = require('../../jest.config.base.js');
 
 module.exports = {
     ...base,
-    displayName: '@diablo/tools'
+    displayName: '@diablo/tool'
 };

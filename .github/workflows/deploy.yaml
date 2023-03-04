@@ -44,6 +44,9 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm run bootstrap
 
+      - name: Bootstrap
+        run: node ./node_modules/bin/lerna bootstrap
+
       - name: Build Packages
         run: npm run build
 

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { DOM } from '@diabloo/tool';
+import { DOM } from '@diablo/tool';
 import { useSize } from './useSize';
 
 

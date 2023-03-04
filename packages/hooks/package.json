@@ -26,7 +26,7 @@
     "url": "https://github.com/samurais-app/diablo/issues"
   },
   "peerDependencies": {
-    "@diabloo/tool": "^0.0.1",
+    "@diablo/tool": "^0.0.1",
     "@floating-ui/react-dom": "^1.0.0",
     "@floating-ui/react-dom-interactions": "^0.10.1",
     "@frade-sam/samtools": "1.1.6",

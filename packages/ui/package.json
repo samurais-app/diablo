@@ -13,11 +13,8 @@
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "build"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmmirror.com/"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/samurais-app/diablo.git"

@@ -1,6 +1,6 @@
 import { ThemeWithProps } from '@ui/index';
 import styled, { createGlobalStyle } from 'styled-components';
-import { layoutNavBorder, layoutNavHeight, layoutNavMargin, layoutNavWidth, mainContentMargin, mainContentWidth } from '../foundation/layout';
+import { docNavigationPadding, layoutNavBorder, layoutNavHeight, layoutNavMargin, layoutNavWidth, mainContentMargin, mainContentTop, mainContentWidth } from '../foundation/layout';
 
 
 export const Layout = styled.div`
@@ -22,9 +22,9 @@ export const LayoutNav = styled.div<ThemeWithProps<ILayoutNavProps>>`
 `;
 
 // 文档导航栏
-export const DocNavigation = styled.div`
+export const DocNavigation = styled.div<ThemeWithProps<ILayoutNavProps>>`
   position: fixed;
-  border-left: 1px solid ${layoutNavBorder};
+  padding: ${docNavigationPadding};
   top: ${layoutNavMargin};
   right: 0;
   width: ${layoutNavWidth};
@@ -42,16 +42,19 @@ export const GlobalStyled = createGlobalStyle`
 
 export const MainLayoutContainer = styled.div`
   width: 100vw;
+
 `;
 
 
 export type IMainLayoutContentProps = {
+  top?: number;
   left?: number;
   right?: number;
 }
 export const MainLayoutContent = styled.div<ThemeWithProps<IMainLayoutContentProps>>`
   width: ${mainContentWidth};
   margin: ${mainContentMargin};
+  padding-top: ${mainContentTop};
 `;
 
 export const MainNavigation = styled.div`

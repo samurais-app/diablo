@@ -18,3 +18,7 @@ export const ApiTableBox = styled.div`
     color: ${apiTableColor};
   }
 `;
+
+export const TableBox = styled.table`
+  min-width: 100%;
+`;

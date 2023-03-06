@@ -22,7 +22,7 @@ export default function AppLayout({ location, children, data }) {
     <ThemeConfig>
       <Layout>
         <GlobalStyled />
-        <Header height={40}>
+        <Header height={40} float>
           1
         </Header>
         {selectRender(location.pathname)}

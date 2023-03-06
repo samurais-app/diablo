@@ -19,3 +19,8 @@ export function headerHeight(props: ThemeWithHeaderBaseProps) {
   return isNum(props.height) ? `${theme.Size(props.height)}${theme.unit}` : 'auto';
 }
 
+export function headerPosition(props: ThemeWithHeaderBaseProps) {
+  const { float } = props;
+  return float ? 'fixed' : 'unset';
+}
+

@@ -21,12 +21,27 @@ export function layoutNavBorder(props: ThemeWithProps<ILayoutNavProps>) {
 
 export function mainContentWidth(props: ThemeWithProps<IMainLayoutContentProps>) {
   const { left, right, theme } = props;
+  console.log(theme);
+  return theme.mobile ? '100vw' : `calc(100vw - ${theme.Size(Number(left) + Number(right))}${theme.unit})`;
+}
 
-  return `calc(100vw - ${theme.Size(Number(left) + Number(right))}${theme.unit})`;
+export function mainContentTop(props: ThemeWithProps<IMainLayoutContentProps>) {
+  const { theme, top } = props;
+
+  return `${theme.Size(Number(top))}${theme.unit}`;
 }
 
 export function mainContentMargin(props: ThemeWithProps<IMainLayoutContentProps>) {
   const { left, right, theme } = props;
+  return theme.mobile ? 0 : `0 ${theme.Size(Number(right))}${theme.unit} 0 ${theme.Size(Number(left))}${theme.unit}`;
+}
 
-  return `0 ${theme.Size(Number(right))}${theme.unit} 0 ${theme.Size(Number(left))}${theme.unit}`;
+/**
+ * 导航栏边距计算
+ * @param props 
+ * @returns 
+ */
+export function docNavigationPadding(props: ThemeWithProps<object>) {
+  const { theme } = props;
+  return `${theme.Size(theme.spacing.padding[4])}${theme.unit} 0`;
 }

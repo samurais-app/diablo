@@ -45,8 +45,8 @@ const Global = createGlobalStyle<ThemedStyledProps<any, Theme>>`
 
 export default function ThemeConfig(props: IThemeContextProps) {
     const isMobile = useMobile();
-    const [theme, setTheme] = useState<Theme>(deepmerge(defaultConfig, { mobile: isMobile, unit: isMobile ? 'rem' : 'px' as any, ...props.theme } || {}));
-
+    const [theme, setTheme] = useState<Theme>(deepmerge(defaultConfig, { ...props.theme } || {}));
+    console.log(theme, isMobile, '<<<');
     const update = (the: Theme) => {
         setTheme((data) => {
             return deepmerge(data, the);
@@ -54,9 +54,9 @@ export default function ThemeConfig(props: IThemeContextProps) {
     };
 
     return (
-        <ThemeContent.Provider value={{ theme, update }}>
+        <ThemeContent.Provider value={{ theme: { ...theme, mobile: isMobile, unit: isMobile ? 'rem' : 'px' as any }, update }}>
             <ThemeProvider
-                theme={theme}
+                theme={{ ...theme, mobile: isMobile, unit: isMobile ? 'rem' : 'px' as any }}
             >
                 <Global />
                 {props.children}

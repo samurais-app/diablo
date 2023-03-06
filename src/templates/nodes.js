@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Compare,CodeBlock,ApiTable } from 'components/index';
 
 export const components = {
@@ -15,9 +15,10 @@ export const components = {
     const [id] = children;
     return (<h1 id={id}>{children}</h1>);
   },
-  h2: ({ children }) => {
+  h2: ({ children,...props }) => {
     const [id] = children;
-    return (<h2 id={id}>{children}</h2>);
+    console.log(props);
+    return (<h2 id={id.toLowerCase()}>{children}</h2>);
   },
   h3: ({ children }) => {
     const [id] = children;
@@ -36,9 +37,3 @@ export const components = {
     return (<h6 id={id}>{children}</h6>);
   }
 };
-
-export function useComponents(tabLable =[]) {
-  return useMemo(() => {
-    return 1
-  }, [tabLable]);
-}

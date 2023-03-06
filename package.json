@@ -21,7 +21,8 @@
     "build:ui": "lerna run build --scope=@diablo/ui --parallel",
     "build:hooks": "lerna run build --scope=@diablo/hooks --parallel",
     "build": "npm run build:tool && npm run build:hooks && npm run build:ui",
-    "link": "lerna run link"
+    "link": "lerna run link",
+    "publish": "lerna publish from-git  --yes"
   },
   "repository": {
     "type": "git",

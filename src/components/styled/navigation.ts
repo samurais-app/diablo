@@ -3,14 +3,14 @@ import { NavigationItemProps, NavigationProps } from 'components/interfaces/navi
 import styled from 'styled-components';
 
 
-export const NavigationBox = styled.div<ThemeWithProps<NavigationProps>>`
+export const NavigationBox = styled.div<ThemeWithProps<Omit<NavigationProps, 'children'>>>`
   width: 100%;
 `;
 
-export const NavigationItems = styled.ul`
+export const NavigationItemsBox = styled.ul`
   list-style: none;
 `;
 
-export const NavigationItem = styled.li<ThemeWithProps<NavigationItemProps>>`
+export const NavigationItemBox = styled.li<ThemeWithProps<Omit<NavigationItemProps, 'children' | 'index'>>>`
   list-style: none;
 `;

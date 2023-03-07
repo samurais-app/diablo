@@ -64,10 +64,11 @@ export default function Outline(props: Omit<IOutlineProps, 'isChild' | 'height' 
     });
   }, []);
 
-  return (<OutlineList ref={dom} index={index} height={height.ul} itemHeight={height.li}>
-    {renderItem(_children)}
-    <li>1</li>
-  </OutlineList>);
+  return (
+    <OutlineList ref={dom} index={index} height={height.ul} itemHeight={height.li}>
+      {renderItem(_children)}
+    </OutlineList>
+  );
 }
 
 Outline.Link = OutlineItem;

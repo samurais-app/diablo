@@ -1,4 +1,4 @@
-import { DOM } from '@diablo/tool';
+import { DOM } from '@diabol/tool';
 import useEffectWithTarget from './useEffectWithTarget';
 import useLayoutEffectWithTarget from './useLayoutEffectWithTarget';
 

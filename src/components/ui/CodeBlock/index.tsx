@@ -57,7 +57,7 @@ export default function CodeBlock({ code }: {
       ThemeConfig
     },
     imports: {
-      '@diablo/ui': {
+      '@diabol/ui': {
         named: ['Input', 'ThemeConfig'],
       },
     },

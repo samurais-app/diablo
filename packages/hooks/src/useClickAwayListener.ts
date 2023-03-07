@@ -1,4 +1,4 @@
-import { DOM } from '@diablo/tool';
+import { DOM } from '@diabol/tool';
 import { useLatest } from './useLatest';
 import useEffectWithTarget from './useEffectWithTarget';
 

@@ -1,5 +1,5 @@
 {
-  "name": "@diablo/hooks",
+  "name": "@diabol/hooks",
   "version": "0.1.0",
   "description": "> TODO: description",
   "author": "刘伟 <lemonpaimc@126.com>",
@@ -11,6 +11,9 @@
   "directories": {
     "lib": "lib",
     "test": "__tests__"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "files": [
     "build"
@@ -26,15 +29,15 @@
     "url": "https://github.com/samurais-app/diablo/issues"
   },
   "peerDependencies": {
-    "@diablo/tool": "^0.0.1",
+    "@diabol/tool": "^0.1.0",
     "@floating-ui/react-dom": "^1.0.0",
     "@floating-ui/react-dom-interactions": "^0.10.1",
     "@frade-sam/samtools": "1.1.6",
     "deepmerge": "^4.2.2",
-    "react": "^18.2.0",
     "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
+    "@types/react": "^18.0.28",
     "@types/styled-components": "^5.1.26",
     "ts-lib": "^0.0.5",
     "tsc-alias": "^1.8.2",

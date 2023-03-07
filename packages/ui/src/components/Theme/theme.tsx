@@ -5,7 +5,7 @@ import { createGlobalStyle, ThemedStyledProps, ThemeProvider } from 'styled-comp
 import { ThemeContent } from './context';
 import defaultConfig from './defaultConfig';
 import { complementaryColor } from '@frade-sam/samtools';
-import { useMobile } from '@diablo/hooks';
+import { useMobile } from '@diabol/hooks';
 import { Theme } from '@ui/interfaces';
 
 export interface IThemeContextProps {

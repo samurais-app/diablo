@@ -17,7 +17,7 @@ export const dark: Theme = {
     primary: '#0A992E',
     transparent: 'transparent',
     error: '#fb1f6a',
-    background: '#151515',
+    background: '#141414',
     border: '#eeeeee',
     text: '#292929'
   }

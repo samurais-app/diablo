@@ -1,8 +1,17 @@
 import React from 'react';
-import { IHeaderBaseProps, Layout } from '@ui/index';
+import { Icon, IHeaderBaseProps, Layout, Switch } from '@ui/index';
 
 export default function Header({ children, ...props }: IHeaderBaseProps) {
   return (
-    <Layout.Header {...props}>{children}</Layout.Header>
+    <Layout.Header
+      actions={[
+        <Icon type='icon-roundclosefill' key="icon2" />,
+        <Switch key="sw" />,
+        <Icon type='icon-roundclosefill' key="icon" />
+      ]}
+      {...props}
+    >
+      {children}
+    </Layout.Header>
   );
 }

@@ -58,7 +58,7 @@ export default function ThemeConfig(props: IThemeContextProps) {
             return data.unit === 'rem' ? Number(Number(num / data.size).toFixed(2)) : num;
         };
         return data;
-    }, [theme]);
+    }, [theme, isMobile]);
 
     return (
         <ThemeContent.Provider value={{ theme: config, update }}>

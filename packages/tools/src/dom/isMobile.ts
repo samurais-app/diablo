@@ -9,7 +9,7 @@ export function isMobile(width?: number) {
   const isSamsung = /sm/i.test(browserName); // 三星
   const isUcWeb = /ucweb/i.test(browserName);  // UC
   const isAndroid = /Android/i.test(browserName); // Android 安卓
-  if (isPad || isIphone || isMoto || isSamsung || isUcWeb || isAndroid || (isNum(width) && width <= 600)) {
+  if (isPad || isIphone || isMoto || isSamsung || isUcWeb || isAndroid || (isNum(width) && width <= 800)) {
     return true;
   } else {
     return false;

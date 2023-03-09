@@ -1,7 +1,8 @@
 import React from 'react';
-import { useMobile } from '@hooks/index';
+import { useSize } from '@hooks/index';
 import { Outline } from 'components/index';
 import { DocNavigation, LayoutNav, MainLayoutContainer, MainLayoutContent } from 'components/styled/layout';
+import { LayoutContentProps } from './interfaces/layout';
 
 
 type Props = {
@@ -18,21 +19,30 @@ function renderOutline(items: any[]) {
   });
 }
 
+function useLayoutSize(): LayoutContentProps {
+  const { width } = useSize(document.body);
+  return {
+    size: width,
+    header: 40,
+    navigation: 300,
+    outline: 240
+  };
+}
+
 export default function MainLayout({
   children, items }: Props) {
-  const isMobile = useMobile();
-
+  const props = useLayoutSize();
   return (
     <MainLayoutContainer >
-      {!isMobile ? <LayoutNav top={40} width={300} /> : null}
-      <MainLayoutContent left={300} right={240} top={40}>
+      <LayoutNav {...props} />
+      <MainLayoutContent {...props}>
         {children}
       </MainLayoutContent>
-      {!isMobile ? <DocNavigation top={40} width={240}>
+      <DocNavigation {...props}>
         <Outline>
           {renderOutline(items)}
         </Outline>
-      </DocNavigation> : null}
+      </DocNavigation>
     </MainLayoutContainer>
   );
 }

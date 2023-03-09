@@ -7,7 +7,7 @@ export type IOutlineProps = {
   height?: number;
   itemHeight?: number;
   index?: number;
-  children: ReactElement<IOutlineItemProps> | ReactElement<IOutlineItemProps>[];
+  children?: ReactElement<IOutlineItemProps> | ReactElement<IOutlineItemProps>[];
 }
 
 export type IOutlineItemProps = React.DetailedHTMLProps<React.LiHTMLAttributes<HTMLLIElement>, HTMLLIElement> & {

@@ -11,3 +11,5 @@ export * from './layout';
 export * from './field';
 export * from './common';
 export * from './navigation';
+export * from './icon';
+export * from './switch';

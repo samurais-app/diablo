@@ -1,7 +1,15 @@
+import { Script } from 'gatsby';
 import React from 'react';
 import Layout from './src/components/layout';
 
-export const wrapPageElement = ({ element, props }) => <Layout {...props}>{element}</Layout>;
+export const wrapPageElement = ({ element, props }) => {
+  return (
+    <Layout {...props}>
+      <Script src="//at.alicdn.com/t/c/font_3495102_hhli5o2sxa9.js" />
+      {element}
+    </Layout>
+  );
+};
 
 export const onRouteUpdate = ({ location, prevLocation }) => {
   console.log('new pathname', location.pathname);

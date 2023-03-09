@@ -3,7 +3,7 @@ import { IHeaderBaseProps } from '@ui/interfaces';
 import styled from 'styled-components';
 
 
-export const HeaderBox = styled.div<IHeaderBaseProps>`
+export const HeaderBox = styled.div<Omit<IHeaderBaseProps, 'children'>>`
   width: 100vw;
   height: ${headerHeight};
   padding: ${headerPadding};
@@ -18,4 +18,19 @@ export const HeaderBox = styled.div<IHeaderBaseProps>`
   backdrop-filter: saturate(50%) blur(4px);
   border-bottom: 1px solid ${headerBorder};
   background-image: radial-gradient(transparent 1px, #fff 1px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
+
+
+export const HeaderActions = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const HeaderContent = styled.div`
+  flex: 1;
+`;
+
+export const HeaderLogo = styled.div``;

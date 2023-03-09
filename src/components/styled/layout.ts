@@ -1,9 +1,10 @@
 import { ThemeWithProps } from '@ui/index';
+import { LayoutContentProps } from 'components/interfaces/layout';
 import styled, { createGlobalStyle } from 'styled-components';
-import { docNavigationPadding, layoutNavBorder, layoutNavHeight, layoutNavMargin, layoutNavWidth, mainContentMargin, mainContentTop, mainContentWidth } from '../foundation/layout';
+import { docNavigationPadding, docNavigationShow, docNavigationWidth, layoutNavBorder, layoutNavHeight, layoutNavMargin, layoutNavShow, layoutNavWidth, mainContentMargin, mainContentTop, mainContentWidth } from '../foundation/layout';
 
 
-export const Layout = styled.div`
+export const Layout = styled['div']`
   width: 100vw;
   height: 100vh;
 `;
@@ -12,7 +13,8 @@ export type ILayoutNavProps = {
   top: number;
   width: number;
 }
-export const LayoutNav = styled.div<ThemeWithProps<ILayoutNavProps>>`
+export const LayoutNav = styled.div<ThemeWithProps<LayoutContentProps>>`
+  display: ${layoutNavShow};
   position: fixed;
   border-right: 1px solid ${layoutNavBorder};
   top: ${layoutNavMargin};
@@ -22,12 +24,13 @@ export const LayoutNav = styled.div<ThemeWithProps<ILayoutNavProps>>`
 `;
 
 // 文档导航栏
-export const DocNavigation = styled.div<ThemeWithProps<ILayoutNavProps>>`
+export const DocNavigation = styled.div<ThemeWithProps<LayoutContentProps>>`
+  display: ${docNavigationShow};
   position: fixed;
   padding: ${docNavigationPadding};
   top: ${layoutNavMargin};
   right: 0;
-  width: ${layoutNavWidth};
+  width: ${docNavigationWidth};
   height: ${layoutNavHeight};
 `;
 
@@ -40,27 +43,22 @@ export const GlobalStyled = createGlobalStyle`
   }
 `;
 
-export const MainLayoutContainer = styled.div`
+export const MainLayoutContainer = styled['div']`
   width: 100vw;
 
 `;
 
 
-export type IMainLayoutContentProps = {
-  top?: number;
-  left?: number;
-  right?: number;
-}
-export const MainLayoutContent = styled.div<ThemeWithProps<IMainLayoutContentProps>>`
+export const MainLayoutContent = styled.div<ThemeWithProps<LayoutContentProps>>`
   width: ${mainContentWidth};
   margin: ${mainContentMargin};
   padding-top: ${mainContentTop};
 `;
 
-export const MainNavigation = styled.div`
+export const MainNavigation = styled['div']`
   width: 20px;
   left: 0;
 `;
-export const MainContent = styled.div`
+export const MainContent = styled['div']`
 
 `;

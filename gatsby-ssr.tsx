@@ -13,7 +13,7 @@ export const onRenderBody = (body) => {
   body.setHeadComponents([
     <meta charSet="utf-8" key="utf-8" />,
     <meta httpEquiv="x-ua-compatible" content="ie=edge" key="edge" />,
-    <meta name="viewport" content="width=device-width,initial-scale=1" key="view" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" key="view" />,
   ]);
 };
 

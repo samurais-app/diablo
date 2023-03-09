@@ -21,7 +21,6 @@ export function layoutNavBorder(props: ThemeWithProps<ILayoutNavProps>) {
 
 export function mainContentWidth(props: ThemeWithProps<IMainLayoutContentProps>) {
   const { left, right, theme } = props;
-  console.log(theme);
   return theme.mobile ? '100vw' : `calc(100vw - ${theme.Size(Number(left) + Number(right))}${theme.unit})`;
 }
 

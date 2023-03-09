@@ -21,14 +21,14 @@ function renderOutline(items: any[]) {
 export default function MainLayout({
   children, items }: Props) {
   const isMobile = useMobile();
-  console.log(items, '>>>');
+
   return (
     <MainLayoutContainer >
-      {!isMobile ? <LayoutNav top={40} width={240} /> : null}
-      <MainLayoutContent left={240} right={180} top={40}>
+      {!isMobile ? <LayoutNav top={40} width={300} /> : null}
+      <MainLayoutContent left={300} right={240} top={40}>
         {children}
       </MainLayoutContent>
-      {!isMobile ? <DocNavigation top={40} width={180}>
+      {!isMobile ? <DocNavigation top={40} width={240}>
         <Outline>
           {renderOutline(items)}
         </Outline>

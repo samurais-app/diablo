@@ -6,3 +6,4 @@ export { default as Compare } from './ui/Compare';
 export { default as CodeBlock } from './ui/CodeBlock';
 export { default as Navigation } from './ui/Navigation';
 export { default as Outline } from './ui/Outline';
+export { default as Content } from './ui/Content';

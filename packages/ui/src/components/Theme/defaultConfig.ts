@@ -2,13 +2,14 @@
 
 import { Theme } from '@ui/interfaces';
 
-export default {
+const config = {
     size: 16,
     unit: 'rem',
     mobile: false,
     borderRadius: true,
     Size: function (num: number) {
-        return this.unit === 'rem' ? Number(num / this.size).toFixed(2) : num;
+        const unit = this ? this.unit : config.unit;
+        return unit === 'rem' ? Number(num / this.size).toFixed(2) : num;
     },
     color: {
         primary: '#0A992E',
@@ -25,3 +26,5 @@ export default {
         padding: [8, 12, 18, 26, 36]
     }
 } as Theme;
+
+export default config;

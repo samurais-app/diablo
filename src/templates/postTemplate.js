@@ -3,12 +3,13 @@ import { graphql } from 'gatsby';
 import get from 'lodash.get';
 import { components } from './nodes';
 import { Remarkable } from 'remarkable';
+import { Content } from 'components';
 import RemarkableReactRenderer from 'remarkable-react';
 import styled from 'styled-components';
 
 
 const Box = styled.div`
-  padding: 40px 20px;
+  padding: 50px 80px;
 `;
 const Title = styled.div`
   font-size: 18px;
@@ -33,11 +34,11 @@ export default function PostTemplate(args) {
   const title = get(data, 'current.frontmatter.title', '');
   const name = get(data, 'current.fields.name', '');
   return (
-    <Box>
+    <Content>
       <Title>{`${category}·${name}`}</Title>
       <TinyTitle>{title}</TinyTitle>
       {md.render(current.body)}
-    </Box>
+    </Content>
   );
 }
 

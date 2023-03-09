@@ -2,7 +2,7 @@ import React from 'react';
 import { useView, Compiler, Editor, Error } from 'react-view';
 import presetTypescript from '@babel/preset-typescript';
 import styled from 'styled-components';
-import { Input, ThemeConfig } from '@ui/index';
+import { Input, ThemeConfig, Navigation } from '@ui/index';
 import { CodeBox, ViewBox } from 'components/styled/codeblock';
 import { codeViewBorder } from 'components/foundation/codeblock';
 
@@ -29,11 +29,11 @@ const EditorCom = styled(Editor)`
     border-radius: 0 !important;
     flex: 1;
     padding: 10px !important;
-    background-color: #011627 !important;
+    background-color: #f5f7fa !important;
 
-    caret-color:#fff !important;
+    caret-color:#2e2828 !important;
     & > div {
-      background-color: #011627 !important;
+      background-color: #f5f7fa !important;
     }
 `;
 
@@ -54,16 +54,16 @@ export default function CodeBlock({ code }: {
     initialCode: `${code}`,
     scope: {
       Input,
-      ThemeConfig
+      ThemeConfig,
+      Navigation
     },
     imports: {
       '@diabol/ui': {
-        named: ['Input', 'ThemeConfig'],
+        named: ['Input', 'ThemeConfig', 'Navigation'],
       },
     },
     onUpdate: console.log,
   });
-  console.log(params.compilerProps);
   return (
     <CodeBox>
       <CompilerCom presets={[presetTypescript]} {...params.compilerProps} />

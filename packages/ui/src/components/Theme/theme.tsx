@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import deepmerge from 'deepmerge';
 import { createGlobalStyle, ThemedStyledProps, ThemeProvider } from 'styled-components';
 import { ThemeContent } from './context';
@@ -46,17 +46,24 @@ const Global = createGlobalStyle<ThemedStyledProps<any, Theme>>`
 export default function ThemeConfig(props: IThemeContextProps) {
     const isMobile = useMobile();
     const [theme, setTheme] = useState<Theme>(deepmerge(defaultConfig, { ...props.theme } || {}));
-    console.log(theme, isMobile, '<<<');
     const update = (the: Theme) => {
         setTheme((data) => {
             return deepmerge(data, the);
         });
     };
 
+    const config = useMemo(() => {
+        const data = { ...theme, mobile: isMobile, unit: isMobile ? 'rem' : 'px' as any };
+        data.Size = (num) => {
+            return data.unit === 'rem' ? Number(Number(num / data.size).toFixed(2)) : num;
+        };
+        return data;
+    }, [theme]);
+
     return (
-        <ThemeContent.Provider value={{ theme: { ...theme, mobile: isMobile, unit: isMobile ? 'rem' : 'px' as any }, update }}>
+        <ThemeContent.Provider value={{ theme: config, update }}>
             <ThemeProvider
-                theme={{ ...theme, mobile: isMobile, unit: isMobile ? 'rem' : 'px' as any }}
+                theme={config}
             >
                 <Global />
                 {props.children}

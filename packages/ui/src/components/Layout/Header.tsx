@@ -1,18 +1,11 @@
+import { useMobile } from '@diabol/hooks';
 import { isArray } from '@frade-sam/samtools';
 import { IHeaderBaseProps } from '@ui/interfaces';
 import React, { memo, useMemo } from 'react';
-import { HeaderActions, HeaderBox, HeaderContent, HeaderLogo } from './styled';
+import { Actions } from './Header.action';
+import { HeaderBox, HeaderContent, HeaderLogo } from './styled';
 
 
-type ActionsProps = {
-  children: IHeaderBaseProps['children']
-}
-
-function Actions({ children }: ActionsProps) {
-  return (
-    <HeaderActions>{children}</HeaderActions>
-  );
-}
 
 type LogoHeaderProps = {
   children: string | JSX.Element | JSX.Element[]
@@ -29,12 +22,14 @@ export default memo(function Header({
   children,
   ...props
 }: IHeaderBaseProps) {
-  const actionNodes = useMemo(() => isArray(actions) ? actions.filter(Boolean) : [actions], [actions]) as string | JSX.Element | JSX.Element[];
+  const mobile = useMobile();
+  const actionNodes = useMemo(() => isArray(actions) ? actions.filter(Boolean) : [actions], [actions]) as JSX.Element | JSX.Element[];
+
   return (
     <HeaderBox {...props}>
       <LogoHeader>{logo}</LogoHeader>
       <HeaderContent>{children}</HeaderContent>
-      <Actions>{actionNodes}</Actions>
+      <Actions isMobile={mobile}>{actionNodes}</Actions>
     </HeaderBox>
   );
 });

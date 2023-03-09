@@ -6,6 +6,7 @@ export interface IHeaderBaseProps {
   logo?: JSX.Element | JSX.Element[] | string;
   height?: number;
   float?: boolean
+  className?: string;
   children?: JSX.Element | JSX.Element[] | string;
   actions?: JSX.Element | JSX.Element[];
 }

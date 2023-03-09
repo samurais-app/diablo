@@ -5,4 +5,5 @@ import styled from 'styled-components';
 
 export const IconBox = styled.svg<ThemeWithProps<IconProps>>`
   font-size: ${iconSize};
+  cursor: pointer;
 `;

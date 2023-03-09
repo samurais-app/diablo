@@ -39,6 +39,9 @@
       ],
       "components/*": [
         "./src/components/*"
+      ],
+      "config/*": [
+        "./src/config/*"
       ]
     }
   },

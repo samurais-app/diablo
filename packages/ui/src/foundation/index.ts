@@ -7,3 +7,4 @@ export * from './appBar';
 export * from './menu';
 export * from './layout';
 export * from './icon';
+export * from './switch';

@@ -1,11 +1,11 @@
 /* eslint-disable indent */
 import { completionHex, opacity } from '@frade-sam/samtools';
 import { IAppBarBaseProps, ThemeWithAppBarBaseProps } from '@ui/interfaces';
-import { defaultConfig } from '@ui/components/Theme';
+import { defaultTheme } from '@ui/components/Theme';
 
 
 export function padding(props: ThemeWithAppBarBaseProps) {
-    const theme = props?.theme ?? defaultConfig;
+    const theme = props?.theme ?? defaultTheme;
     return `${theme.Size(theme.spacing.padding[1])}${theme.unit} ${theme.Size(theme.spacing.padding[4])}${theme.unit}`;
 }
 
@@ -23,6 +23,6 @@ export function appBarBackground(props: ThemeWithAppBarBaseProps) {
 }
 
 export function navigationPadding(props: ThemeWithAppBarBaseProps) {
-    const theme = props?.theme ?? defaultConfig;
+    const theme = props?.theme ?? defaultTheme;
     return `0${theme.unit} ${theme.Size(theme.spacing.padding[1])}${theme.unit}`;
 }

@@ -1,17 +1,23 @@
-import React from 'react';
-import { Icon, IHeaderBaseProps, Layout, Switch } from '@ui/index';
+import React, { useContext } from 'react';
+import { Icon, IHeaderBaseProps, Switch, ThemeContent } from '@ui/index';
+import { dark, light } from 'config/theme';
+import { HeaderBox } from './styled';
+
+
 
 export default function Header({ children, ...props }: IHeaderBaseProps) {
+  const { update } = useContext(ThemeContent);
   return (
-    <Layout.Header
+    <HeaderBox
       actions={[
-        <Icon type='icon-roundclosefill' key="icon2" />,
-        <Switch key="sw" />,
-        <Icon type='icon-roundclosefill' key="icon" />
+        <Switch key="sw" activeIcon={<Icon type="icon-sam" />} inactiveIcon={<Icon type="icon-soon" />} onChange={(e) => {
+          update(e ? dark : light);
+        }} />,
+        <Icon type='icon-github' size={20} key="icon" />
       ]}
       {...props}
     >
       {children}
-    </Layout.Header>
+    </HeaderBox>
   );
 }

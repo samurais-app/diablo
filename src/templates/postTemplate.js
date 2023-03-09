@@ -8,9 +8,6 @@ import RemarkableReactRenderer from 'remarkable-react';
 import styled from 'styled-components';
 
 
-const Box = styled.div`
-  padding: 50px 80px;
-`;
 const Title = styled.div`
   font-size: 18px;
   line-height: 1.33;

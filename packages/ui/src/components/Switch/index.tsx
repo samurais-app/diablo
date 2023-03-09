@@ -1,11 +1,16 @@
 import { isFunction } from '@diabol/tool';
+import { isString } from '@frade-sam/samtools';
 import { SwitchProps } from '@ui/interfaces';
-import React, { useCallback, useState } from 'react';
-import { SwitchBox, SwitchIcon } from './styled';
+import React, { isValidElement, useCallback, useMemo, useState } from 'react';
+import { SwitchBox, SwitchIcon, SwitchText } from './styled';
 
 export default function Switch({
   value = false,
   size = 'small',
+  active,
+  inactive,
+  activeIcon,
+  inactiveIcon,
   onChange
 }: SwitchProps) {
   const [status, setStatus] = useState(!!value);
@@ -13,11 +18,21 @@ export default function Switch({
     if (isFunction(onChange)) onChange(!status);
     setStatus(!status);
   }, [status, onChange]);
+  const text = useMemo(() => {
+    if (!isString(active) || !isString(inactive)) return undefined;
+    return status ? active : inactive;
+  }, [active, inactive, status]);
+
+  const icon = useMemo(() => {
+    if (!isValidElement(activeIcon) || !isValidElement(inactiveIcon)) return undefined;
+    return status ? inactiveIcon : activeIcon;
+  }, [activeIcon, inactiveIcon, status]);
 
   return (
-    <SwitchBox size={size} value={value} onClick={_onChange}>
-      <SwitchIcon>
-        1
+    <SwitchBox size={size} value={status} onClick={_onChange}>
+      {text ? <SwitchText>1</SwitchText> : undefined}
+      <SwitchIcon size={size} value={status}>
+        {icon}
       </SwitchIcon>
     </SwitchBox>
   );

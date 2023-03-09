@@ -3,7 +3,7 @@ import React, { useMemo, useState } from 'react';
 import deepmerge from 'deepmerge';
 import { createGlobalStyle, ThemedStyledProps, ThemeProvider } from 'styled-components';
 import { ThemeContent } from './context';
-import defaultConfig from './defaultConfig';
+import defaultTheme from './defaultTheme';
 import { complementaryColor } from '@frade-sam/samtools';
 import { useMobile } from '@diabol/hooks';
 import { Theme } from '@ui/interfaces';
@@ -41,11 +41,14 @@ const Global = createGlobalStyle<ThemedStyledProps<any, Theme>>`
         padding: 0;
         height: 100vh;
     }
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
 `;
 
 export default function ThemeConfig(props: IThemeContextProps) {
     const isMobile = useMobile();
-    const [theme, setTheme] = useState<Theme>(deepmerge(defaultConfig, { ...props.theme } || {}));
+    const [theme, setTheme] = useState<Theme>(deepmerge(defaultTheme, { ...props.theme } || {}));
     const update = (the: Theme) => {
         setTheme((data) => {
             return deepmerge(data, the);

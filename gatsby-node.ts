@@ -26,6 +26,7 @@ export const onCreateWebpackConfig = ({ actions }) => {
         '@tools': path.resolve(__dirname, './packages/tools/src'),
         '@hooks': path.resolve(__dirname, './packages/hooks/src'),
         'components': path.resolve(__dirname, './src/components'),
+        'config': path.resolve(__dirname, './src/config'),
         chalk: path.resolve(__dirname, './scripts/chalk.js'),
         process: path.resolve(__dirname, './scripts/process.js'),
       },

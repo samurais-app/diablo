@@ -14,10 +14,7 @@ export const HeaderBox = styled.div<Omit<IHeaderBaseProps, 'children'>>`
   display: flex;
   align-items: center;
   z-index: 1000;
-  background-size: 4px 4px;
-  backdrop-filter: saturate(50%) blur(4px);
   border-bottom: 1px solid ${headerBorder};
-  background-image: radial-gradient(transparent 1px, #fff 1px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,6 +24,7 @@ export const HeaderBox = styled.div<Omit<IHeaderBaseProps, 'children'>>`
 export const HeaderActions = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
 `;
 
 export const HeaderContent = styled.div`
@@ -34,3 +32,10 @@ export const HeaderContent = styled.div`
 `;
 
 export const HeaderLogo = styled.div``;
+
+export const ActionButton = styled.div``;
+
+export const ActionContent = styled.div`
+  position: absolute;
+  right: 0;
+`;

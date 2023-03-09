@@ -9,10 +9,14 @@ import { isString } from '@diabol/tool';
 export default function Icon({
   type,
   size,
+  onClick,
   className
 }: IconProps) {
   return (
-    <IconBox className={classnames({ [className]: isString(className) })} size={size} width="1em" height="1em" fill='currentColor' aria-hidden focusable={false}>
+    <IconBox
+      onClick={onClick}
+      className={classnames({ [className]: isString(className) })}
+      size={size} width="1em" height="1em" fill='currentColor' aria-hidden focusable={false}>
       <use xlinkHref={`#${type}`} />
     </IconBox>
   );

@@ -5,7 +5,7 @@ import Layout from './src/components/layout';
 export const wrapPageElement = ({ element, props }) => {
   return (
     <Layout {...props}>
-      <Script src="//at.alicdn.com/t/c/font_3495102_hhli5o2sxa9.js" />
+      <Script src="//at.alicdn.com/t/c/font_3495102_86wt6ckw1iv.js" />
       {element}
     </Layout>
   );

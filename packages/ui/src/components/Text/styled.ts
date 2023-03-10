@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 
 export const TextBox = styled.span<ThemeWithProps<ITextProps>>`
-  /* color: ${textColor}; */
+
 `;
 
 

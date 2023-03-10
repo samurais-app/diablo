@@ -1,6 +1,5 @@
-import deepmerge from 'deepmerge';
-import { complementaryColor, opacity } from '@frade-sam/samtools';
-import { defaultTheme, SwitchProps, ThemeWithProps } from '..';
+import { color, complementaryColor, opacity } from '@frade-sam/samtools';
+import { getTheme, SwitchProps, ThemeWithProps } from '..';
 
 export type SwitchBaseOption = ThemeWithProps<Omit<SwitchProps, 'onChange'>>;
 export type SwitchIconBase = ThemeWithProps<Pick<SwitchProps, 'size' | 'value'>>;
@@ -20,65 +19,69 @@ const SPACING = 2;
 
 export function switchWidth(props: SwitchBaseOption) {
   const { size = 'small' } = props;
-  const theme = deepmerge(props?.theme, defaultTheme);
+  const theme = getTheme(props);
 
   return `${theme.Size(SWITCH_WIDTH[size])}${theme.unit}`;
 }
 
 export function switchHeight(props: SwitchBaseOption) {
   const { size = 'small' } = props;
-  const theme = deepmerge(props?.theme, defaultTheme);
+  const theme = getTheme(props);
 
   return `${theme.Size(SWITCH_HEIGHT[size])}${theme.unit}`;
 }
 
 export function switchBorderRadius(props: SwitchBaseOption) {
-  const theme = deepmerge(props?.theme, defaultTheme);
+  const theme = getTheme(props);
   return `${theme.Size(999)}${theme.unit}`;
 }
 
 export function switchBorder(props: SwitchBaseOption) {
-  const theme = deepmerge(props?.theme, defaultTheme);
-  return `${theme.Size(1)}${theme.unit} solid ${opacity(theme.color.border, 0.5)}`;
+  const theme = getTheme(props);
+  return `${theme.Size(1)}${theme.unit} solid ${opacity(theme.color.border, 0.3)}`;
 }
 
 export function switchBg(props: SwitchIconBase) {
-  const theme = deepmerge(defaultTheme, props?.theme);
-  return `${opacity(complementaryColor(theme.color.text), 0.2)}`;
+  const theme = getTheme(props);
+  return `${color(theme.color.background, 0.4, false)}`;
 }
 
 export function switchBtnSize(props: SwitchIconBase) {
   const { size = 'small' } = props;
-  const theme = deepmerge(props?.theme, defaultTheme);
+  const theme = getTheme(props);
   return `${theme.Size(SWITCH_HEIGHT[size] - SPACING * 2)}${theme.unit}`;
+}
+
+export function switchBtnBoxShadow(props: SwitchIconBase) {
+  const theme = getTheme(props);
+  return `1px 1px 6px ${opacity(complementaryColor(theme.color.background), 0.1)},
+             -1px -1px 6px ${theme.color.background}`;
 }
 
 export function switchBtnBorderRadius(props: SwitchIconBase) {
   const { size = 'small' } = props;
-  const theme = deepmerge(props?.theme, defaultTheme);
+  const theme = getTheme(props);
   return `${theme.Size((SWITCH_HEIGHT[size] - SPACING * 2) / 2)}${theme.unit}`;
 }
 
 export function switchBtnBg(props: SwitchIconBase) {
-  const theme = deepmerge(defaultTheme, props?.theme);
-  console.log(props.theme, defaultTheme);
+  const theme = getTheme(props);
   return `${theme.color.background}`;
 }
 
 export function switchBtnTop(props: SwitchIconBase) {
-  const theme = deepmerge(props?.theme, defaultTheme);
+  const theme = getTheme(props);
   return `${theme.Size(SPACING)}${theme.unit}`;
 }
 
 export function switchBtnLeft(props: SwitchIconBase) {
   const { value, size } = props;
-  const theme = deepmerge(props?.theme, defaultTheme);
+  const theme = getTheme(props);
   const iconWidth = SWITCH_HEIGHT[size] - SPACING * 2;
-  console.log(value, '???');
   return !value ? `${theme.Size(SPACING)}${theme.unit}` : `${theme.Size(SWITCH_WIDTH[size] - iconWidth - SPACING)}${theme.unit}`;
 }
 
 export function switchFontSize(props: SwitchBaseOption) {
-  const theme = deepmerge(props?.theme, defaultTheme);
+  const theme = getTheme(props);
   return `${theme.Size(theme.size)}${theme.unit}`;
 }

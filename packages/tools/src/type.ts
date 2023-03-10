@@ -19,7 +19,7 @@ export function isArray(arr: any): arr is any[] {
 }
 
 export function isObject(obj: any): boolean {
-  return typeof obj === 'object' && !isArray(obj) && isFunction(obj) && !isNull(obj);
+  return typeof obj === 'object' && !isArray(obj) && !isFunction(obj) && !isNull(obj);
 }
 
 export function isString(str: any): str is string {

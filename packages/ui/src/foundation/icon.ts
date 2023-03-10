@@ -1,8 +1,7 @@
-import deepmerge from 'deepmerge';
-import { defaultTheme, IconProps, ThemeWithProps } from '..';
+import { getTheme, IconProps, ThemeWithProps } from '..';
 
 
 export function iconSize(props: ThemeWithProps<IconProps>) {
-  const theme = deepmerge(props?.theme, defaultTheme);
+  const theme = getTheme(props);
   return `${theme.Size(props.size ?? theme.size)}${theme.unit}`;
 }

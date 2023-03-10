@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from '@ui/index';
 import { Compare,CodeBlock,ApiTable } from 'components/index';
 
 export const components = {
@@ -15,14 +16,13 @@ export const components = {
     const [id] = children;
     return (<h1 id={id}>{children}</h1>);
   },
-  h2: ({ children,...props }) => {
+  h2: ({ children }) => {
     const [id] = children;
-    console.log(props);
-    return (<h2 id={id.toLowerCase()}>{children}</h2>);
+    return (<Text.Title type="h2" id={id.toLowerCase()}>{children}</Text.Title>);
   },
   h3: ({ children }) => {
     const [id] = children;
-    return (<h3 id={id}>{children}</h3>);
+    return (<Text.Title type="h3" id={id.toLowerCase()}>{children}</Text.Title>);
   },
   h4: ({ children }) => {
     const [id] = children;

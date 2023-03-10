@@ -4,22 +4,8 @@ import get from 'lodash.get';
 import { components } from './nodes';
 import { Remarkable } from 'remarkable';
 import { Content } from 'components';
+import { Title, TinyTitle } from 'components/styled/template';
 import RemarkableReactRenderer from 'remarkable-react';
-import styled from 'styled-components';
-
-
-const Title = styled.div`
-  font-size: 18px;
-  line-height: 1.33;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-`;
-const TinyTitle = styled.div`
-  font-size: 40px;
-  line-height: 1.2;
-  font-weight: 600;
-  margin: 16px 0 24px 0;
-`;
 
 const md = new Remarkable();
 md.renderer = new RemarkableReactRenderer({ components });

@@ -1,7 +1,7 @@
 import { ThemeWithProps } from '@ui/index';
 import { LayoutContentProps } from 'components/interfaces/layout';
 import styled, { createGlobalStyle } from 'styled-components';
-import { docNavigationPadding, docNavigationShow, docNavigationWidth, layoutNavBorder, layoutNavHeight, layoutNavMargin, layoutNavShow, layoutNavWidth, mainContentMargin, mainContentTop, mainContentWidth } from '../foundation/layout';
+import { docNavigationPadding, docNavigationShow, docNavigationWidth, layoutNavHeight, layoutNavMargin, layoutNavShow, layoutNavWidth, mainContentMargin, mainContentTop, mainContentWidth } from '../foundation/layout';
 
 
 export const Layout = styled['div']`
@@ -16,7 +16,6 @@ export type ILayoutNavProps = {
 export const LayoutNav = styled.div<ThemeWithProps<LayoutContentProps>>`
   display: ${layoutNavShow};
   position: fixed;
-  border-right: 1px solid ${layoutNavBorder};
   top: ${layoutNavMargin};
   left: 0;
   width: ${layoutNavWidth};

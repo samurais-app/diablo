@@ -5,7 +5,7 @@ import { inputBgColor, inputBorder, inputBorderRadius, inputFontSize, inputPaddi
 
 export const InputContainerStyled = styled.div<IInputBaseProps>`
   box-sizing: border-box;
-  width: 100%;
+  width: 200px;
   background-color: ${inputBgColor};
   padding: ${inputPadding};
   border-radius: ${inputBorderRadius};

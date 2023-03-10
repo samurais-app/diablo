@@ -45,10 +45,12 @@ export default function Outline(props: Omit<IOutlineProps, 'isChild' | 'height' 
         },
         children: [
           createElement(OutlineLink, {
+            key: item.props.path,
             children: title,
             href: item.props.path
           }),
           createElement(OutlineList, {
+            key: `${item.props.path}-list`,
             isChild: true,
             children: renderItem(items)
           })

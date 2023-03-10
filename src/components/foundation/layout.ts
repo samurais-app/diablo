@@ -1,4 +1,5 @@
-import { ThemeWithProps } from '@ui/index';
+import { opacity } from '@frade-sam/samtools';
+import { getTheme, ThemeWithProps } from '@ui/index';
 import { LayoutContentProps } from 'components/interfaces/layout';
 
 export function layoutNavShow(props: ThemeWithProps<LayoutContentProps>) {
@@ -18,10 +19,6 @@ export function layoutNavHeight(props: ThemeWithProps<LayoutContentProps>) {
   const { header, theme } = props;
 
   return `calc(100vh - ${theme.Size(header)}${theme.unit})`;
-}
-
-export function layoutNavBorder(props: ThemeWithProps<LayoutContentProps>) {
-  return props.theme.color.border;
 }
 
 export function mainContentWidth(props: ThemeWithProps<LayoutContentProps>) {

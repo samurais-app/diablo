@@ -1,4 +1,4 @@
-import { SwitchBaseOption, switchBg, switchBorder, switchBorderRadius, switchBtnBg, switchBtnBorderRadius, switchBtnLeft, switchBtnSize, switchBtnTop, switchFontSize, switchHeight, SwitchIconBase, switchWidth } from '@ui/foundation';
+import { SwitchBaseOption, switchBg, switchBorder, switchBorderRadius, switchBtnBg, switchBtnBorderRadius, switchBtnBoxShadow, switchBtnLeft, switchBtnSize, switchBtnTop, switchFontSize, switchHeight, SwitchIconBase, switchWidth } from '@ui/foundation';
 import styled from 'styled-components';
 
 export const SwitchBox = styled.div<SwitchBaseOption>`
@@ -24,6 +24,7 @@ export const SwitchIcon = styled.div<SwitchIconBase>`
   top: ${switchBtnTop};
   left: ${switchBtnLeft};
   font-size: ${switchFontSize};
+  box-shadow: ${switchBtnBoxShadow};
 `;
 
 export const SwitchText = styled.span`

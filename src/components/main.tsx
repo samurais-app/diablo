@@ -14,8 +14,8 @@ type Props = {
 
 function renderOutline(items: any[]) {
   return items.map((item) => {
-    if (item.items) return <Outline.Link path={item.url} title={item.title}>{renderOutline(item.items)}</Outline.Link>;
-    return <Outline.Link path={item.url} title={item.title} />;
+    if (item.items) return <Outline.Link key={item.url} path={item.url} title={item.title}>{renderOutline(item.items)}</Outline.Link>;
+    return <Outline.Link key={item.url} path={item.url} title={item.title} />;
   });
 }
 

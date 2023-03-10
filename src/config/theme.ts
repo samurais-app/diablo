@@ -7,7 +7,7 @@ export const light: Theme = {
     transparent: 'transparent',
     error: '#fb1f6a',
     background: '#FFFFFF',
-    border: '#eeeeee',
+    border: '#3A3A3A',
     text: '#292929'
   }
 };
@@ -17,8 +17,8 @@ export const dark: Theme = {
     primary: '#0A992E',
     transparent: 'transparent',
     error: '#fb1f6a',
-    background: '#141414',
+    background: '#121212',
     border: '#eeeeee',
-    text: '#292929'
+    text: '#FFFFFF'
   }
 };

@@ -3,6 +3,7 @@ import { useSize } from '@hooks/index';
 import { Outline } from 'components/index';
 import { DocNavigation, LayoutNav, MainLayoutContainer, MainLayoutContent } from 'components/styled/layout';
 import { LayoutContentProps } from './interfaces/layout';
+import { isBrowser } from '@tools/dom';
 
 
 type Props = {
@@ -20,7 +21,7 @@ function renderOutline(items: any[]) {
 }
 
 function useLayoutSize(): LayoutContentProps {
-  const { width } = useSize(document.body);
+  const { width } = useSize(isBrowser ? document?.body : undefined);
   return {
     size: width,
     header: 40,

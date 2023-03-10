@@ -5,7 +5,7 @@ import useIsomorphicLayoutEffectWithTarget from './useIsomorphicLayoutEffectWith
 
 type Size = { width: number; height: number };
 
-export function useSize(target: DOM.BasicTarget): Size | undefined {
+export function useSize(target?: DOM.BasicTarget): Size | undefined {
   let el = DOM.getTargetElement(target);
   const [state, setState] = useRafState<Size | undefined>(
     el ? { width: el.clientWidth, height: el.clientHeight } : { width: 0, height: 0 },

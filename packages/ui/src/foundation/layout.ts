@@ -9,7 +9,7 @@ export function headerPadding(props: ThemeWithHeaderBaseProps) {
 
 export function headerBorder(props: ThemeWithHeaderBaseProps) {
   const theme = getTheme(props);
-  return opacity(theme.color.border, 0.1);
+  return opacity(theme.color.border, 0.3);
 }
 
 export function headerHeight(props: ThemeWithHeaderBaseProps) {

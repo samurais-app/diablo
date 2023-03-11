@@ -40,6 +40,9 @@ export const GlobalStyled = createGlobalStyle`
   body {
     margin: 0;
   }
+  svg[aria-hidden="true"] path {
+    fill: currentColor;
+  }
 `;
 
 export const MainLayoutContainer = styled['div']`

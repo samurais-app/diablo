@@ -60,7 +60,7 @@ export const ErrorCom = styled(Error)`
   width: 100%;
   border: none !important;
   padding: 10px !important;
-  background-color: #e94343;
+  background-color: #b22424;
   color: #fff;
   font-size: 12px;
   box-sizing: border-box;

@@ -42,6 +42,9 @@
       ],
       "config/*": [
         "./src/config/*"
+      ],
+      "site/*": [
+        "./src/*"
       ]
     }
   },
@@ -52,6 +55,7 @@
     "./src/**/*.jsx",
     "./gatsby-node.ts",
     "./gatsby-config.ts",
+    "./types.d.ts",
     "./plugins/**/*",
     "./packages/**/*.ts",
     "./packages/**/*.tsx",

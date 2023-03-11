@@ -1,4 +1,4 @@
-import { ThemeConfig } from '@ui/index';
+import { Icon, ThemeConfig } from '@ui/index';
 import get from 'lodash.get';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -22,8 +22,8 @@ export default function AppLayout({ location, children, data }) {
     <ThemeConfig>
       <Layout>
         <GlobalStyled />
-        <Header height={40} float>
-          1
+        <Header height={40} float logo={<Icon type='icon-d' size={20} key="icon" />}>
+
         </Header>
         {selectRender(location.pathname)}
       </Layout>

@@ -64,6 +64,7 @@
     "@mdx-js/react": "^2.3.0",
     "babel-plugin-styled-components": "^2.0.7",
     "buffer": "^6.0.3",
+    "external-svg-sprite-loader": "^7.2.0",
     "gatsby": "^5.7.0",
     "gatsby-mdx-render-section": "^0.1.1",
     "gatsby-plugin-google-gtag": "^5.7.0",

@@ -19,7 +19,10 @@
     "test:coverage": "jest --coverage",
     "clean:changelog": "del './packages/**/CHANGELOG.md' 'CHANGELOG.md'",
     "clean:build": "del './packages/**/build' 'public'",
-    "build": "lerna run build --sort",
+    "build:tool": "lerna run build --scope=@diabol/tool --parallel",
+    "build:ui": "lerna run build --scope=@diabol/ui --parallel",
+    "build:hooks": "lerna run build --scope=@diabol/hooks --parallel",
+    "build": "npm run build:tool && npm run build:hooks && npm run build:ui",
     "link": "lerna run link",
     "publish": "lerna publish from-git  --yes"
   },

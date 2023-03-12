@@ -1,5 +1,5 @@
-import { Layout } from '@ui/index';
-import { headerBgImage, headerIconColor } from 'components/foundation/header';
+import { Icon, Layout } from '@ui/index';
+import { headerBgImage, headerIconColor, headerIconMargin } from 'components/foundation/header';
 import styled from 'styled-components';
 
 
@@ -10,4 +10,8 @@ export const HeaderBox = styled(Layout.Header)`
   & svg {
     color: ${headerIconColor};
   }
+`;
+
+export const IconBox = styled(Icon)`
+  margin-left: ${headerIconMargin};
 `;

@@ -3,7 +3,8 @@ import get from 'lodash.get';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Header, MainLayout } from 'components/index';
-import { GlobalStyled, Layout } from 'components/styled/layout';
+import { GlobalStyled, Layout, LogoBox } from 'components/styled/layout';
+import { useMobile } from '@hooks/index';
 
 
 
@@ -13,6 +14,7 @@ function isHome(pathname: string) {
 
 export default function AppLayout({ location, children, data }) {
   const items = get(data, 'current.tableOfContents.items', []);
+  const isMobile = useMobile();
   const selectRender = (pathname: string) => {
     if (isHome(pathname)) return children;
     return (<MainLayout items={items}>{children}</MainLayout>);
@@ -22,7 +24,15 @@ export default function AppLayout({ location, children, data }) {
     <ThemeConfig>
       <Layout>
         <GlobalStyled />
-        <Header height={40} float logo={<Icon type='icon-d' size={20} key="icon" />}>
+        <Header height={40}
+          float
+          logo={
+            <LogoBox>
+              <Icon type='icon-d' size={20} key="icon" />
+              {isMobile ? <Icon type='icon-liebiao' size={12} key="icon" /> : null}
+            </LogoBox>
+          }
+        >
 
         </Header>
         {selectRender(location.pathname)}

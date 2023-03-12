@@ -1,4 +1,4 @@
-import { ThemeWithProps } from '@ui/index';
+import { getTheme, ThemeWithProps } from '@ui/index';
 import { LayoutContentProps } from 'components/interfaces/layout';
 
 export function layoutNavShow(props: ThemeWithProps<LayoutContentProps>) {
@@ -59,4 +59,10 @@ export function docNavigationShow(props: ThemeWithProps<LayoutContentProps>) {
 
 export function docNavigationWidth(props: ThemeWithProps<LayoutContentProps>) {
   return `${props.theme.Size(props.outline)}${props.theme.unit}`;
+}
+
+
+export function logoBoxMargin(props: ThemeWithProps<object>) {
+  const theme = getTheme(props);
+  return `${theme.Size(theme.spacing.spacing[1])}${theme.unit}`;
 }

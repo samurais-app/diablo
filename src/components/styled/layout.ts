@@ -1,7 +1,7 @@
 import { ThemeWithProps } from '@ui/index';
 import { LayoutContentProps } from 'components/interfaces/layout';
 import styled, { createGlobalStyle } from 'styled-components';
-import { docNavigationPadding, docNavigationShow, docNavigationWidth, layoutNavHeight, layoutNavMargin, layoutNavShow, layoutNavWidth, mainContentMargin, mainContentTop, mainContentWidth } from '../foundation/layout';
+import { docNavigationPadding, docNavigationShow, docNavigationWidth, layoutNavHeight, layoutNavMargin, layoutNavShow, layoutNavWidth, logoBoxMargin, mainContentMargin, mainContentTop, mainContentWidth } from '../foundation/layout';
 
 
 export const Layout = styled['div']`
@@ -63,4 +63,12 @@ export const MainNavigation = styled['div']`
 `;
 export const MainContent = styled['div']`
 
+`;
+
+export const LogoBox = styled.div`
+  display: flex;
+  align-items: center;
+  & svg:first-child {
+    margin-right: ${logoBoxMargin};
+  }
 `;

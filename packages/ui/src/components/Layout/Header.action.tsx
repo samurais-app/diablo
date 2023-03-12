@@ -15,17 +15,20 @@ type ActionsProps = {
  */
 export function Actions({ children, isMobile }: ActionsProps) {
   const nodes: JSX.Element[] = useMemo(() => (isArray(children) ? children : [children]).filter(isValidElement), [children]);
-  if (nodes.length <= 1 || !isMobile) {
-    return (
-      <HeaderActions>{nodes}</HeaderActions>
-    );
-  }
   return (
-    <HeaderActions>
-      <ActionContent>
-        {nodes.slice(0, nodes.length - 1)}
-      </ActionContent>
-      <ActionButton>{nodes[nodes.length - 1]}</ActionButton>
-    </HeaderActions>
+    <HeaderActions>{nodes}</HeaderActions>
   );
+  // if (nodes.length <= 1 || !isMobile) {
+  //   return (
+  //     <HeaderActions>{nodes}</HeaderActions>
+  //   );
+  // }
+  // return (
+  //   <HeaderActions>
+  //     <ActionContent>
+  //       {nodes.slice(0, nodes.length - 1)}
+  //     </ActionContent>
+  //     <ActionButton>{nodes[nodes.length - 1]}</ActionButton>
+  //   </HeaderActions>
+  // );
 }

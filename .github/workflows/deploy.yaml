@@ -32,7 +32,7 @@ jobs:
         id: version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
 
-      - name: Npm Version
+      - name: Upgrade Version
         run: npm install npm@8.19.3 -g
 
       - name: Npm Version
@@ -41,17 +41,8 @@ jobs:
       - name: Install
         run: npm run bootstrap
 
-      - name: Build Tool
-        run: npm run build:tool
-
-      - name: Packages link
-        run: npm run link
-
-      - name: Build hooks
-        run: npm run build:hooks
-
-      - name: Build ui
-        run: npm run build:ui
+      - name: Build 
+        run: npm run build
 
       - name: Build Site
         run: npm run build:site

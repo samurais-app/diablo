@@ -14,29 +14,29 @@ type Options<T extends Target = Target> = {
     passive?: boolean;
 };
 
-function useEventListener<K extends keyof HTMLElementEventMap>(
+export function useEventListener<K extends keyof HTMLElementEventMap>(
     eventName: K,
     handler: (ev: HTMLElementEventMap[K]) => void,
     options?: Options<HTMLElement>,
 ): void;
-function useEventListener<K extends keyof ElementEventMap>(
+export function useEventListener<K extends keyof ElementEventMap>(
     eventName: K,
     handler: (ev: ElementEventMap[K]) => void,
     options?: Options<Element>,
 ): void;
-function useEventListener<K extends keyof DocumentEventMap>(
+export function useEventListener<K extends keyof DocumentEventMap>(
     eventName: K,
     handler: (ev: DocumentEventMap[K]) => void,
     options?: Options<Document>,
 ): void;
-function useEventListener<K extends keyof WindowEventMap>(
+export function useEventListener<K extends keyof WindowEventMap>(
     eventName: K,
     handler: (ev: WindowEventMap[K]) => void,
     options?: Options<Window>,
 ): void;
-function useEventListener(eventName: string, handler: noop, options: Options): void;
+export function useEventListener(eventName: string, handler: noop, options: Options): void;
 
-function useEventListener(eventName: string, handler: noop, options: Options = {}) {
+export function useEventListener(eventName: string, handler: noop, options: Options = {}) {
     const handlerRef = useLatest(handler);
 
     useEffectWithTarget(
@@ -66,5 +66,3 @@ function useEventListener(eventName: string, handler: noop, options: Options = {
         options.target,
     );
 }
-
-export default useEventListener;

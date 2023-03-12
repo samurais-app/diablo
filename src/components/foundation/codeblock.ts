@@ -1,5 +1,5 @@
 import { getTheme, ThemeWithProps } from '@ui/index';
-import { color, opacity } from '@frade-sam/samtools';
+import { color, opacity } from '@tools/index';
 
 
 export function codeViewBorder(props: ThemeWithProps<object>) {

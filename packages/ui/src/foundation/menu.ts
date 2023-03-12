@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import { color, completionHex, opacity } from '@frade-sam/samtools';
+import { color, completionHex, opacity } from '@diabol/tool';
 import { Size } from '@ui/interfaces';
 import { getTheme } from '@ui/components/Theme';
 import { ThemeWithAnyProps, ThemeWithMenuBaseProps, ThemeWithMenuItemBaseProps } from '@ui/interfaces';

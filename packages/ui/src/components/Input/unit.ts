@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { isEmpty } from '@frade-sam/samtools';
+import { isEmpty } from '@diabol/tool';
 import { IInputProps, InputType } from '@ui/interfaces';
 import { InputNumber } from './InputNumber';
 import { InputText } from './InputText';

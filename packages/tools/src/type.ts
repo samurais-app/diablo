@@ -1,67 +1,67 @@
 /* eslint-disable @typescript-eslint/ban-types */
-export type BaseType = 'string' |
-  'function' |
-  'object' |
-  'array' |
-  'bigint' |
-  'boolean' |
-  'symbol' |
-  'number' |
-  'undefined' |
-  'null'
+export type BaseType =
+  '[object String]' |
+  '[object Function]' |
+  '[object Object]' |
+  '[object Array]' |
+  '[object BigInt]' |
+  '[object BigInt64Array]' |
+  '[object BigUint64Array]' |
+  '[object Boolean]' |
+  '[object Symbol]' |
+  '[object Number]' |
+  '[object Undefined]' |
+  '[object Null]' |
+  '[object Arguments]' |
+  '[object ArrayBuffer]' |
+  '[object Buffer]'
+
+export function type(data?: any): BaseType {
+  return Object.prototype.toString.call(data) as BaseType;
+}
 
 export function isFunction(func: any): func is Function {
-  return typeof func === 'function';
+  return type(func) === '[object Function]';
 }
 
 export function isArray(arr: any): arr is any[] {
-  return Array.isArray(arr);
+  return type(arr) === '[object Array]';
+}
+
+export function isBuffer(arr: any): boolean {
+  return type(arr) === '[object Buffer]';
 }
 
 export function isObject(obj: any): boolean {
-  return typeof obj === 'object' && !isArray(obj) && !isFunction(obj) && !isNull(obj);
+  return type(obj) === '[object Object]';
 }
 
 export function isString(str: any): str is string {
-  return typeof str === 'string';
+  return type(str) === '[object String]';
 }
 
 export function isBigint(big: any): big is bigint {
-  return typeof big === 'bigint';
+  return type(big) === '[object BigInt]';
 }
 
 export function isBoolean(bol: any): bol is boolean {
-  return typeof bol === 'boolean';
+  return type(bol) === '[object Boolean]';
 }
 
 export function isSymbol(sbl: any): sbl is symbol {
-  return typeof sbl === 'symbol';
+  return type(sbl) === '[object Symbol]';
 }
 
 export function isNum(num: any): num is number {
-  return typeof num === 'number';
+  return type(num) === '[object Number]';
 }
 
 export function isUndefined(un?: any): un is undefined {
-  return typeof un === 'undefined';
+  return type(un) === '[object Undefined]';
 }
 
 export function isNull(un?: any): un is null {
-  return un === null;
-}
-
-export function type(value: any): BaseType {
-  if (isString(value)) return 'string';
-  if (isNum(value)) return 'number';
-  if (isArray(value)) return 'array';
-  if (isObject(value)) return 'object';
-  if (isFunction(value)) return 'function';
-  if (isSymbol(value)) return 'symbol';
-  if (isUndefined(value)) return 'undefined';
-  if (isNull(value)) return 'null';
-  if (isBigint(value)) return 'bigint';
-  if (isBoolean(value)) return 'boolean';
-  return 'undefined';
+  return type(un) === '[object Null]';
 }
 
 export function isEmpty(value: any) {

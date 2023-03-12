@@ -1,13 +1,13 @@
 /* eslint-disable indent */
 import { flip, offset, ReferenceType, shift, Strategy, useFloating } from '@floating-ui/react-dom';
-import { isBoolean, isUndefined } from '@frade-sam/samtools';
+import { isBoolean, isUndefined } from '@diabol/tool';
 import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 
-export interface Position extends Pick<React.CSSProperties, 'top' | 'left' | 'width'> {
+export interface IPosition extends Pick<React.CSSProperties, 'top' | 'left' | 'width'> {
     position: Strategy;
 }
 
-export interface PositionStatus {
+export interface IPositionStatus {
     visible: boolean;
     show: boolean;
     onChange: (status?: any) => void
@@ -19,7 +19,7 @@ export function usePosition(): [
     {
         reference: React.MutableRefObject<ReferenceType>;
         floating: React.MutableRefObject<HTMLElement>;
-    }, Position, PositionStatus] {
+    }, IPosition, IPositionStatus] {
     const { refs, reference, floating, strategy, update, x, y } = useFloating({
         placement: 'bottom-start',
         strategy: 'fixed',

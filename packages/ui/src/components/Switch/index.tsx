@@ -1,5 +1,5 @@
 import { isFunction } from '@diabol/tool';
-import { isString } from '@frade-sam/samtools';
+import { isString } from '@diabol/tool';
 import { SwitchProps } from '@ui/interfaces';
 import React, { isValidElement, useCallback, useMemo, useState } from 'react';
 import { SwitchBox, SwitchIcon, SwitchText } from './styled';

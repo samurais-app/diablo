@@ -1,5 +1,5 @@
 import { useMobile } from '@diabol/hooks';
-import { isArray } from '@frade-sam/samtools';
+import { isArray } from '@diabol/tool';
 import { IHeaderBaseProps } from '@ui/interfaces';
 import React, { memo, useMemo } from 'react';
 import { Actions } from './Header.action';

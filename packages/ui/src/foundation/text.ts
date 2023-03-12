@@ -1,4 +1,4 @@
-import { color } from '@frade-sam/samtools';
+import { color } from '@diabol/tool';
 import { getTheme, ITitleProps, ThemeWithProps } from '..';
 
 

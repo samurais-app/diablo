@@ -1,4 +1,4 @@
-import { color } from '@frade-sam/samtools';
+import { color } from '@tools/index';
 import { getTheme } from '@ui/index';
 import { ThemeWithProps } from '@ui/interfaces';
 

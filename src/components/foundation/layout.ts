@@ -1,5 +1,4 @@
-import { opacity } from '@frade-sam/samtools';
-import { getTheme, ThemeWithProps } from '@ui/index';
+import { ThemeWithProps } from '@ui/index';
 import { LayoutContentProps } from 'components/interfaces/layout';
 
 export function layoutNavShow(props: ThemeWithProps<LayoutContentProps>) {

@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import { color } from '@frade-sam/samtools';
+import { color } from '@diabol/tool';
 import { Size } from '@ui/interfaces';
 import { getTheme } from '@ui/components/Theme';
 import { ThemeWithButtonBaseProps } from '@ui/interfaces';

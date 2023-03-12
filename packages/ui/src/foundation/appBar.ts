@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import { completionHex, opacity } from '@frade-sam/samtools';
+import { completionHex, opacity } from '@diabol/tool';
 import { IAppBarBaseProps, ThemeWithProps } from '@ui/interfaces';
 import { getTheme } from '@ui/components/Theme';
 

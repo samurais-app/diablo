@@ -4,7 +4,7 @@ import deepmerge from 'deepmerge';
 import { createGlobalStyle, ThemedStyledProps, ThemeProvider } from 'styled-components';
 import { ThemeContent } from './context';
 import defaultTheme from './defaultTheme';
-import { complementaryColor } from '@frade-sam/samtools';
+import { complementaryColor } from '@diabol/tool';
 import { useMobile } from '@diabol/hooks';
 import { Theme } from '@ui/interfaces';
 

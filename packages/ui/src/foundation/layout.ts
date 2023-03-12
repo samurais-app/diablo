@@ -1,4 +1,4 @@
-import { isNum, opacity } from '@frade-sam/samtools';
+import { isNum, opacity } from '@diabol/tool';
 import { getTheme, ThemeWithHeaderBaseProps } from '..';
 
 

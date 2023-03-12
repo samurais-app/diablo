@@ -1,4 +1,4 @@
-import { color, complementaryColor, opacity } from '@frade-sam/samtools';
+import { color, complementaryColor, opacity } from '@diabol/tool';
 import { getTheme, SwitchProps, ThemeWithProps } from '..';
 
 export type SwitchBaseOption = ThemeWithProps<Omit<SwitchProps, 'onChange'>>;

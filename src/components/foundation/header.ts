@@ -1,4 +1,4 @@
-import { complementaryColor } from '@frade-sam/samtools';
+import { complementaryColor } from '@tools/index';
 import { isEmpty } from '@tools/index';
 import { defaultTheme, getTheme } from '@ui/index';
 import { ThemeWithProps } from '@ui/interfaces';

@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import { InputNumber } from './InputNumber';
 import { IInputProps } from '@ui/interfaces';
 import { getInputChange, getInputComponent, transform } from './unit';
-import { isFunc } from '@frade-sam/samtools';
+import { isFunction } from '@diabol/tool';
 
 export default function Input(props: IInputProps) {
   const {
@@ -15,7 +15,7 @@ export default function Input(props: IInputProps) {
   const _onChange = useCallback((event) => {
     const func = getInputChange(type);
     func(event, props);
-    if (isFunc(onChange)) onChange(transform(type, event));
+    if (isFunction(onChange)) onChange(transform(type, event));
   }, [type]);
   const inputProps = type === 'password' ? { ..._props, type } : _props;
   return <Com onChange={_onChange} {...inputProps} />;

@@ -37,4 +37,7 @@ export interface Theme {
   spacing?: ThemeSpacing;
 }
 
+export type IThemeConfig = Record<ThemeMode, Theme>;
+export type IThemeProps = Record<ThemeMode, Omit<Theme, 'Size' | 'unit' | 'mobile'>>;
+
 export type ThemeWithAnyProps<P = any> = ThemedStyledProps<P, Theme>;

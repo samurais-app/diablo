@@ -1,27 +1,53 @@
 import { getTheme, ThemeWithProps } from '@ui/index';
 import { LayoutContentProps } from 'components/interfaces/layout';
 
+export function layoutNavPadding(props: ThemeWithProps<LayoutContentProps>) {
+  const { Size, unit, spacing } = getTheme(props);
+  const padding1 = Size(spacing.spacing[2] * 2);
+  const padding2 = Size(spacing.spacing[4] * 4);
+  return `${padding1}${unit} ${padding1}${unit} ${padding1}${unit} ${padding2}${unit}`;
+}
+
+export function layoutNavBg(props: ThemeWithProps<LayoutContentProps>) {
+  const theme = getTheme(props);
+  const { color } = theme;
+  return `radial-gradient(transparent 1px, ${color.background} 1px)`;
+}
+
+
 export function layoutNavShow(props: ThemeWithProps<LayoutContentProps>) {
-  const { theme } = props;
+  const theme = getTheme(props);
   return theme.mobile ? 'none' : 'block';
 }
 
 export function layoutNavMargin(props: ThemeWithProps<LayoutContentProps>) {
-  return `${props.theme.Size(props.header)}${props.theme.unit}`;
+  const theme = getTheme(props);
+  return `${theme.Size(props.header)}${theme.unit}`;
 }
 
 export function layoutNavWidth(props: ThemeWithProps<LayoutContentProps>) {
-  return `${props.theme.Size(props.navigation)}${props.theme.unit}`;
+  const theme = getTheme(props);
+  return `${theme.Size(props.navigation)}${theme.unit}`;
 }
 
 export function layoutNavHeight(props: ThemeWithProps<LayoutContentProps>) {
-  const { header, theme } = props;
+  const theme = getTheme(props);
+  const { header } = props;
 
   return `calc(100vh - ${theme.Size(header)}${theme.unit})`;
 }
 
+export function layoutNavTranslate(props: ThemeWithProps<LayoutContentProps>) {
+  const theme = getTheme(props);
+  console.log(props);
+  return `translate(${!theme.mobile || props.showNavigation ? 0 : -theme.Size(props.navigation)}${theme.unit},0)`;
+}
+
+
+// 内容样式
 export function mainContentWidth(props: ThemeWithProps<LayoutContentProps>) {
-  const { navigation, outline, theme } = props;
+  const theme = getTheme(props);
+  const { navigation, outline } = props;
   if (props.size <= 1200 && !theme.mobile) {
     return `calc(100vw - ${theme.Size(Number(navigation))}${theme.unit})`;
   }
@@ -29,13 +55,15 @@ export function mainContentWidth(props: ThemeWithProps<LayoutContentProps>) {
 }
 
 export function mainContentTop(props: ThemeWithProps<LayoutContentProps>) {
-  const { theme, header } = props;
+  const { header } = props;
+  const theme = getTheme(props);
 
   return `${theme.Size(Number(header))}${theme.unit}`;
 }
 
 export function mainContentMargin(props: ThemeWithProps<LayoutContentProps>) {
-  const { navigation, outline, theme } = props;
+  const { navigation, outline } = props;
+  const theme = getTheme(props);
   if (props.size <= 1200 && !theme.mobile) {
     return `0 0 0 ${theme.Size(Number(navigation))}${theme.unit}`;
   }

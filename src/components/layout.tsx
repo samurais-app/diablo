@@ -1,11 +1,10 @@
-import { getThemeMode, Icon, ThemeConfig } from '@ui/index';
-import get from 'lodash.get';
+import { Icon, ThemeConfig } from '@ui/index';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { Header, MainLayout } from 'components/index';
 import { GlobalStyled, Layout, LogoBox } from 'components/styled/layout';
 import { useMobile } from '@hooks/index';
-import { light, dark } from 'config/theme';
+import theme from 'config/theme';
 
 
 
@@ -15,22 +14,21 @@ function isHome(pathname: string) {
 
 export default function AppLayout({ location, children, data }) {
   const isMobile = useMobile();
-  const mode = getThemeMode();
-  const selectRender = (pathname: string) => {
+  const [show, setShow] = useState(false);
+  const selectRender = useCallback((pathname: string) => {
     if (isHome(pathname)) return children;
-    return (<MainLayout data={data}>{children}</MainLayout>);
-  };
-
+    return (<MainLayout showNavigation={show} data={data}>{children}</MainLayout>);
+  }, [show]);
   return (
-    <ThemeConfig theme={mode === 'light' ? light : dark}>
+    <ThemeConfig theme={theme}>
       <Layout>
         <GlobalStyled />
-        <Header height={40}
+        <Header height={50}
           float
           logo={
             <LogoBox>
-              <Icon type='icon-d' size={20} key="icon" />
-              {isMobile ? <Icon type='icon-liebiao' size={12} key="icon" /> : null}
+              <Icon type='icon-d' size={30} key="icon" />
+              {isMobile ? <Icon type='icon-liebiao' size={16} key="icon" onClick={() => setShow(!show)} /> : null}
             </LogoBox>
           }
         >

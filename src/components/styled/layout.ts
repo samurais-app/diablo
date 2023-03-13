@@ -1,7 +1,7 @@
 import { ThemeWithProps } from '@ui/index';
 import { LayoutContentProps } from 'components/interfaces/layout';
 import styled, { createGlobalStyle } from 'styled-components';
-import { docNavigationPadding, docNavigationShow, docNavigationWidth, layoutNavHeight, layoutNavMargin, layoutNavShow, layoutNavWidth, logoBoxMargin, mainContentMargin, mainContentTop, mainContentWidth } from '../foundation/layout';
+import { docNavigationPadding, docNavigationShow, docNavigationWidth, layoutNavBg, layoutNavHeight, layoutNavMargin, layoutNavPadding, layoutNavTranslate, layoutNavWidth, logoBoxMargin, mainContentMargin, mainContentTop, mainContentWidth } from '../foundation/layout';
 
 
 export const Layout = styled['div']`
@@ -14,12 +14,19 @@ export type ILayoutNavProps = {
   width: number;
 }
 export const LayoutNav = styled.div<ThemeWithProps<LayoutContentProps>>`
-  display: ${layoutNavShow};
-  position: fixed;
+  padding: ${layoutNavPadding};
   top: ${layoutNavMargin};
-  left: 0;
   width: ${layoutNavWidth};
   height: ${layoutNavHeight};
+  background-image: ${layoutNavBg};
+  transform: ${layoutNavTranslate};
+  transition: all 0.3s ease 0s;
+  background-size: 4px 4px;
+  backdrop-filter: saturate(50%) blur(10px);
+  z-index: 1000;
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
 `;
 
 // 文档导航栏

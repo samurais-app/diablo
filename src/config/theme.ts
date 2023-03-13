@@ -1,7 +1,7 @@
 import { Theme } from '@ui/interfaces';
 
 
-export const light: Theme = {
+const light: Theme = {
   mode: 'light',
   color: {
     primary: '#0A992E',
@@ -13,7 +13,7 @@ export const light: Theme = {
   }
 };
 
-export const dark: Theme = {
+const dark: Theme = {
   mode: 'dark',
   color: {
     primary: '#0A992E',
@@ -24,3 +24,5 @@ export const dark: Theme = {
     text: '#FFFFFF'
   }
 };
+
+export default { dark, light };

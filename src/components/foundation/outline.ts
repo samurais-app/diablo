@@ -1,3 +1,5 @@
+import { color } from '@tools/index';
+import { getTheme } from '@ui/index';
 import { ThemeWithProps } from '@ui/interfaces';
 import { IOutlineItemProps, IOutlineProps } from 'components/interfaces/outline';
 
@@ -49,4 +51,9 @@ export function outlineLiPadding(props: ThemeWithProps<Omit<IOutlineItemProps, '
 export function outlineLinkSize(props: ThemeWithProps<object>) {
   const { theme: { spacing: { fontSize }, unit } } = props;
   return `${props.theme.Size(fontSize[0])}${unit}`;
+}
+
+export function outlineLinkColor(props: ThemeWithProps<object>) {
+  const theme = getTheme(props);
+  return `${color(theme.color.text, 0.1, true)}`;
 }

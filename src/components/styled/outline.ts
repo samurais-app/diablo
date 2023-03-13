@@ -1,5 +1,5 @@
 import { ThemeWithProps } from '@ui/interfaces';
-import { outlineLinkSize, outlineLiPadding, outlineUlMargin, outlineUlPadding, outlineUlTagColor, outlineUlTagHeight, outlineUlTagRadius, outlineUlTagShow, outlineUlTagTop, outlineUlTagWidth } from 'components/foundation/outline';
+import { outlineLinkColor, outlineLinkSize, outlineLiPadding, outlineUlMargin, outlineUlPadding, outlineUlTagColor, outlineUlTagHeight, outlineUlTagRadius, outlineUlTagShow, outlineUlTagTop, outlineUlTagWidth } from 'components/foundation/outline';
 import { IOutlineItemProps, IOutlineProps } from 'components/interfaces/outline';
 import styled from 'styled-components';
 
@@ -37,4 +37,5 @@ export const OutlineItem = styled.li<ThemeWithProps<Omit<IOutlineItemProps, 'ind
 export const OutlineLink = styled.a`
   text-decoration: none;
   font-size: ${outlineLinkSize};
+  color: ${outlineLinkColor};
 `;

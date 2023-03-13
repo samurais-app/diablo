@@ -10,7 +10,7 @@ export type INavigationItemBaseProps = {
 export type INavigationItemProps = {
   path?: string;
   title: string;
-  children: React.ReactElement<INavigationItemProps> | React.ReactElement<INavigationItemProps>[];
+  children?: React.ReactElement<INavigationItemProps> | React.ReactElement<INavigationItemProps>[];
 }
 
 export type INavigationProps = {

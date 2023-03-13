@@ -11,7 +11,7 @@ import { Navigation } from '@ui/index';
 
 type Props = {
   data?: any;
-  items?: any[];
+  showNavigation?: boolean;
   children: React.ReactElement;
 }
 
@@ -27,7 +27,7 @@ function useLayoutSize(): LayoutContentProps {
   const { width } = useSize(isBrowser ? document?.body : undefined);
   return {
     size: width,
-    header: 40,
+    header: 50,
     navigation: 300,
     outline: 240
   };
@@ -44,13 +44,16 @@ function getNavitaion(nodes: NodeField[]) {
 }
 
 export default function MainLayout({
-  children, data }: Props) {
+  children,
+  data,
+  showNavigation = false
+}: Props) {
   const props = useLayoutSize();
   const items = get(data, 'current.tableOfContents.items', []);
   const nodes = getNavitaion(get(data, 'allMdx.edges', []).map((item) => item.node));
   return (
     <MainLayoutContainer >
-      <LayoutNav {...props} >
+      <LayoutNav {...props} showNavigation={showNavigation} >
         <Navigation>
           {nodes.map((item) => {
             return <Navigation.Item title={item.title} path={item.key} key={item.key}>{

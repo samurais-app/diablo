@@ -1,15 +1,25 @@
 /* eslint-disable indent */
-import React, { useMemo, useState } from 'react';
-import deepmerge from 'deepmerge';
+import React, { memo, useCallback, useMemo, useState } from 'react';
 import { createGlobalStyle, ThemedStyledProps, ThemeProvider } from 'styled-components';
-import { setThemeMode, ThemeContent } from './context';
-import defaultTheme from './defaultTheme';
-import { complementaryColor } from '@diabol/tool';
+import { complementaryColor, DOM, isObject, merg } from '@diabol/tool';
 import { useMobile } from '@diabol/hooks';
-import { Theme } from '@ui/interfaces';
+import { IThemeProps, Theme, ThemeMode } from '@ui/interfaces';
+import { ThemeContent } from './context';
+import defaultTheme from './defaultTheme';
 
+function getThemeMode(): ThemeMode {
+    if (!DOM.isBrowser) return 'light';
+    const theme = (localStorage.getItem('diablo-theme') ?? document.body.getAttribute('theme')) as ThemeMode;
+    return theme ? theme : 'light';
+}
+
+function setThemeMode(mode: ThemeMode) {
+    if (!DOM.isBrowser) return;
+    document.body.setAttribute('theme', mode);
+    localStorage.setItem('diablo-theme', mode);
+}
 export interface IThemeContextProps {
-    theme?: Omit<Theme, 'Size' | 'unit' | 'mobile'>;
+    theme?: IThemeProps;
     children: JSX.Element | JSX.Element;
 }
 
@@ -46,24 +56,17 @@ const Global = createGlobalStyle<ThemedStyledProps<any, Theme>>`
     }
 `;
 
-export default function ThemeConfig(props: IThemeContextProps) {
+export default memo(function ThemeConfig(props: IThemeContextProps) {
     const isMobile = useMobile();
-    const [theme, setTheme] = useState<Theme>(deepmerge(defaultTheme, { ...props.theme } || {}));
-    const update = (the: Theme) => {
-        setTheme((data) => {
-            if (the.mode) {
-                setThemeMode(the.mode);
-            }
-            return deepmerge(data, the);
-        });
-    };
-
+    const [theme, setTheme] = useState<ThemeMode>(getThemeMode());
     const config = useMemo(() => {
-        const data = { ...theme, mobile: isMobile, unit: isMobile ? 'rem' : 'px' as any };
-        data.Size = (num) => {
-            return data.unit === 'rem' ? Number(Number(num / data.size).toFixed(2)) : num;
-        };
-        return data;
+        const data: Theme = isObject(props.theme) ? props.theme[theme] : defaultTheme[theme];
+        const _theme = { ...data, mobile: isMobile, unit: isMobile ? 'rem' : 'px' as any };
+        return merg(defaultTheme[theme], _theme);
+    }, [props.theme, isMobile, theme]);
+    const update = useCallback((mode: ThemeMode) => {
+        setThemeMode(mode);
+        setTheme(mode);
     }, [theme, isMobile]);
     return (
         <ThemeContent.Provider value={{ theme: config, update }}>
@@ -75,4 +78,4 @@ export default function ThemeConfig(props: IThemeContextProps) {
             </ThemeProvider>
         </ThemeContent.Provider>
     );
-}
+});

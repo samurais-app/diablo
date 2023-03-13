@@ -1,12 +1,13 @@
 import { ThemeWithProps } from '@ui/index';
+import { IEmptyPageProps } from 'components/interfaces/404';
 import { LayoutContentProps } from 'components/interfaces/layout';
 import styled, { createGlobalStyle } from 'styled-components';
-import { docNavigationPadding, docNavigationShow, docNavigationWidth, layoutNavBg, layoutNavHeight, layoutNavMargin, layoutNavPadding, layoutNavTranslate, layoutNavWidth, logoBoxMargin, mainContentMargin, mainContentTop, mainContentWidth } from '../foundation/layout';
+import { docNavigationPadding, docNavigationShow, docNavigationWidth, layoutHeight, layoutNavBg, layoutNavHeight, layoutNavMargin, layoutNavPadding, layoutNavTranslate, layoutNavWidth, logoBoxMargin, mainContentMargin, mainContentTop, mainContentWidth } from '../foundation/layout';
 
 
-export const Layout = styled['div']`
+export const Layout = styled.div<ThemeWithProps<IEmptyPageProps>>`
   width: 100vw;
-  height: 100vh;
+  height: ${layoutHeight};
 `;
 
 export type ILayoutNavProps = {
@@ -33,6 +34,8 @@ export const LayoutNav = styled.div<ThemeWithProps<LayoutContentProps>>`
 export const DocNavigation = styled.div<ThemeWithProps<LayoutContentProps>>`
   display: ${docNavigationShow};
   position: fixed;
+  transform: ${layoutNavTranslate};
+  transition: all 0.3s ease 0s;
   padding: ${docNavigationPadding};
   top: ${layoutNavMargin};
   right: 0;

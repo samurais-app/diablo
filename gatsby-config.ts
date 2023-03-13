@@ -7,6 +7,7 @@ const config: GatsbyConfig = {
   pathPrefix: '/',
   siteMetadata: {
     title: 'diablo',
+    github: 'https://github.com/samurais-app/diablo',
     siteUrl: `https://www.example.com`,
     description: '通过以用户为中心、内容优先、人性化的设计系统，创建一致、美观、易于使用和高效的用户体验',
     author: 'Diablo Team',

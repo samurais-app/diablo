@@ -1,6 +1,5 @@
 import React from 'react';
 import get from 'lodash.get';
-import Layout from 'components/layout';
 import { graphql } from 'gatsby';
 import { components } from './nodes';
 import { Remarkable } from 'remarkable';
@@ -20,13 +19,11 @@ export default function PostTemplate(args) {
   const name = get(data, 'current.fields.name', '');
 
   return (
-    <Layout {...args}>
       <Content>
         <Title>{`${category?.text}·${name}`}</Title>
         <TinyTitle>{title}</TinyTitle>
         {md.render(current.body)}
       </Content>
-    </Layout>
   );
 }
 
@@ -55,6 +52,7 @@ export const query = graphql`
     site {
         siteMetadata {
             title
+            github
         }
     }
     current: mdx(fields: {slug: {eq: $slug}}) {

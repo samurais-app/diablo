@@ -1,11 +1,14 @@
 import { Script } from 'gatsby';
+import AppLayout from './src/components/layout';
 import React from 'react';
 
-export const wrapPageElement = ({ element }) => {
+export const wrapPageElement = ({ element, props }) => {
   return (
     <React.Fragment>
       <Script src="//at.alicdn.com/t/c/font_3495102_ht86pzzvjen.js" />
-      {element}
+      <AppLayout {...props}>
+        {element}
+      </AppLayout>
     </React.Fragment>
   );
 };

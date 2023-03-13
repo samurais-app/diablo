@@ -11,6 +11,7 @@ import { Navigation } from '@ui/index';
 
 type Props = {
   data?: any;
+  showOutline?: boolean;
   showNavigation?: boolean;
   children: React.ReactElement;
 }
@@ -23,9 +24,11 @@ function renderOutline(items: any[]) {
   });
 }
 
-function useLayoutSize(): LayoutContentProps {
+function useLayoutSize(props: Props): LayoutContentProps {
   const { width } = useSize(isBrowser ? document?.body : undefined);
   return {
+    showNavigation: props.showNavigation,
+    showOutline: props.showOutline,
     size: width,
     header: 50,
     navigation: 300,
@@ -43,17 +46,18 @@ function getNavitaion(nodes: NodeField[]) {
   });
 }
 
-export default function MainLayout({
-  children,
-  data,
-  showNavigation = false
-}: Props) {
-  const props = useLayoutSize();
+export default function MainLayout(props: Props) {
+  const {
+    children,
+    data,
+  } = props;
+  const _props = useLayoutSize(props);
   const items = get(data, 'current.tableOfContents.items', []);
   const nodes = getNavitaion(get(data, 'allMdx.edges', []).map((item) => item.node));
+  console.log(_props);
   return (
     <MainLayoutContainer >
-      <LayoutNav {...props} showNavigation={showNavigation} >
+      <LayoutNav {..._props} >
         <Navigation>
           {nodes.map((item) => {
             return <Navigation.Item title={item.title} path={item.key} key={item.key}>{
@@ -62,10 +66,10 @@ export default function MainLayout({
           })}
         </Navigation>
       </LayoutNav>
-      <MainLayoutContent {...props}>
+      <MainLayoutContent {..._props}>
         {children}
       </MainLayoutContent>
-      <DocNavigation {...props}>
+      <DocNavigation {..._props}>
         <Outline>
           {renderOutline(items)}
         </Outline>

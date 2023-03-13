@@ -10,5 +10,6 @@ export type LayoutContentProps = {
   size: number;
   navigation: number;
   outline: number;
+  showOutline?: boolean;
   showNavigation?: boolean;
 }

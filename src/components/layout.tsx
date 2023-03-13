@@ -12,18 +12,28 @@ function isHome(pathname: string) {
   return !pathname.split('/').filter(Boolean).length;
 }
 
-export default function AppLayout({ location, children, data }) {
+export default function AppLayout({ location, children, data, pageResources }: any) {
   const isMobile = useMobile();
   const [show, setShow] = useState(false);
   const selectRender = useCallback((pathname: string) => {
-    if (isHome(pathname)) return children;
-    return (<MainLayout showNavigation={show} data={data}>{children}</MainLayout>);
-  }, [show]);
+    if (isHome(pathname) || pageResources.page.path.includes('404.html')) return children;
+    return (
+      <MainLayout
+        showNavigation={show && !pageResources.page.path.includes('404')}
+        showOutline={!pageResources.page.path.includes('404')}
+        data={data}
+      >
+        {children}
+      </MainLayout>
+    );
+  }, [show, children, pageResources]);
   return (
     <ThemeConfig theme={theme}>
-      <Layout>
+      <Layout top={pageResources.page.path.includes('404.html') ? 50 : 0}>
         <GlobalStyled />
-        <Header height={50}
+        {!pageResources.page.path.includes('404.html') ? <Header
+          height={50}
+          github={data?.site?.siteMetadata?.github}
           float
           logo={
             <LogoBox>
@@ -33,7 +43,7 @@ export default function AppLayout({ location, children, data }) {
           }
         >
 
-        </Header>
+        </Header> : null}
         {selectRender(location.pathname)}
       </Layout>
     </ThemeConfig>

@@ -1,5 +1,12 @@
 import { getTheme, ThemeWithProps } from '@ui/index';
+import { IEmptyPageProps } from 'components/interfaces/404';
 import { LayoutContentProps } from 'components/interfaces/layout';
+
+export function layoutHeight(props: ThemeWithProps<IEmptyPageProps>) {
+  const theme = getTheme(props);
+  return `calc(100vh - ${theme.Size(props.top)}${theme.unit})`;
+}
+
 
 export function layoutNavPadding(props: ThemeWithProps<LayoutContentProps>) {
   const { Size, unit, spacing } = getTheme(props);
@@ -33,14 +40,13 @@ export function layoutNavWidth(props: ThemeWithProps<LayoutContentProps>) {
 export function layoutNavHeight(props: ThemeWithProps<LayoutContentProps>) {
   const theme = getTheme(props);
   const { header } = props;
-
   return `calc(100vh - ${theme.Size(header)}${theme.unit})`;
 }
 
 export function layoutNavTranslate(props: ThemeWithProps<LayoutContentProps>) {
   const theme = getTheme(props);
-  console.log(props);
-  return `translate(${!theme.mobile || props.showNavigation ? 0 : -theme.Size(props.navigation)}${theme.unit},0)`;
+  console.log(theme, props);
+  return `translate(${theme.mobile || !props.showNavigation ? -theme.Size(props.navigation) : 0}${theme.unit},0)`;
 }
 
 

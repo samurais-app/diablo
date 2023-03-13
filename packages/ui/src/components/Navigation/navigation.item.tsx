@@ -1,12 +1,18 @@
 import React, { isValidElement, useMemo } from 'react';
+import { Link } from 'gatsby';
 import { INavigationItemBaseProps } from '@ui/interfaces';
 import { NavigatinBox, NavigationItemBox, NavigationLink } from './styled';
+import styled from 'styled-components';
 
 
 export type INavigationItemProps = Omit<INavigationItemBaseProps, 'depth'>;
 
+const RouteLink = styled(Link)`
+  text-decoration: none;
+`;
+
 export default function NavigationItem(props: INavigationItemProps) {
-  const { title, depth, children } = props as INavigationItemBaseProps;
+  const { title, depth, path, children } = props as INavigationItemBaseProps;
   const childs = useMemo(() => {
     const items = Array.isArray(children) ? children : [children];
     return items.filter(isValidElement);
@@ -20,7 +26,7 @@ export default function NavigationItem(props: INavigationItemProps) {
   );
   return (
     <NavigationItemBox>
-      <NavigationLink>{title}</NavigationLink>
+      <RouteLink to={`/${path}`}>{title}</RouteLink>
     </NavigationItemBox>
   );
 }

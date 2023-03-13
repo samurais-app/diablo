@@ -1,10 +1,11 @@
-import { Icon, ThemeConfig } from '@ui/index';
+import { getThemeMode, Icon, ThemeConfig } from '@ui/index';
 import get from 'lodash.get';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Header, MainLayout } from 'components/index';
 import { GlobalStyled, Layout, LogoBox } from 'components/styled/layout';
 import { useMobile } from '@hooks/index';
+import { light, dark } from 'config/theme';
 
 
 
@@ -13,15 +14,15 @@ function isHome(pathname: string) {
 }
 
 export default function AppLayout({ location, children, data }) {
-  const items = get(data, 'current.tableOfContents.items', []);
   const isMobile = useMobile();
+  const mode = getThemeMode();
   const selectRender = (pathname: string) => {
     if (isHome(pathname)) return children;
-    return (<MainLayout items={items}>{children}</MainLayout>);
+    return (<MainLayout data={data}>{children}</MainLayout>);
   };
 
   return (
-    <ThemeConfig>
+    <ThemeConfig theme={mode === 'light' ? light : dark}>
       <Layout>
         <GlobalStyled />
         <Header height={40}

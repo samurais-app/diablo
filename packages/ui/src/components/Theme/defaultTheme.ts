@@ -3,6 +3,7 @@
 import { Theme } from '@ui/interfaces';
 
 const config = {
+    mode: 'light',
     size: 14,
     unit: 'rem',
     mobile: false,

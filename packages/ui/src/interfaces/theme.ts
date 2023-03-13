@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { ThemedStyledProps } from 'styled-components';
 
+export type ThemeMode = 'dark' | 'light';
+
 export interface ThemeColor {
   primary?: string;
   background?: string;
@@ -25,6 +27,7 @@ export interface ThemeSpacing {
 
 
 export interface Theme {
+  mode?: ThemeMode;
   size?: number;
   mobile?: boolean;
   unit?: 'rem' | 'px';

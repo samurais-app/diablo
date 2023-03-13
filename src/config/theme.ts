@@ -2,6 +2,7 @@ import { Theme } from '@ui/interfaces';
 
 
 export const light: Theme = {
+  mode: 'light',
   color: {
     primary: '#0A992E',
     transparent: 'transparent',
@@ -13,6 +14,7 @@ export const light: Theme = {
 };
 
 export const dark: Theme = {
+  mode: 'dark',
   color: {
     primary: '#0A992E',
     transparent: 'transparent',

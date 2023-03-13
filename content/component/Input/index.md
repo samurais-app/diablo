@@ -1,7 +1,7 @@
 ---
 localeCode: zh-CN
 order: 0
-category: 组件
+category: component
 title:  Input 输入框 
 icon: doc-divider 
 brief: 分割线是一个呈线状的轻量化组件，用于有逻辑的组织元素内容和页面结构或区域。

@@ -2,7 +2,7 @@
 import React, { useMemo, useState } from 'react';
 import deepmerge from 'deepmerge';
 import { createGlobalStyle, ThemedStyledProps, ThemeProvider } from 'styled-components';
-import { ThemeContent } from './context';
+import { setThemeMode, ThemeContent } from './context';
 import defaultTheme from './defaultTheme';
 import { complementaryColor } from '@diabol/tool';
 import { useMobile } from '@diabol/hooks';
@@ -51,6 +51,9 @@ export default function ThemeConfig(props: IThemeContextProps) {
     const [theme, setTheme] = useState<Theme>(deepmerge(defaultTheme, { ...props.theme } || {}));
     const update = (the: Theme) => {
         setTheme((data) => {
+            if (the.mode) {
+                setThemeMode(the.mode);
+            }
             return deepmerge(data, the);
         });
     };
@@ -62,7 +65,6 @@ export default function ThemeConfig(props: IThemeContextProps) {
         };
         return data;
     }, [theme, isMobile]);
-
     return (
         <ThemeContent.Provider value={{ theme: config, update }}>
             <ThemeProvider

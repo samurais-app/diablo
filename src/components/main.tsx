@@ -1,9 +1,12 @@
 import React from 'react';
 import { useSize } from '@hooks/index';
+import get from 'lodash.get';
 import { Outline } from 'components/index';
 import { DocNavigation, LayoutNav, MainLayoutContainer, MainLayoutContent } from 'components/styled/layout';
 import { LayoutContentProps } from './interfaces/layout';
 import { isBrowser } from '@tools/dom';
+import { itemsArr } from 'site/utils/category';
+import { Navigation } from '@ui/index';
 
 
 type Props = {
@@ -30,12 +33,32 @@ function useLayoutSize(): LayoutContentProps {
   };
 }
 
+function getNavitaion(nodes: NodeField[]) {
+  return itemsArr.map((i) => {
+    return {
+      title: i.text,
+      key: i.itemKey,
+      children: nodes.filter((node) => node.frontmatter.category === i.itemKey)
+    };
+  });
+}
+
 export default function MainLayout({
-  children, items }: Props) {
+  children, data }: Props) {
   const props = useLayoutSize();
+  const items = get(data, 'current.tableOfContents.items', []);
+  const nodes = getNavitaion(get(data, 'allMdx.edges', []).map((item) => item.node));
   return (
     <MainLayoutContainer >
-      <LayoutNav {...props} />
+      <LayoutNav {...props} >
+        <Navigation>
+          {nodes.map((item) => {
+            return <Navigation.Item title={item.title} path={item.key} key={item.key}>{
+              item.children.map((child) => (<Navigation.Item key={child.fields.slug} title={child.frontmatter.title} path={child.fields.slug} />))
+            }</Navigation.Item>;
+          })}
+        </Navigation>
+      </LayoutNav>
       <MainLayoutContent {...props}>
         {children}
       </MainLayoutContent>

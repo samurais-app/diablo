@@ -1,11 +1,11 @@
 import { navLiLinkColor, navLiLinkVisitedColor, navLiPadding } from '@ui/foundation/navigation';
-import { INavigationItemBaseProps, ThemeWithProps } from '@ui/interfaces';
+import { INavigationItemBaseProps, ThemeWithProps, INavigationItemProps } from '@ui/interfaces';
 import styled from 'styled-components';
 
 
 export const NavigatinBox = styled.ul<ThemeWithProps<Pick<INavigationItemBaseProps, 'depth'>>>``;
 
-export const NavigationItemBox = styled.li`
+export const NavigationItemBox = styled.li<ThemeWithProps<INavigationItemProps>>`
   padding: ${navLiPadding};
   & a {
     color: ${navLiLinkColor};

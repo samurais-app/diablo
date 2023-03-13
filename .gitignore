@@ -1,5 +1,6 @@
 node_modules
 **/*.md'
+public
 packages/**/build/**/**.*
 packages/**/**/build/**/**.*
 coverage

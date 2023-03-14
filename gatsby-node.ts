@@ -53,7 +53,7 @@ export const onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       node,
       name: 'slug',
-      value: `${levels[0]}/${levels[1]}`, // eg: zh-CN/chart/area
+      value: `/${levels[0]}/${levels[1]}`, // eg: zh-CN/chart/area
     });
 
     createNodeField({

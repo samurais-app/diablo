@@ -2,10 +2,12 @@ import React, { isValidElement, useMemo } from 'react';
 import { INavigationProps } from '@ui/interfaces';
 import NavigationItem from './navigation.item';
 import { NavigatinBox } from './styled';
+import { NavigationProvider } from './context';
 
 
 export default function Navigation({
-  children
+  children,
+  ...props
 }: INavigationProps) {
   const childs = useMemo(() => {
     const items = Array.isArray(children) ? children : [children];
@@ -14,7 +16,9 @@ export default function Navigation({
 
   return (
     <NavigatinBox>
-      {childs}
+      <NavigationProvider {...props}>
+        {childs}
+      </NavigationProvider>
     </NavigatinBox>
   );
 }

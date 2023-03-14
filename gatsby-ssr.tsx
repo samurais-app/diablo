@@ -1,9 +1,9 @@
 import React from 'react';
-import AppLayout from './src/components/layout';
+import { Document } from './src/components';
 
 
 export const wrapPageElement = ({ element, props }) => {
-  return (<AppLayout {...props}>{element}</AppLayout>);
+  return (<Document {...props}>{element}</Document>);
 };
 
 export const onRenderBody = (body) => {

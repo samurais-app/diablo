@@ -1,5 +1,6 @@
-import { Icon, ThemeConfig, Navigation, getThemeMode } from '@ui/index';
-import React, { useState } from 'react';
+import { Icon, ThemeConfig, Navigation } from '@ui/index';
+import React, { memo, useState } from 'react';
+import { navigate } from 'gatsby';
 import get from 'lodash.get';
 import { DocumentContent, DocumentLayout, DocumentNavigation, DocumentOutline, GlobalStyled, LogoBox, MainLayout } from 'components/styled/document';
 import { useMobile, useSize } from '@hooks/index';
@@ -30,7 +31,7 @@ function renderOutline(items: any[]) {
   });
 }
 
-export default function Document({ location, children, data, pageResources }) {
+export default memo(function Document({ location, children, data, pageResources }: any) {
   const isMobile = useMobile();
   const { width } = useSize(DOM.isBrowser ? document?.body : undefined);
   const items = get(data, 'current.tableOfContents.items', []);
@@ -51,7 +52,7 @@ export default function Document({ location, children, data, pageResources }) {
           logo={
             <LogoBox>
               <Icon type='icon-d' size={30} key="icon" />
-              {isMobile ? <Icon type='icon-liebiao' size={16} key="icon" onClick={() => setShow(!show)} /> : null}
+              {isMobile && !path.includes('404') ? <Icon type='icon-liebiao' size={16} key="icon" onClick={() => setShow(!show)} /> : null}
             </LogoBox>
           }
         />
@@ -59,7 +60,7 @@ export default function Document({ location, children, data, pageResources }) {
           children :
           <MainLayout>
             <DocumentNavigation top={50} width={260} size={width} show={show}>
-              <Navigation path={location.pathname}>
+              <Navigation path={location.pathname} onChange={navigate}>
                 {nodes.map((item) => {
                   return <Navigation.Item title={item.title} path={item.key} key={item.key}>{
                     item.children.map((child) => (<Navigation.Item key={child.fields.slug} title={child.frontmatter.title} path={child.fields.slug} />))
@@ -80,4 +81,4 @@ export default function Document({ location, children, data, pageResources }) {
       </DocumentLayout>
     </ThemeConfig>
   );
-}
+});

@@ -13,12 +13,12 @@ brief: 分割线是一个呈线状的轻量化组件，用于有逻辑的组织�
 
 ```jsx live=true
 import React from 'react';
+import {navigate} from 'react-router-dom';
 import { Navigation } from '@diabol/ui';
-
-<Navigation>
+<Navigation onChange={navigate}>
   <Navigation.Item path="/component" title="组件">
-    <Navigation.Item path="/component/Navigation" title="导航" />
-    <Navigation.Item path="/component/Input" title="导航" />
+    <Navigation.Item path="/component/Navigation" title="导航组件" />
+    <Navigation.Item path="/component/Input" title="输入" />
   </Navigation.Item>
   <Navigation.Item path="/start" title="开始">
     <Navigation.Item path="/start/changelog" title="更新日志" />

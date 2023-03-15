@@ -1,6 +1,7 @@
-import { complementaryColor } from '@diabol/tool';
+import { complementaryColor, opacity } from '@diabol/tool';
 import { animated } from '@react-spring/web';
-import { popupWidth } from '@ui/foundation';
+import { popupBoxBg, popupBoxBorderRadius, popupBoxPadding, popupBoxShadow, popupClosePadding, popupCloseShow, popupCloseSpacing, popupWidth } from '@ui/foundation';
+import { IPopupProps, ThemeWithProps } from '@ui/interfaces';
 import styled from 'styled-components';
 
 
@@ -11,7 +12,7 @@ export const PopupBase = styled(animated.div)`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${(props) => complementaryColor(props.theme.color.background)};
+  background-color: ${(props) => opacity(complementaryColor(props.theme.color.background), 0.1)};
 `;
 
 export const PopupContainer = styled.div`
@@ -27,8 +28,22 @@ export const PopupContainer = styled.div`
   pointer-events: none;
 `;
 
+export const PopupClose = styled.b<ThemeWithProps<IPopupProps>>`
+  position: absolute;
+  display: ${popupCloseShow};
+  padding: ${popupClosePadding};
+  top: ${popupCloseSpacing};
+  right: ${popupCloseSpacing};
+`;
+
 export const PopupBox = styled(animated.div)`
   width: ${popupWidth};
+  background-color: ${popupBoxBg};
+  padding: ${popupBoxPadding};
+  box-shadow: ${popupBoxShadow};
+  border-radius: ${popupBoxBorderRadius};
   position: relative;
+  box-sizing: border-box;
+  pointer-events: all;
   z-index: 20;
 `;

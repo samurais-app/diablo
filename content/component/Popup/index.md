@@ -13,15 +13,26 @@ brief: 分割线是一个呈线状的轻量化组件，用于有逻辑的组织�
 
 ```jsx live=true
 import React, { useState } from 'react';
-import { Popup } from '@diabol/ui';
+import { Popup, Text } from '@diabol/ui';
 
 export default () => {
   const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
   return (
     <div>
       <span onClick={() => setOpen(!open)}>打开</span>
-      <Popup open={open}>
-        <div>1</div>
+      <Popup open={open} close onClonse={() => {
+        setOpen(!open)
+      }}>
+        <div>
+          <Text>1</Text>
+          <span onClick={() => setOpen2(!open2)}>打开2</span>
+          <Popup open={open2} close onClonse={() => {
+            setOpen2(!open2)
+          }}>
+            <Text>2</Text>
+          </Popup>
+        </div>
       </Popup>
     </div>
   )

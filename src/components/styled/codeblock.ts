@@ -1,4 +1,4 @@
-import { codeViewBg, codeViewBorder, codeViewKeyColor, previewBg } from 'components/foundation/codeblock';
+import { codeViewBg, codeViewBorder, previewBg } from 'components/foundation/codeblock';
 import styled from 'styled-components';
 import { Compiler, Editor, Error } from 'react-view';
 
@@ -8,9 +8,6 @@ export const CodeBox = styled.div`
   overflow: auto;
   & .token {
     font-family: Menlo, Consolas, "Droid Sans Mono", monospace !important;
-  }
-  & .token-line {
-    display: flex;
   }
 
   & .token.keyword, & .token.imports.maybe-class-name {
@@ -44,13 +41,14 @@ export const CompilerCom = styled(Compiler)`
 
 export const EditorCom = styled(Editor)`
     max-height: 400px;
+    overflow: auto;
     border: none !important;
     border-radius: 0 !important;
     flex: 1;
     padding: 10px !important;
     background-color: ${codeViewBg} !important;
 
-    caret-color:#2e2828 !important;
+    caret-color:#FFFFFF !important;
     & > div {
       background-color: ${codeViewBg} !important;
     }

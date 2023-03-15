@@ -3,6 +3,8 @@ export type IPopupProps = {
   width?: number | string;
   className?: string;
   open?: boolean;
-  onChange?: (status?: boolean) => void;
+  close?: boolean;
+  onClonse?: () => void;
   children?: JSX.Element;
 };
+

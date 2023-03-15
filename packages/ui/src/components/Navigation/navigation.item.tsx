@@ -1,6 +1,6 @@
 import React, { Children, cloneElement, isValidElement, memo, useCallback, useContext, useMemo, useRef, useState } from 'react';
 import { INavigationItemBaseProps } from '@ui/interfaces';
-import { isFunction, path as pathname } from '@diabol/tool';
+import { isFunction, isString, path as pathname } from '@diabol/tool';
 import { NavigatinBox, NavigationChildBox, NavigationItemBox, NavigationLink, RouteLink } from './styled';
 import { NavigationContext } from './context';
 import { useSpring } from '@react-spring/web';
@@ -20,6 +20,7 @@ export default memo(function NavigationItem(props: INavigationItemProps) {
   }, [children]);
 
   const [open, setOpen] = useState(pathname.isMatch(path, parentPath));
+  console.log(parentPath, '<<<<< parentPath');
   const style = useSpring({
     from: {
       height: 0,
@@ -31,26 +32,22 @@ export default memo(function NavigationItem(props: INavigationItemProps) {
     },
   });
 
-  const _onChange = useCallback((path: string, isChild = false) => {
+  const onLinkClick = useCallback((_path?: string) => {
+    if (!isString(_path)) return setOpen(!open);
     if (!isFunction(onChange)) return;
-    if (!isChild) {
-      onChange(path);
-    }
-    setOpen(!open);
-  }, [onChange, open]);
-
-
+    onChange(_path);
+  }, [open, onChange]);
   if (childs.length) return (
     <NavigationItemBox>
-      <NavigationLink onClick={() => _onChange(path, true)}>{title}</NavigationLink>
+      <NavigationLink onClick={() => onLinkClick()}>{title}</NavigationLink>
       <NavigationChildBox depth={depth} active={open} style={style}>
         <NavigatinBox ref={ul}>{Children.map(childs, (child) => cloneElement(child, { depth: depth + 1 }))}</NavigatinBox>
       </NavigationChildBox>
     </NavigationItemBox>
   );
   return (
-    <NavigationItemBox onClick={() => _onChange(path)}>
-      <RouteLink to={path} active={pathname.isEqual(parentPath, path)}>{title as any}</RouteLink>
+    <NavigationItemBox onClick={() => onLinkClick(path)}>
+      <RouteLink active={pathname.isEqual(parentPath, path)}>{title as any}</RouteLink>
     </NavigationItemBox>
   );
 });

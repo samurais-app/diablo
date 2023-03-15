@@ -6,7 +6,7 @@ export const wrapPageElement = ({ element, props }) => {
   console.log('wrapPageElement', props);
   return (
     <React.Fragment>
-      <Script src="//at.alicdn.com/t/c/font_3495102_ht86pzzvjen.js" />
+      <Script src="//at.alicdn.com/t/c/font_3495102_xd47yext7k.js" />
       <Document {...props}>
         {element}
       </Document>
@@ -24,10 +24,10 @@ export const onPreRouteUpdate = ({ location, prevLocation }) => {
   console.log('Gatsby started to change location from', prevLocation ? prevLocation.pathname : null);
 };
 
-export const shouldUpdateScroll = ({ routerProps: { location } }) => {
-  if (location.hash) {
-    return false;
-  }
+// export const shouldUpdateScroll = ({ routerProps: { location } }) => {
+//   if (location.hash) {
+//     return false;
+//   }
 
-  return true;
-};
+//   return true;
+// };

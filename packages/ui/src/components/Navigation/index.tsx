@@ -1,11 +1,16 @@
-import React, { isValidElement, useMemo } from 'react';
-import { INavigationProps } from '@ui/interfaces';
+import React, { isValidElement, memo, NamedExoticComponent, useMemo } from 'react';
+import { INavigationItemProps, INavigationProps } from '@ui/interfaces';
 import NavigationItem from './navigation.item';
 import { NavigatinBox } from './styled';
 import { NavigationProvider } from './context';
 
 
-export default function Navigation({
+interface INavigationType {
+  (props: INavigationProps): JSX.Element
+  Item?: NamedExoticComponent<INavigationItemProps>;
+};
+
+const Navigation = memo(function Navigation({
   children,
   ...props
 }: INavigationProps) {
@@ -21,6 +26,6 @@ export default function Navigation({
       </NavigationProvider>
     </NavigatinBox>
   );
-}
-
-Navigation.Item = NavigationItem;
+}) as INavigationType;
+export default Navigation;
+Navigation.Item = NavigationItem as NamedExoticComponent<INavigationItemProps>;

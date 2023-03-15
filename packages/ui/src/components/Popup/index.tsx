@@ -1,14 +1,14 @@
-import React, { useCallback } from 'react';
+import React, { useMemo } from 'react';
 import { useLatest, useUnmount, useUpdateEffect } from '@diabol/hooks';
 import * as BodyLock from 'body-scroll-lock';
 import { useSpring } from '@react-spring/web';
 import { IPopupProps } from '@ui/interfaces';
 import { createPortal, } from 'react-dom';
-import { PopupBase, PopupBox, PopupContainer } from './styled';
-import { isFunction } from '@diabol/tool';
+import { PopupBase, PopupBox, PopupClose, PopupContainer } from './styled';
 import { creatPopupRoot } from './utils';
+import Icon from '../Icon';
 
-function PopupRoot({ width, onChange, ...props }: IPopupProps) {
+function PopupRoot({ width, onClonse, children, ...props }: IPopupProps) {
   const ref = useLatest(creatPopupRoot('popup-box'));
   const style = useSpring({
     from: {
@@ -30,7 +30,6 @@ function PopupRoot({ width, onChange, ...props }: IPopupProps) {
   });
 
   useUpdateEffect(() => {
-    console.log(BodyLock);
     if (props.open) {
       BodyLock.disableBodyScroll(ref.current);
     } else {
@@ -39,13 +38,20 @@ function PopupRoot({ width, onChange, ...props }: IPopupProps) {
   }, [props.open]);
 
   useUnmount(() => {
-    ref.current = null;
+    if (ref.current) {
+      ref.current = null;
+    }
   });
   return createPortal(
     <PopupContainer>
       <PopupBase style={style} {...props} />
       <PopupBox style={box} width={width}>
-        {props.children}
+        <>
+          <PopupClose {...props} onClick={onClonse}>
+            <Icon type='icon-close' size={16} />
+          </PopupClose>
+          {children}
+        </>
       </PopupBox>
     </PopupContainer>,
     ref.current);
@@ -57,9 +63,6 @@ Popup.open = function open() {
   return undefined;
 };
 
-export default function Popup({ children, onChange, ...props }: IPopupProps) {
-  const _onChange = useCallback(() => {
-    if (isFunction(onChange)) onChange(!open);
-  }, [open, onChange]);
-  return <PopupRoot onChange={_onChange} {...props}>{children}</PopupRoot>;
+export default function Popup({ children, ...props }: IPopupProps) {
+  return <PopupRoot {...props}>{children}</PopupRoot>;
 };

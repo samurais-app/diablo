@@ -14,7 +14,7 @@ export const HeaderBox = styled.div<Omit<IHeaderBaseProps, 'children'>>`
   display: flex;
   align-items: center;
   z-index: 1000;
-  /* border-bottom: 1px solid ${headerBorder}; */
+  border-bottom: 1px solid ${headerBorder};
   display: flex;
   align-items: center;
   justify-content: space-between;

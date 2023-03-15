@@ -3,6 +3,7 @@ import { Document } from './src/components';
 import React from 'react';
 
 export const wrapPageElement = ({ element, props }) => {
+  console.log('wrapPageElement', props);
   return (
     <React.Fragment>
       <Script src="//at.alicdn.com/t/c/font_3495102_ht86pzzvjen.js" />

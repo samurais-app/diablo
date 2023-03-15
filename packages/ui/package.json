@@ -31,11 +31,15 @@
   "peerDependencies": {
     "@floating-ui/react-dom": "^1.0.0",
     "@floating-ui/react-dom-interactions": "^0.10.1",
+    "@react-spring/web": "^9.7.1",
+    "body-scroll-lock": "^4.0.0-beta.0",
     "classnames": "^2.3.2",
     "react": "^18.2.0",
-    "styled-components": "^5.3.6"
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.9"
   },
   "devDependencies": {
+    "@types/body-scroll-lock": "^3.1.0",
     "@types/styled-components": "^5.1.26",
     "ts-lib": "^0.0.5",
     "tsc-alias": "^1.8.2",

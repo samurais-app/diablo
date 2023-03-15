@@ -8,11 +8,6 @@ export const light: Theme = {
     unit: 'rem',
     mobile: false,
     borderRadius: true,
-    Size: function (num: number) {
-        const unit = this ? this.unit : light.unit;
-        const size = this ? this.size : light.size;
-        return unit === 'rem' ? Number(Number(num / size).toFixed(2)) : num;
-    },
     color: {
         primary: '#0A992E',
         transparent: 'transparent',
@@ -35,11 +30,6 @@ export const dark: Theme = {
     unit: 'rem',
     mobile: false,
     borderRadius: true,
-    Size: function (num: number) {
-        const unit = this ? this.unit : dark.unit;
-        const size = this ? this.size : dark.size;
-        return unit === 'rem' ? Number(Number(num / size).toFixed(2)) : num;
-    },
     color: {
         primary: '#0A992E',
         transparent: 'transparent',

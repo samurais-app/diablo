@@ -1,7 +1,7 @@
 import { useMobile } from '@diabol/hooks';
 import { isArray } from '@diabol/tool';
 import { IHeaderBaseProps } from '@ui/interfaces';
-import React, { memo, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Actions } from './Header.action';
 import { HeaderBox, HeaderContent, HeaderLogo } from './styled';
 
@@ -16,7 +16,7 @@ function LogoHeader(props: LogoHeaderProps) {
   );
 }
 
-export default memo(function Header({
+export default function Header({
   logo,
   actions = [],
   children,
@@ -24,7 +24,6 @@ export default memo(function Header({
 }: IHeaderBaseProps) {
   const mobile = useMobile();
   const actionNodes = useMemo(() => isArray(actions) ? actions.filter(Boolean) : [actions], [actions]) as JSX.Element | JSX.Element[];
-
   return (
     <HeaderBox {...props}>
       <LogoHeader>{logo}</LogoHeader>
@@ -32,4 +31,4 @@ export default memo(function Header({
       <Actions isMobile={mobile}>{actionNodes}</Actions>
     </HeaderBox>
   );
-});
+}

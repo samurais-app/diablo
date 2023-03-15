@@ -1,0 +1,19 @@
+0 silly argv {
+0 silly argv   _: [ 'add' ],
+0 silly argv   scope: '@diabol/ui',
+0 silly argv   peer: true,
+0 silly argv   P: true,
+0 silly argv   globs: [],
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': '/Users/fred/.nvm/versions/node/v16.12.0/bin/lerna',
+0 silly argv   pkg: 'body-scroll-lock'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath /Users/fred/samurais/diablo
+3 error FetchError: request to https://registry.npmjs.org/body-scroll-lock failed, reason: connect ETIMEDOUT 104.16.27.35:443
+3 error     at ClientRequest.<anonymous> (/Users/fred/samurais/diablo/node_modules/minipass-fetch/lib/index.js:110:14)
+3 error     at ClientRequest.emit (node:events:513:28)
+3 error     at TLSSocket.socketErrorListener (node:_http_client:502:9)
+3 error     at TLSSocket.emit (node:events:525:35)
+3 error     at emitErrorNT (node:internal/streams/destroy:151:8)
+3 error     at emitErrorCloseNT (node:internal/streams/destroy:116:3)

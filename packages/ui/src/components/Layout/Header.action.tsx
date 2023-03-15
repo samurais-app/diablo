@@ -1,7 +1,7 @@
 import { isArray } from '@diabol/tool';
 import { IHeaderBaseProps } from '@ui/interfaces';
-import React, { isValidElement, useMemo } from 'react';
-import { ActionButton, ActionContent, HeaderActions } from './styled';
+import React, { isValidElement } from 'react';
+import { HeaderActions } from './styled';
 
 type ActionsProps = {
   isMobile?: boolean;
@@ -13,8 +13,8 @@ type ActionsProps = {
  * @param param0 
  * @returns 
  */
-export function Actions({ children, isMobile }: ActionsProps) {
-  const nodes: JSX.Element[] = useMemo(() => (isArray(children) ? children : [children]).filter(isValidElement), [children]);
+export function Actions({ children }: ActionsProps) {
+  const nodes: JSX.Element[] = (isArray(children) ? children : [children]).filter(isValidElement);
   return (
     <HeaderActions>{nodes}</HeaderActions>
   );

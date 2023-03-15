@@ -1,13 +1,5 @@
 import path from 'path';
 import webpack from 'webpack';
-const getLocale = path => {
-  const pathname = path || window.location.pathname;
-  let locale = 'zh-CN';
-  if (/en-US/.test(pathname)) {
-    locale = 'en-US';
-  }
-  return locale;
-};
 
 export const onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -48,8 +40,6 @@ export const onCreateNode = ({ node, getNode, actions }) => {
   if (node.internal.type === 'Mdx') {
     const mdxNode = getNode(node.parent);
     const levels = mdxNode.relativePath.split(path.sep);
-
-    const locale = getLocale(mdxNode.name);
     createNodeField({
       node,
       name: 'slug',
@@ -77,20 +67,8 @@ export const onCreateNode = ({ node, getNode, actions }) => {
       name: 'typeOrder',
       value: items.indexOf(levels[0]),
     });
-
-    createNodeField({
-      node,
-      name: 'locale',
-      value: locale,
-    });
   }
 };
-
-// export const onPreBootstrap = () => {
-//   const orderFunc = require('./scripts/order');
-//   console.log('starting order mdx');
-//   orderFunc();
-// };
 
 export const createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
@@ -139,7 +117,6 @@ export const createPages = async ({ actions, graphql, reporter }) => {
       }
     }
   `);
-  // Handle errors
   if (result.errors) {
     reporter.panicOnBuild('Error while running GraphQL query.');
     return;

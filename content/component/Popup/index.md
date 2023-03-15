@@ -2,7 +2,7 @@
 localeCode: zh-CN
 order: 0
 category: component
-title:  Navigation 导航栏 
+title:  Popup 弹出层
 icon: doc-divider 
 brief: 分割线是一个呈线状的轻量化组件，用于有逻辑的组织元素内容和页面结构或区域。
 ---
@@ -12,18 +12,20 @@ brief: 分割线是一个呈线状的轻量化组件，用于有逻辑的组织�
 ### 基本用法
 
 ```jsx live=true
-import React from 'react';
-import { Navigation } from '@diabol/ui';
+import React, { useState } from 'react';
+import { Popup } from '@diabol/ui';
 
-<Navigation>
-  <Navigation.Item path="/component" title="组件">
-    <Navigation.Item path="/component/Navigation" title="导航" />
-    <Navigation.Item path="/component/Input" title="导航" />
-  </Navigation.Item>
-  <Navigation.Item path="/start" title="开始">
-    <Navigation.Item path="/start/changelog" title="更新日志" />
-  </Navigation.Item>
-</Navigation>
+export default () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div>
+      <span onClick={() => setOpen(!open)}>打开</span>
+      <Popup open={open}>
+        <div>1</div>
+      </Popup>
+    </div>
+  )
+}
 ```
 
 ### 包含内容

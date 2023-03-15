@@ -9,6 +9,7 @@ export function headerPadding(props: ThemeWithHeaderBaseProps) {
 
 export function headerBorder(props: ThemeWithHeaderBaseProps) {
   const theme = getTheme(props);
+  if (theme.mobile) return theme.color.transparent;
   return opacity(theme.color.border, 0.3);
 }
 

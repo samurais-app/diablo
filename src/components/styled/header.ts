@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 export const HeaderBox = styled(Layout.Header)`
   background-size: 4px 4px;
-  backdrop-filter: saturate(50%) blur(4px);
+  backdrop-filter: saturate(50%) blur(10px);
   background-image: ${headerBgImage};
   & svg {
     color: ${headerIconColor};

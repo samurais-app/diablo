@@ -1,5 +1,5 @@
 import { color, opacity, complementaryColor } from '@diabol/tool';
-import { getTheme, ThemeWithProps, INavigationItemProps, INavigationBoxProps, INavigationLinkProps } from '..';
+import { getTheme, ThemeWithProps, INavigationBoxProps, INavigationLinkProps, INavigationChildProps } from '..';
 
 
 export function navUlSpacing(props: ThemeWithProps<INavigationBoxProps>) {
@@ -7,18 +7,17 @@ export function navUlSpacing(props: ThemeWithProps<INavigationBoxProps>) {
   return `${Size(spacing.padding[2])}${unit}`;
 }
 
-export function navUlPaddingLeft(props: ThemeWithProps<INavigationBoxProps>) {
+export function navUlPaddingLeft(props: ThemeWithProps<INavigationChildProps>) {
   const { depth } = props;
   if (!depth) return 0;
   const theme = getTheme(props);
   return `${theme.Size(theme.spacing.padding[1] * depth)}${theme.unit}`;
 }
 
-export function navUlHeight(props: ThemeWithProps<INavigationBoxProps>) {
+export function navUlHeight(props: ThemeWithProps<INavigationChildProps>) {
   const { depth, active } = props;
-  const theme = getTheme(props);
-  if (!depth) return `${theme.Size(2000)}${theme.unit}`;
-  return active ? `${theme.Size(2000)}${theme.unit}` : 0;
+  if (!depth) return 'auto';
+  return active ? 'auto' : 0;
 }
 
 export function navUlRotateX(props: ThemeWithProps<INavigationBoxProps>) {

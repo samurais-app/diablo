@@ -1,4 +1,4 @@
-import { complementaryColor } from '@tools/index';
+import { complementaryColor, hexToRgb } from '@tools/index';
 import { getTheme } from '@ui/index';
 import { ThemeWithProps } from '@ui/interfaces';
 
@@ -6,7 +6,7 @@ import { ThemeWithProps } from '@ui/interfaces';
 export function headerBgImage(props: ThemeWithProps<object>) {
   const theme = getTheme(props);
   const { color } = theme;
-  return `radial-gradient(transparent 1px, ${color.background} 1px)`;
+  return `radial-gradient(transparent 1px, ${hexToRgb(color.background)} 1px)`;
 }
 
 export function headerIconColor(props: ThemeWithProps<object>) {

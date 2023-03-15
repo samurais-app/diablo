@@ -10,3 +10,4 @@ export * from './icon';
 export * from './switch';
 export * from './text';
 export * from './navigation';
+export * from './popup';

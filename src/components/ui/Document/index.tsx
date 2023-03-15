@@ -1,13 +1,13 @@
-import { Icon, ThemeConfig, Navigation } from '@ui/index';
-import React, { useMemo, useState } from 'react';
+import { Icon, ThemeConfig, Navigation, getThemeMode } from '@ui/index';
+import React, { useState } from 'react';
 import get from 'lodash.get';
-import theme from 'config/theme';
 import { DocumentContent, DocumentLayout, DocumentNavigation, DocumentOutline, GlobalStyled, LogoBox, MainLayout } from 'components/styled/document';
 import { useMobile, useSize } from '@hooks/index';
 import { itemsArr } from 'site/utils/category';
+import { DOM } from '@tools/index';
+import theme from 'config/theme';
 import Header from '../Header';
 import Outline from '../Outline';
-import { DOM } from '@tools/index';
 
 function isHome({ location, pageResources }) {
   return !location.pathname.split('/').filter(Boolean).length || pageResources?.page?.path?.includes('404');
@@ -39,27 +39,22 @@ export default function Document({ location, children, data, pageResources }) {
   const [show, setShow] = useState(false);
   const home = isHome({ location, pageResources });
   const top = path.includes('404') ? 50 : 0;
-  const header = useMemo(() => {
-    return (
-      <Header
-        height={50}
-        github={data?.site?.siteMetadata?.github}
-        float
-        logo={
-          <LogoBox>
-            <Icon type='icon-d' size={30} key="icon" />
-            {isMobile ? <Icon type='icon-liebiao' size={16} key="icon" onClick={() => setShow(!show)} /> : null}
-          </LogoBox>
-        }
-      />
-    );
-  }, [isMobile, show, data, path]);
 
   return (
     <ThemeConfig theme={theme}>
       <DocumentLayout top={top}>
         <GlobalStyled />
-        {header}
+        <Header
+          height={50}
+          github={data?.site?.siteMetadata?.github}
+          float
+          logo={
+            <LogoBox>
+              <Icon type='icon-d' size={30} key="icon" />
+              {isMobile ? <Icon type='icon-liebiao' size={16} key="icon" onClick={() => setShow(!show)} /> : null}
+            </LogoBox>
+          }
+        />
         {home ?
           children :
           <MainLayout>

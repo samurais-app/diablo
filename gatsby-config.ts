@@ -1,9 +1,9 @@
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
-  // flags: {
-  //   DEV_SSR: true
-  // },
+  flags: {
+    DEV_SSR: true
+  },
   pathPrefix: '/',
   siteMetadata: {
     title: 'diablo',
@@ -19,7 +19,6 @@ const config: GatsbyConfig = {
   plugins: [
     "gatsby-plugin-svgr",
     "gatsby-plugin-react-helmet",
-    "gatsby-plugin-styled-components",
     // "gatsby-plugin-google-gtag",
     "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
@@ -28,6 +27,12 @@ const config: GatsbyConfig = {
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-tsconfig-paths",
+    {
+      resolve: 'gatsby-plugin-styled-components',
+      options: {
+        ssr: true
+      }
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {

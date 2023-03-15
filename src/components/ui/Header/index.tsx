@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { } from 'gatsby';
 import { Icon, IHeaderBaseProps, Switch, ThemeContent } from '@ui/index';
-import { HeaderBox, IconBox } from './styled';
+import { HeaderBox, IconBox } from '../../styled/header';
 
 
 

@@ -14,7 +14,7 @@
     "bootstrap": "npm install && npm run sharp:bug && npm run link",
     "develop": "gatsby develop --host 0.0.0.0",
     "serve": "gatsby serve",
-    "build:site": "cross-env NODE_ENV=production node ./node_modules/gatsby/cli.js build --prefix-paths --verbose",
+    "build:site": "cross-env NODE_ENV=production node ./node_modules/gatsby/cli.js build --prefix-paths --no-uglify --verbose",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "clean:changelog": "del './packages/**/CHANGELOG.md' 'CHANGELOG.md'",
@@ -91,7 +91,7 @@
     "remarkable": "^2.0.1",
     "remarkable-react": "^1.4.3",
     "stream-browserify": "^3.0.0",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.9"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",

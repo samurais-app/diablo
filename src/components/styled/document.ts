@@ -19,6 +19,7 @@ export const GlobalStyled = createGlobalStyle<ThemeWithProps<object>>`
 
 export const DocumentLayout = styled.div<ThemeWithProps<IDocumentLayoutProps>>`
   width: 100vw;
+  overflow: auto;
   height: ${docLayoutHeight};
   padding-top: ${docLayoutTop};
 `;
@@ -34,9 +35,9 @@ export const DocumentNavigation = styled.div<ThemeWithProps<IDocumentNavigationP
   height: ${docNavigationHeight};
   background-image: ${docNavigationBg};
   transform: ${docNavigationTranslate};
-  transition: all 0.3s ease 0s;
   background-size: 4px 4px;
   backdrop-filter: saturate(50%) blur(10px);
+  transition: all 0.3s ease 0s;
   z-index: 1000;
   box-sizing: border-box;
   position: fixed;

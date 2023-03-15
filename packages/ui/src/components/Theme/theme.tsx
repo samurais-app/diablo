@@ -1,24 +1,20 @@
 /* eslint-disable indent */
 import React, { memo, useCallback, useMemo, useState } from 'react';
 import { createGlobalStyle, ThemedStyledProps, ThemeProvider } from 'styled-components';
-import { complementaryColor, DOM, isObject, merg } from '@diabol/tool';
+import { complementaryColor, DOM, merg } from '@diabol/tool';
 import { useMobile } from '@diabol/hooks';
 import { IThemeProps, Theme, ThemeMode } from '@ui/interfaces';
 import { ThemeContent } from './context';
-import defaultTheme from './defaultTheme';
+import { getThemeConfig, setThemeConfig } from './utils';
 
-function getThemeMode(): ThemeMode {
-    if (!DOM.isBrowser) return 'light';
-    const theme = (localStorage.getItem('diablo-theme') ?? document.body.getAttribute('theme')) as ThemeMode;
-    return theme ? theme : 'light';
-}
 
 function setThemeMode(mode: ThemeMode) {
     if (!DOM.isBrowser) return;
-    document.body.setAttribute('theme', mode);
     localStorage.setItem('diablo-theme', mode);
 }
+
 export interface IThemeContextProps {
+    mode?: ThemeMode;
     theme?: IThemeProps;
     children: JSX.Element | JSX.Element;
 }
@@ -56,16 +52,28 @@ const Global = createGlobalStyle<ThemedStyledProps<any, Theme>>`
     }
 `;
 
+function Size(this: any, num: number) {
+    const unit = this.unit;
+    const size = this.size;
+    return unit === 'rem' ? Number(Number(num / size).toFixed(2)) : num;
+}
+
 export default memo(function ThemeConfig(props: IThemeContextProps) {
     const isMobile = useMobile();
-    const [theme, setTheme] = useState<ThemeMode>(getThemeMode());
+    const [theme, setTheme] = useState<ThemeMode>();
     const config = useMemo(() => {
-        const data: Theme = isObject(props.theme) ? props.theme[theme] : defaultTheme[theme];
-        const _theme = { ...data, mobile: isMobile, unit: isMobile ? 'rem' : 'px' as any };
-        return merg(defaultTheme[theme], _theme);
+        const data: Theme = getThemeConfig(theme);
+        const _theme: Theme = merg(getThemeConfig(theme), {
+            ...data,
+            mobile: isMobile,
+            unit: isMobile ? 'rem' : 'px' as any,
+        });
+        //setThemeConfig(_theme);
+        _theme.Size = Size.bind(_theme);
+        return _theme;
     }, [props.theme, isMobile, theme]);
     const update = useCallback((mode: ThemeMode) => {
-        setThemeMode(mode);
+        //setThemeMode(mode);
         setTheme(mode);
     }, [theme, isMobile]);
     return (

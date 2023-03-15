@@ -14,3 +14,4 @@ export * from './navigation';
 export * from './icon';
 export * from './switch';
 export * from './text';
+export * from './popup';

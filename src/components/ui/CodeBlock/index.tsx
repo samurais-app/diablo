@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useView } from 'react-view';
 import presetTypescript from '@babel/preset-typescript';
-import { Input, ThemeConfig, Navigation } from '@ui/index';
+import { Input, ThemeConfig, Navigation, Popup } from '@ui/index';
 import { CodeBox, CompilerCom, EditorCom, ErrorCom, ViewBox } from 'components/styled/codeblock';
 
 export default function CodeBlock({ code }: {
@@ -12,11 +12,14 @@ export default function CodeBlock({ code }: {
     scope: {
       Input,
       ThemeConfig,
-      Navigation
+      Navigation,
+      Popup,
+      React,
+      useState
     },
     imports: {
       '@diabol/ui': {
-        named: ['Input', 'ThemeConfig', 'Navigation'],
+        named: ['Input', 'ThemeConfig', 'Navigation', 'Popup', 'React', 'useState'],
       },
     },
     onUpdate: console.log,

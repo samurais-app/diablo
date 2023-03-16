@@ -1,6 +1,5 @@
 import React, { createRef, useContext } from 'react';
-import { useLatest, useUnmount, useUpdateEffect } from '@diabol/hooks';
-import * as BodyLock from 'body-scroll-lock';
+import { useLatest, useUnmount } from '@diabol/hooks';
 import { IPopupProps, PopupAction } from '@ui/interfaces';
 import { createPortal } from 'react-dom';
 import { createRoot } from 'react-dom/client';
@@ -11,19 +10,6 @@ import { ThemeContent } from '../Theme';
 function PopupRoot({ children, open, ...props }: IPopupProps) {
   const ref = useLatest(creatPopupRoot('popup-box'));
   const { theme } = useContext(ThemeContent);
-  useUpdateEffect(() => {
-    if (open) {
-      BodyLock.disableBodyScroll(ref.current);
-    } else {
-      BodyLock.enableBodyScroll(ref.current);
-    }
-  }, [open]);
-
-  useUnmount(() => {
-    if (ref.current) {
-      ref.current = null;
-    }
-  });
   return createPortal(
     <PopupComponent {...props} open={open} theme={theme}>{children}</PopupComponent>,
     ref.current);

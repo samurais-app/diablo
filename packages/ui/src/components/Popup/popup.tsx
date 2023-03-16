@@ -1,14 +1,16 @@
 import { useRafState, useUpdateEffect } from '@diabol/hooks';
-import React, { ForwardedRef, useCallback, useImperativeHandle } from 'react';
+import React, { ForwardedRef, useCallback, useImperativeHandle, useRef } from 'react';
 import { forwardRef } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { PopupBase, PopupBox, PopupClose, PopupContainer } from './styled';
 import { useChain, useSpringRef, useTransition } from '@react-spring/web';
 import { IPopupProps, PopupAction, Theme } from '@ui/interfaces';
+import * as BodyLock from 'body-scroll-lock';
 import { isBoolean, isFunction } from '@diabol/tool';
 import Icon from '../Icon';
 
 export const PopupComponent = forwardRef(({ width, onClonse, children, open, theme, ...props }: IPopupProps & { theme: Theme }, instance: ForwardedRef<PopupAction>) => {
+  const ref = useRef();
   const [status, setStatus] = useRafState(open);
   const backdropApi = useSpringRef();
   const modalApi = useSpringRef();
@@ -54,9 +56,19 @@ export const PopupComponent = forwardRef(({ width, onClonse, children, open, the
       setStatus(open);
     }
   }, [open, status, onClonse]);
+
+
+  useUpdateEffect(() => {
+    if (open) {
+      BodyLock.disableBodyScroll(ref.current);
+    } else {
+      BodyLock.enableBodyScroll(ref.current);
+    }
+  }, [open]);
+
   return (
     <ThemeProvider theme={theme}>
-      <PopupContainer {...{ ...props, open }}>
+      <PopupContainer ref={ref} {...{ ...props, open }}>
         {backdrop((style, item) => item && (<PopupBase style={style} />))}
         {modal((style, item) => item && (<PopupBox style={style} width={width}>
           <>

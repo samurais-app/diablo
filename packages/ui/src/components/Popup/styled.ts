@@ -12,7 +12,7 @@ export const PopupBase = styled(animated.div)`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${(props) => opacity(complementaryColor(props.theme.color.background), 0.1)};
+  background-color: ${(props) => opacity(complementaryColor(props.theme.color.background), 0.5)};
 `;
 
 export const PopupContainer = styled.div`

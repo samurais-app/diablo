@@ -23,10 +23,16 @@ export function docLayoutTop(props: ThemeWithProps<IDocumentLayoutProps>) {
 // 导航栏
 export function docNavigationPadding(props: ThemeWithProps<IDocumentNavigationProps>) {
   const { Size, unit, mobile, spacing } = getTheme(props);
+  const { size } = props;
   if (mobile) {
     const padding1 = Size(spacing.spacing[2] * 2);
     const padding2 = Size(spacing.spacing[4] * 2);
     return `${padding1}${unit} ${padding2}${unit} ${padding1}${unit} ${padding1}${unit}`;
+  }
+  if (size >= 1400) {
+    const padding1 = Size(spacing.spacing[2] * 3);
+    const padding2 = Size(spacing.spacing[4] * ((size * 9) / 1200));
+    return `${padding1}${unit} 0${unit} ${padding1}${unit} ${padding2}${unit}`;
   }
   const padding1 = Size(spacing.spacing[2] * 3);
   const padding2 = Size(spacing.spacing[4] * 4);
@@ -63,23 +69,33 @@ export function docNavigationTranslate(props: ThemeWithProps<IDocumentNavigation
 
 // 内容样式
 export function docContentWidth(props: ThemeWithProps<IDocumentContentProps>) {
-  const theme = getTheme(props);
-  const { left, right } = props;
+  const { Size, unit, mobile, spacing } = getTheme(props);
+  const { size, left, right } = props;
   if (!props.showNavigation && !props.showOutline) return '100vw';
-  if (props.size <= 1200 && !theme.mobile) {
-    return `calc(100vw - ${theme.Size(Number(left))}${theme.unit})`;
+  if (props.size <= 1200 && !mobile) {
+    return `calc(100vw - ${Size(Number(left))}${unit})`;
   }
-  return theme.mobile ? '100vw' : `calc(100vw - ${theme.Size(Number(left) + Number(right))}${theme.unit})`;
+  if (props.size >= 1400) {
+    const _left = spacing.spacing[4] * ((size * 9) / 1200) + left;
+    const _right = spacing.spacing[4] * ((size * 10) / 1200) + right;
+    return `calc(100vw - ${Size(Number(_left) + Number(_right))}${unit})`;
+  }
+  return mobile ? '100vw' : `calc(100vw - ${Size(Number(left) + Number(right))}${unit})`;
 }
 
 export function docContentMargin(props: ThemeWithProps<IDocumentContentProps>) {
-  const { left, right } = props;
-  const theme = getTheme(props);
+  const { left, right, size } = props;
+  const { Size, unit, mobile, spacing } = getTheme(props);
   if (!props.showNavigation && !props.showOutline) return '0';
-  if (props.size <= 1200 && !theme.mobile) {
-    return `0 0 0 ${theme.Size(Number(left))}${theme.unit}`;
+  if (props.size <= 1200 && !mobile) {
+    return `0 0 0 ${Size(Number(left))}${unit}`;
   }
-  return theme.mobile ? 0 : `0 ${theme.Size(Number(right))}${theme.unit} 0 ${theme.Size(Number(left))}${theme.unit}`;
+  if (props.size >= 1400) {
+    const _left = spacing.spacing[4] * ((size * 9) / 1200) + left;
+    const _right = spacing.spacing[4] * ((size * 10) / 1200);
+    return `0 ${Size(Number(_right))}${unit} 0 ${Size(Number(_left))}${unit}`;
+  }
+  return mobile ? 0 : `0 ${Size(Number(right))}${unit} 0 ${Size(Number(left))}${unit}`;
 }
 
 export function docContentPaddingTop(props: ThemeWithProps<IDocumentContentProps>) {
@@ -98,6 +114,12 @@ export function docOutlineTranslate(props: ThemeWithProps<IDocumentOutlineProps>
 }
 
 export function docOutlinePadding(props: ThemeWithProps<IDocumentOutlineProps>) {
-  const { theme } = props;
-  return `${theme.Size(theme.spacing.padding[4])}${theme.unit} 0`;
+  const { Size, unit, spacing } = getTheme(props);
+  const { size } = props;
+  if (size >= 1400) {
+    const padding1 = Size(spacing.padding[4]);
+    const padding2 = Size(spacing.spacing[4] * ((size * 10) / 1200));
+    return `${padding1}${unit} ${padding2}${unit} ${padding1}${unit} 0${unit}`;
+  }
+  return `${Size(spacing.padding[4])}${unit} 0`;
 }

@@ -3,6 +3,7 @@ import { isEmpty } from '@diabol/tool';
 import { IInputProps, InputType } from '@ui/interfaces';
 import { InputNumber } from './InputNumber';
 import { InputText } from './InputText';
+import { InputSearch } from './InputSearch';
 
 function changeText(event: React.ChangeEvent<HTMLInputElement>, props: IInputProps) {
   if (props.maxLength && event.target.value.length > props.maxLength) {
@@ -30,6 +31,8 @@ export function getInputComponent(type: InputType): any {
   switch (type) {
     case 'number':
       return InputNumber;
+    case 'search':
+      return InputSearch;
     default:
       return InputText;
   }

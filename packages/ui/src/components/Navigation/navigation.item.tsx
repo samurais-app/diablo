@@ -20,7 +20,6 @@ export default memo(function NavigationItem(props: INavigationItemProps) {
   }, [children]);
 
   const [open, setOpen] = useState(pathname.isMatch(path, parentPath));
-  console.log(parentPath, '<<<<< parentPath');
   const style = useSpring({
     from: {
       height: 0,

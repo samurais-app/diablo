@@ -39,7 +39,7 @@ export const DocumentNavigation = styled.div<ThemeWithProps<IDocumentNavigationP
   backdrop-filter: saturate(50%) blur(10px);
   transition: all 0.3s ease 0s;
   z-index: 1000;
-  box-sizing: border-box;
+  box-sizing: ${(props) => props.size >= 1400 ? 'content-box' : 'border-box'};
   position: fixed;
   left: 0;
 `;

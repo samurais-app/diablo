@@ -2,7 +2,7 @@ import { Size, IFieldProps } from '@ui/interfaces';
 import { Theme } from '@ui/interfaces';
 import { ThemedStyledProps } from 'styled-components';
 
-export type InputType = 'text' | 'number' | 'password'
+export type InputType = 'text' | 'number' | 'password' | 'search'
 
 export interface IInputBaseProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type' | 'value' | 'onChange' | 'max' | 'min'>, IFieldProps {
     type?: InputType;

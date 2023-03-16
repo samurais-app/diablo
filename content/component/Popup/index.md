@@ -3,8 +3,8 @@ localeCode: zh-CN
 order: 0
 category: component
 title:  Popup 弹出层
-icon: doc-divider 
-brief: 分割线是一个呈线状的轻量化组件，用于有逻辑的组织元素内容和页面结构或区域。
+icon: popup
+brief: popup提供通用的弹出逻辑
 ---
 
 ## 代码演示
@@ -58,8 +58,6 @@ export default () => {
   );
 }
 ```
-
-### 包含内容
 
 
 ## API参考

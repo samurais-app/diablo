@@ -1,6 +1,11 @@
 import React from 'react';
 import { Text } from '@ui/index';
 import { Compare,CodeBlock,ApiTable } from 'components/index';
+import styled from 'styled-components';
+
+const H2 = styled(Text.Title)`
+  margin-top: 40px;
+`;
 
 export const components = {
   Compare,
@@ -18,7 +23,7 @@ export const components = {
   },
   h2: ({ children }) => {
     const [id] = children;
-    return (<Text.Title type="h2" id={id.toLowerCase()}>{children}</Text.Title>);
+    return (<H2 type="h2" id={id.toLowerCase()}>{children}</H2>);
   },
   h3: ({ children }) => {
     const [id] = children;
@@ -26,7 +31,7 @@ export const components = {
   },
   h4: ({ children }) => {
     const [id] = children;
-    return (<h4 id={id}>{children}</h4>);
+    return (<Text.Title type='h4' id={id.toLowerCase()}>{children}</Text.Title>);
   },
   h5: ({ children }) => {
     const [id] = children;

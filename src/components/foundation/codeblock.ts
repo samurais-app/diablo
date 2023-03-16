@@ -21,3 +21,9 @@ export function codeViewKeyColor(props: ThemeWithProps<object>) {
   const theme = getTheme(props);
   return `${theme.color.text}`;
 }
+
+
+export function codeMinWidth(props: ThemeWithProps<object>) {
+  const theme = getTheme(props);
+  return theme.Unit(500);
+}

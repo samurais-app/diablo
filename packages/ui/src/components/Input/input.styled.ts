@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { IInputBaseProps } from '@ui/interfaces';
-import { inputBgColor, inputBorder, inputBorderRadius, inputFontSize, inputPadding } from '@ui/foundation';
+import { inputBgColor, inputBorder, inputBorderRadius, inputCaretColor, inputFontSize, inputPadding } from '@ui/foundation';
 
 
 export const InputContainerStyled = styled.div<IInputBaseProps>`
@@ -26,6 +26,8 @@ export const InputStyled = styled.input`
   position: relative;
   letter-spacing: 1px;
   appearance: textfield;
+  color: ${inputCaretColor};
+  caret-color: ${inputCaretColor};
   &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
     appearance: none;
   };

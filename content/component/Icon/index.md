@@ -2,9 +2,9 @@
 localeCode: zh-CN
 order: 0
 category: component
-title:  Input 输入框 
-icon: input 
-brief: Input提供基础的信息输入功能
+title:  Icon 图标
+icon: icon
+brief: Icon组件提供基础svg图标的使用方式，单色svg图标可以根据主题配色的变化和变动也可自己设置颜色。
 ---
 
 ## 代码演示
@@ -15,33 +15,13 @@ brief: Input提供基础的信息输入功能
 import React from 'react';
 import { Input } from '@diabol/ui';
 
-<Input/>
-```
-
-
-### 数字输入值
-
-```jsx live=true
-import React from 'react';
-import { Input } from '@diabol/ui';
-
-<Input type="number" />
-```
-
-### 搜索框
-
-```jsx live=true
-import React from 'react';
-import { Input } from '@diabol/ui';
-
-<Input type="search" />
 ```
 
 
 ## API参考
 
 | 属性       | 说明                                   | 类型             | 默认值   | 版本 |
-|-----------|----------------------------------------|-----------------|---------|--------- |
+|-----------|--------------------|-----------------|---------|--------- |
 | type      | input输入类型                           | text、number、password、search         | text    |0.0.0 |
 | size      | 组件大小                                | string          | small   | 0.0.0 |
 | border    | 是否拥有边框                            | boolean        | false   | 0.0.0 |

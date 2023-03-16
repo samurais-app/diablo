@@ -5,7 +5,7 @@ import { getTheme } from '@ui/components/Theme';
 
 export function inputBorder(props: ThemeWithInputBaseProps) {
     const theme = getTheme(props);
-    const color = props.error ? theme.color.error : props.border ? theme.color.border : theme.color.transparent;
+    const color = props.error ? theme.color.error : props.border ? opacity(theme.color.border, 0.5) : theme.color.transparent;
     return `1px solid ${color}`;
 }
 
@@ -34,4 +34,9 @@ export function inputActiveBorder(props?: ThemeWithInputBaseProps) {
     const theme = getTheme(props);
 
     return;
+}
+
+export function inputCaretColor(props: ThemeWithInputBaseProps) {
+    const theme = getTheme(props);
+    return `${complementaryColor(theme.color.background)}`;
 }

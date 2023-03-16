@@ -19,6 +19,7 @@
     "test:coverage": "jest --coverage",
     "clean:changelog": "del './packages/**/CHANGELOG.md' 'CHANGELOG.md'",
     "clean:build": "del './packages/**/build' 'public'",
+    "build:doc": "ts-node ./scripts/mergeDoc.ts",
     "build:tool": "lerna run build --scope=@diabol/tool --parallel",
     "build:ui": "lerna run build --scope=@diabol/ui --parallel",
     "build:hooks": "lerna run build --scope=@diabol/hooks --parallel",
@@ -122,6 +123,9 @@
     "rimraf": "^4.4.0",
     "sharp": "^0.31.3",
     "ts-jest": "^28.0.8",
+    "ts-node": "^10.9.1",
+    "typedoc": "^0.23.27",
+    "typedoc-plugin-markdown": "^3.14.0",
     "typescript": "^4.9.5"
   }
 }

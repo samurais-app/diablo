@@ -73,7 +73,7 @@ export const PopupComponent = forwardRef(({ width, onClonse, children, open, the
         {modal((style, item) => item && (<PopupBox style={style} width={width}>
           <>
             <PopupClose {...props} onClick={closeHandler}>
-              <Icon type='icon-close' size={16} />
+              <Icon type='icon-close' size={12} />
             </PopupClose>
             {children}
           </>

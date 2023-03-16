@@ -6,7 +6,8 @@ import { HeaderBox, IconBox } from '../../styled/header';
 
 
 export default function Header({ children, github, ...props }: IHeaderBaseProps & {
-  github
+  github: string;
+  size: number
 }) {
   const { update, theme } = useContext(ThemeContent);
   return (

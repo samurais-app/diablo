@@ -26,6 +26,12 @@ export const light: Theme = {
         const unit = this.unit;
         const size = this.size;
         return unit === 'rem' ? Number(Number(num / size).toFixed(2)) : num;
+    },
+    Unit(this: any, num: number) {
+        const unit = this.unit;
+        const size = this.size;
+        const data = unit === 'rem' ? Number(Number(num / size).toFixed(2)) : num;
+        return `${data}${unit}`;
     }
 };
 
@@ -53,6 +59,12 @@ export const dark: Theme = {
         const unit = this.unit;
         const size = this.size;
         return unit === 'rem' ? Number(Number(num / size).toFixed(2)) : num;
+    },
+    Unit(this: any, num: number) {
+        const unit = this.unit;
+        const size = this.size;
+        const data = unit === 'rem' ? Number(Number(num / size).toFixed(2)) : num;
+        return `${data}${unit}`;
     }
 };
 

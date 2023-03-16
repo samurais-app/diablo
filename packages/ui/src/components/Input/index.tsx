@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useCallback } from 'react';
-import { InputNumber } from './InputNumber';
 import { IInputProps } from '@ui/interfaces';
 import { getInputChange, getInputComponent, transform } from './unit';
 import { isFunction } from '@diabol/tool';

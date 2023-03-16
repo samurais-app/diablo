@@ -3,8 +3,8 @@ localeCode: zh-CN
 order: 0
 category: component
 title:  Navigation 导航栏 
-icon: doc-divider 
-brief: 分割线是一个呈线状的轻量化组件，用于有逻辑的组织元素内容和页面结构或区域。
+icon: navigation
+brief: 导航组件提供路由导航功能。
 ---
 
 ## 代码演示

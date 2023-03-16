@@ -12,6 +12,11 @@ export function popupWidth(props: ThemeWithProps<IPopupProps>) {
   return wid;
 }
 
+export function popupBaseBg(props: ThemeWithProps<IPopupProps>) {
+  const theme = getTheme(props);
+  return opacity(complementaryColor(theme.color.background), 0.1);
+}
+
 export function popupBoxBg(props: ThemeWithProps<IPopupProps>) {
   const theme = getTheme(props);
   return theme.color.background;

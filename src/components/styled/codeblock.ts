@@ -1,4 +1,4 @@
-import { codeViewBg, codeViewBorder, previewBg } from 'components/foundation/codeblock';
+import { codeMinWidth, codeViewBg, codeViewBorder, previewBg } from 'components/foundation/codeblock';
 import styled from 'styled-components';
 import { Compiler, Editor, Error } from 'react-view';
 
@@ -9,7 +9,10 @@ export const CodeBox = styled.div`
   & .token {
     font-family: Menlo, Consolas, "Droid Sans Mono", monospace !important;
   }
-
+  & .token-line, & .token {
+    white-space: inherit;
+    /* overflow: hidden; */
+  }
   & .token.keyword, & .token.imports.maybe-class-name {
     color: #b9b9b9;
   }
@@ -50,7 +53,12 @@ export const EditorCom = styled(Editor)`
 
     caret-color:#FFFFFF !important;
     & > div {
+      width: fit-content;
       background-color: ${codeViewBg} !important;
+    }
+    & pre {
+      min-width: ${codeMinWidth} !important;
+      white-space: nowrap !important;
     }
 `;
 

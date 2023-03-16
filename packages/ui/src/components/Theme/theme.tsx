@@ -58,6 +58,13 @@ function Size(this: any, num: number) {
     return unit === 'rem' ? Number(Number(num / size).toFixed(2)) : num;
 }
 
+function Unit(this: any, num: number) {
+    const unit = this.unit;
+    const size = this.size;
+    const data = unit === 'rem' ? Number(Number(num / size).toFixed(2)) : num;
+    return `${data}${unit}`;
+}
+
 export default memo(function ThemeConfig(props: IThemeContextProps) {
     const isMobile = useMobile();
     const [theme, setTheme] = useState<ThemeMode>();
@@ -70,6 +77,7 @@ export default memo(function ThemeConfig(props: IThemeContextProps) {
         });
         //setThemeConfig(_theme);
         _theme.Size = Size.bind(_theme);
+        _theme.Unit = Unit.bind(_theme);
         return _theme;
     }, [props.theme, isMobile, theme]);
     const update = useCallback((mode: ThemeMode) => {

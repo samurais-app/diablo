@@ -47,6 +47,7 @@ export default memo(function Document({ location, children, data, pageResources 
         <GlobalStyled />
         <Header
           height={50}
+          size={width}
           github={data?.site?.siteMetadata?.github}
           float
           logo={

@@ -1,41 +1,23 @@
-import React, { useMemo } from 'react';
+import React, { createRef, useContext } from 'react';
 import { useLatest, useUnmount, useUpdateEffect } from '@diabol/hooks';
 import * as BodyLock from 'body-scroll-lock';
-import { useSpring } from '@react-spring/web';
-import { IPopupProps } from '@ui/interfaces';
-import { createPortal, } from 'react-dom';
-import { PopupBase, PopupBox, PopupClose, PopupContainer } from './styled';
+import { IPopupProps, PopupAction } from '@ui/interfaces';
+import { createPortal } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { creatPopupRoot } from './utils';
-import Icon from '../Icon';
+import { PopupComponent } from './popup';
+import { ThemeContent } from '../Theme';
 
-function PopupRoot({ width, onClonse, children, ...props }: IPopupProps) {
+function PopupRoot({ children, open, ...props }: IPopupProps) {
   const ref = useLatest(creatPopupRoot('popup-box'));
-  const style = useSpring({
-    from: {
-      'pointer-events': 'none',
-      opacity: 0
-    },
-    to: {
-      'pointer-events': props.open ? 'all' : 'none',
-      opacity: props.open ? 0.4 : 0
-    },
-  });
-  const box = useSpring({
-    from: {
-      transform: 'scale(0)',
-    },
-    to: {
-      transform: props.open ? 'scale(1)' : 'scale(0)',
-    },
-  });
-
+  const { theme } = useContext(ThemeContent);
   useUpdateEffect(() => {
-    if (props.open) {
+    if (open) {
       BodyLock.disableBodyScroll(ref.current);
     } else {
       BodyLock.enableBodyScroll(ref.current);
     }
-  }, [props.open]);
+  }, [open]);
 
   useUnmount(() => {
     if (ref.current) {
@@ -43,26 +25,32 @@ function PopupRoot({ width, onClonse, children, ...props }: IPopupProps) {
     }
   });
   return createPortal(
-    <PopupContainer>
-      <PopupBase style={style} {...props} />
-      <PopupBox style={box} width={width}>
-        <>
-          <PopupClose {...props} onClick={onClonse}>
-            <Icon type='icon-close' size={16} />
-          </PopupClose>
-          {children}
-        </>
-      </PopupBox>
-    </PopupContainer>,
+    <PopupComponent {...props} open={open} theme={theme}>{children}</PopupComponent>,
     ref.current);
-}
+};
 
 
 
-Popup.open = function open() {
-  return undefined;
+Popup.useOpen = function open(props: Omit<IPopupProps, 'open' | 'onClonse'>) {
+  const instance = createRef<PopupAction>();
+  const { theme } = useContext(ThemeContent);
+  const node = createRoot(creatPopupRoot('popup-box-call'));
+  const dom = React.createElement(PopupComponent, { ...props, theme, ref: instance, });
+  node.render(dom);
+  useUnmount(() => {
+    node.unmount();
+  });
+  return {
+    open: () => {
+      instance.current?.open();
+    },
+    clonse: () => {
+      instance.current?.close();
+    }
+  };
 };
 
 export default function Popup({ children, ...props }: IPopupProps) {
+
   return <PopupRoot {...props}>{children}</PopupRoot>;
 };

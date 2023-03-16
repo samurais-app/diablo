@@ -1,10 +1,10 @@
-import { titleColor } from '@ui/foundation';
+import { textColor, titleColor } from '@ui/foundation';
 import { ITextProps, ITitleProps, ThemeWithProps } from '@ui/interfaces';
 import styled from 'styled-components';
 
 
 export const TextBox = styled.span<ThemeWithProps<ITextProps>>`
-
+  color: ${textColor};
 `;
 
 

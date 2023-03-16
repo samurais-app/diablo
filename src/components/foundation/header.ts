@@ -9,6 +9,16 @@ export function headerBgImage(props: ThemeWithProps<object>) {
   return `radial-gradient(transparent 1px, ${hexToRgb(color.background)} 1px)`;
 }
 
+export function headerPadding(props: ThemeWithProps<object>) {
+  const { Size, unit, mobile, spacing } = getTheme(props);
+  if (mobile) {
+    return `${Size(spacing.padding[0])}${unit} ${Size(spacing.padding[2])}${unit}`;
+  }
+  const padding1 = Size(spacing.padding[0]);
+  const padding2 = Size(spacing.spacing[4] * 4.5);
+  return `${padding1}${unit} ${padding1}${unit} ${padding1}${unit} ${padding2}${unit}`;
+}
+
 export function headerIconColor(props: ThemeWithProps<object>) {
   const theme = getTheme(props);
   return `${complementaryColor(theme.color.background)}`;

@@ -21,6 +21,11 @@ export const light: Theme = {
         spacing: [4, 8, 12, 16, 20],
         radius: [4, 6, 8, 10, 12],
         padding: [8, 12, 18, 26, 36]
+    },
+    Size(this: any, num: number) {
+        const unit = this.unit;
+        const size = this.size;
+        return unit === 'rem' ? Number(Number(num / size).toFixed(2)) : num;
     }
 };
 
@@ -43,6 +48,11 @@ export const dark: Theme = {
         spacing: [4, 8, 12, 16, 20],
         radius: [4, 6, 8, 10, 12],
         padding: [8, 12, 18, 26, 36]
+    },
+    Size(this: any, num: number) {
+        const unit = this.unit;
+        const size = this.size;
+        return unit === 'rem' ? Number(Number(num / size).toFixed(2)) : num;
     }
 };
 

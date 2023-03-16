@@ -1,6 +1,9 @@
 import { complementaryColor, isString, opacity } from '@diabol/tool';
 import { getTheme, IPopupProps, ThemeWithProps } from '..';
 
+export function popupContainerShow(props: ThemeWithProps<Omit<IPopupProps, 'children'>>) {
+  return props.open ? 'block' : 'none';
+}
 
 export function popupWidth(props: ThemeWithProps<IPopupProps>) {
   const { width = 400 } = props;
@@ -17,10 +20,6 @@ export function popupBoxBg(props: ThemeWithProps<IPopupProps>) {
 export function popupBoxPadding(props: ThemeWithProps<IPopupProps>) {
   const theme = getTheme(props);
   return `${theme.Size(theme.spacing.padding[1])}${theme.unit}`;
-}
-
-export function popupBaseBg(props: ThemeWithProps<IPopupProps>) {
-  return props.open ? 1 : 0;
 }
 
 export function popupCloseSpacing(props: ThemeWithProps<IPopupProps>) {

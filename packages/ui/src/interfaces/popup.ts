@@ -8,3 +8,8 @@ export type IPopupProps = {
   children?: JSX.Element;
 };
 
+export type PopupAction = {
+  open: () => void;
+  close: () => void;
+}
+

@@ -91,7 +91,7 @@ function colorDark(hex: string, lum: number) {
 }
 
 /**
- * 颜色统一为hex
+ * 颜色统一为hex,dark模式下值越大颜色越暗，light模式下值越大颜色越亮
  * @param str 
  * @param num 
  * @returns 

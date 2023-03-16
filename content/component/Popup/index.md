@@ -20,13 +20,13 @@ export default () => {
   const [open2, setOpen2] = useState(false);
   return (
     <div>
-      <span onClick={() => setOpen(!open)}>打开</span>
+      <Text onClick={() => setOpen(!open)}>打开</Text>
       <Popup open={open} close onClonse={() => {
         setOpen(!open)
       }}>
         <div>
           <Text>1</Text>
-          <span onClick={() => setOpen2(!open2)}>打开2</span>
+          <Text onClick={() => setOpen2(!open2)}>打开2</Text>
           <Popup open={open2} close onClonse={() => {
             setOpen2(!open2)
           }}>
@@ -36,6 +36,26 @@ export default () => {
       </Popup>
     </div>
   )
+}
+```
+
+### 函数式调用
+
+```jsx live=true
+import React from 'react';
+import { Popup, Text } from '@diabol/ui';
+
+export default () => {
+  const {open, clonse} = Popup.useOpen({
+    close: true,
+    children: <Text>1111</Text>
+  });
+
+  return (
+    <div>
+      <Text onClick={open}>函数调用</Text>
+    </div>
+  );
 }
 ```
 

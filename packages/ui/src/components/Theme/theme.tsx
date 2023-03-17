@@ -4,8 +4,9 @@ import { createGlobalStyle, ThemedStyledProps, ThemeProvider } from 'styled-comp
 import { complementaryColor, merg } from '@diabol/tool';
 import { useMobile, useRenderEffect } from '@diabol/hooks';
 import { IThemeProps, Theme, ThemeMode } from '@ui/interfaces';
-import { ThemeContent } from './context';
+import { getTheme, ThemeContent } from './context';
 import { getThemeConfig, getThemeMode, setThemeConfig, setThemeMode } from './utils';
+import { globalCssVar } from '@ui/foundation/theme';
 
 
 export interface IThemeContextProps {
@@ -45,6 +46,13 @@ const Global = createGlobalStyle<ThemedStyledProps<any, Theme>>`
     * {
         -webkit-tap-highlight-color: transparent;
     }
+    // css 变量
+    :root {
+        ${(props) => {
+        const theme = getTheme(props);
+        return globalCssVar(theme);
+    }}
+    }
 `;
 
 function Size(this: any, num: number) {
@@ -73,16 +81,16 @@ export default function ThemeConfig(props: IThemeContextProps) {
         setThemeConfig(_theme);
         _theme.Size = Size.bind(_theme);
         _theme.Unit = Unit.bind(_theme);
-        console.log(_theme, '<<<<');
         return _theme;
     }, [props.theme, isMobile, theme]);
     const update = useCallback((mode: ThemeMode) => {
         setThemeMode(mode);
         setTheme(mode);
     }, [theme, isMobile]);
-
+    // 初始化时读取状态
     useRenderEffect(() => {
-        console.log(getThemeMode(), theme);
+        console.log('1111');
+        setThemeMode(getThemeMode());
         setTheme(getThemeMode());
     }, []);
     return (

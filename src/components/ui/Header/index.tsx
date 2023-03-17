@@ -10,7 +10,6 @@ export default function Header({ children, github, ...props }: IHeaderBaseProps 
   size: number
 }) {
   const { update, theme } = useContext(ThemeContent);
-  console.log(theme.mode);
   return (
     <HeaderBox
       actions={[

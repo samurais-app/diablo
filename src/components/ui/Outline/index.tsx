@@ -61,7 +61,6 @@ export default function Outline(props: Omit<IOutlineProps, 'isChild' | 'height' 
   };
 
   useRenderEffect(() => {
-    console.log(dom);
     setHeight({
       ul: dom.current?.getBoundingClientRect().height ?? 0,
       li: itemdom.current?.getBoundingClientRect().height ?? 0,

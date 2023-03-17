@@ -4,9 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "workspaces": [
-    "packages/hooks",
-    "packages/tools",
-    "packages/ui"
+    "packages/*"
   ],
   "scripts": {
     "sharp:bug": "cd ./node_modules/sharp && npm run install",
@@ -23,8 +21,8 @@
     "build:tool": "lerna run build --scope=@diabol/tool --parallel",
     "build:ui": "lerna run build --scope=@diabol/ui --parallel",
     "build:hooks": "lerna run build --scope=@diabol/hooks --parallel",
-    "build:gatsby-mdx-render": "lerna run build --scope=@diabol/gatsby-mdx-render --parallel",
-    "build": "npm run build:tool && npm run build:hooks && npm run build:ui && npm run build:gatsby-mdx-render",
+    "build:gatsbymdx": "lerna run build --scope=@diabol/gatsbymdx --parallel",
+    "build": "npm run build:tool && npm run build:hooks && npm run build:ui && npm run build:gatsbymdx",
     "link": "lerna run link",
     "publish": "lerna publish from-git  --yes"
   },

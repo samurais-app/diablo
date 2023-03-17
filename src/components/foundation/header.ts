@@ -6,7 +6,6 @@ import { ThemeWithProps } from '@ui/interfaces';
 export function headerBgImage(props: ThemeWithProps<object>) {
   const theme = getTheme(props);
   const { color } = theme;
-  console.log('header theme', theme.mode, color.background);
   return `radial-gradient(transparent 1px, ${hexToRgb(color.background)} 1px)`;
 }
 

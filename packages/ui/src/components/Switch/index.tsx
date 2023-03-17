@@ -29,12 +29,12 @@ export default function Switch({
     return status ? inactiveIcon : activeIcon;
   }, [activeIcon, inactiveIcon, status]);
 
+  // 服务端渲染时外部状态与内部同步
   useUpdateEffect(() => {
     if (isBoolean(value) && value !== status) {
       setStatus(value);
     }
   }, [value]);
-  console.log('switch', value, status);
 
   return (
     <SwitchBox size={size} value={status} onClick={_onChange}>

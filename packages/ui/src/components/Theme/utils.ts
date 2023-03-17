@@ -22,6 +22,9 @@ export function setThemeConfig(theme: Theme) {
 export function getThemeMode(): ThemeMode {
   let _theme: ThemeMode = 'light';
   if (DOM.isBrowser) {
+    _theme = document.body.getAttribute('theme') as ThemeMode;
+  }
+  if (!_theme) {
     _theme = localStorage.getItem('diablo-theme') as ThemeMode;
   }
   return _theme ? _theme : 'light';
@@ -30,4 +33,5 @@ export function getThemeMode(): ThemeMode {
 export function setThemeMode(mode: ThemeMode) {
   if (!DOM.isBrowser) return;
   localStorage.setItem('diablo-theme', mode);
+  document.body.setAttribute('theme', mode);
 }

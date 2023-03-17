@@ -1,6 +1,7 @@
-import { Icon, Layout } from '@ui/index';
+import { Layout } from '@ui/index';
 import { headerBgImage, headerIconColor, headerPadding, headerIconMargin } from 'components/foundation/header';
 import styled from 'styled-components';
+import { IconComponent } from 'components/icon';
 
 
 export const HeaderBox = styled(Layout.Header)`
@@ -13,6 +14,6 @@ export const HeaderBox = styled(Layout.Header)`
   }
 `;
 
-export const IconBox = styled(Icon)`
+export const IconBox = styled(IconComponent)`
   margin-left: ${headerIconMargin};
 `;

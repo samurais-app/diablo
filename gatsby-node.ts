@@ -17,6 +17,7 @@ export const onCreateWebpackConfig = ({ actions }) => {
         '@ui': path.resolve(__dirname, './packages/ui/src'),
         '@tools': path.resolve(__dirname, './packages/tools/src'),
         '@hooks': path.resolve(__dirname, './packages/hooks/src'),
+        '@icon': path.resolve(__dirname, './packages/icons/src'),
         'components': path.resolve(__dirname, './src/components'),
         'config': path.resolve(__dirname, './src/config'),
         'site': path.resolve(__dirname, './src'),

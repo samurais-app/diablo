@@ -5,3 +5,4 @@ export { default as CodeBlock } from './ui/CodeBlock';
 export { default as Outline } from './ui/Outline';
 export { default as Content } from './ui/Content';
 export { default as Document } from './ui/Document';
+export * from './icon';

@@ -112,7 +112,7 @@ jobs:
 
       - name: username
         run: |
-          git config user.name "${{ github.actor }}"
+          git config --global user.name "${{ github.actor }}"
         
       - name: version-bate
         if: github.base_ref == 'development'

@@ -1,11 +1,9 @@
-import { Script } from 'gatsby';
 import { Document } from './src/components';
 import React from 'react';
 
 export const wrapPageElement = ({ element, props }) => {
   return (
     <React.Fragment>
-      <Script src="//at.alicdn.com/t/c/font_3495102_xd47yext7k.js" />
       <Document {...props}>
         {element}
       </Document>

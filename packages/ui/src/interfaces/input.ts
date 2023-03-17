@@ -20,4 +20,4 @@ export interface IInputNumberProps extends IInputBaseProps {
 
 export type IInputProps = IInputTextProps | IInputNumberProps;
 
-export type ThemeWithInputBaseProps = ThemedStyledProps<IInputBaseProps, Theme>;
+export type ThemeWithInputBaseProps = ThemedStyledProps<IInputProps, Theme>;

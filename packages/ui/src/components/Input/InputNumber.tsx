@@ -1,13 +1,10 @@
 /* eslint-disable indent */
 import React, { useCallback } from 'react';
 import { InputStyled, InputContainerStyled } from './input.styled';
-import { IInputBaseProps } from '@ui/interfaces';
+import { IInputProps } from '@ui/interfaces';
 
-export interface IInputNumberProps extends IInputBaseProps {
-    type?: 'number';
-};
 
-export function InputNumber(props: IInputNumberProps) {
+export function InputNumber(props: IInputProps) {
     const {
         size = 'small',
         error,

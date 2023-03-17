@@ -1,13 +1,10 @@
-import { IInputBaseProps } from '@ui/interfaces';
+import { IInputProps } from '@ui/interfaces';
 import React from 'react';
 import { useCallback } from 'react';
 import { InputContainerStyled, InputStyled } from './input.styled';
 
-export interface IInputSearchProps extends IInputBaseProps {
-  type?: 'search';
-};
 
-export function InputSearch(props: IInputSearchProps) {
+export function InputSearch(props: IInputProps) {
   const {
     size = 'small',
     error,

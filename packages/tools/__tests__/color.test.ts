@@ -18,6 +18,6 @@ describe('color', () => {
 
   test('color dark', () => {
     const data = color('#AD2828', 0, false);
-    expect(data).toBe('111');
+    expect(data).toBe('#ad2828');
   });
 });

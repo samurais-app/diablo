@@ -1,13 +1,9 @@
 /* eslint-disable indent */
 import React, { useCallback } from 'react';
 import { InputStyled, InputContainerStyled } from './input.styled';
-import { IInputBaseProps } from '@ui/interfaces';
+import { IInputProps } from '@ui/interfaces';
 
-export interface IInputTextProps extends IInputBaseProps {
-    maxLength?: number
-};
-
-export function InputText(props: IInputTextProps) {
+export function InputText(props: IInputProps) {
     const {
         size = 'small',
         error,

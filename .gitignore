@@ -4,5 +4,6 @@ public
 packages/**/build/**/**.*
 packages/**/**/build/**/**.*
 coverage
+package-lock.json
 .eslintcache
 .cache

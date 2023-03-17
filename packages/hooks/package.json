@@ -39,7 +39,7 @@
     "@types/styled-components": "^5.1.26",
     "ts-lib": "^0.0.5",
     "tsc-alias": "^1.8.2",
-    "typescript": "^4.9.5"
+    "typescript": "^5.0.2"
   },
   "gitHead": "b141367402371c5014acc8afadf3ecbc1329fe4b"
 }

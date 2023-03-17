@@ -40,7 +40,15 @@ jobs:
       - name: Npm Version
         run: npm --version
 
+      - name: Cache Node_modules
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
       - name: Install
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm run bootstrap
 
       - name: Build 
@@ -73,14 +81,12 @@ jobs:
       - name: Npm Version
         run: npm --version
 
-      - name: cache node_modules
+      - name: Cache Node_modules
         uses: actions/cache@v3
         id: cache
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install
         if: steps.cache.outputs.cache-hit != 'true'

@@ -20,5 +20,5 @@ const Icon = function Icon({
       <use xlinkHref={`#${type}`} />
     </IconBox>
   );
-}
+};
 export default Icon;

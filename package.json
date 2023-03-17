@@ -24,6 +24,8 @@
     "build:gatsbymdx": "lerna run build --scope=@diabol/gatsbymdx --parallel",
     "build": "npm run build:tool && npm run build:hooks && npm run build:ui && npm run build:gatsbymdx",
     "link": "lerna run link",
+    "version:bate": "lerna version --conventional-prerelease --preid beta --yes",
+    "version:release": "lerna version --conventional-graduate --yes",
     "publish": "lerna publish from-git  --yes"
   },
   "repository": {

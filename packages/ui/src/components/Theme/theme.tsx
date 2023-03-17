@@ -5,7 +5,7 @@ import { complementaryColor, merg } from '@diabol/tool';
 import { useMobile, useRenderEffect } from '@diabol/hooks';
 import { IThemeProps, Theme, ThemeMode } from '@ui/interfaces';
 import { getTheme, ThemeContent } from './context';
-import { getThemeConfig, getThemeMode, setThemeConfig, setThemeMode } from './utils';
+import { getThemeConfig, getThemeMode, setThemeConfig, setThemeMode, Size, Unit } from './utils';
 import { globalCssVar } from '@ui/foundation/theme';
 
 
@@ -54,19 +54,6 @@ const Global = createGlobalStyle<ThemedStyledProps<any, Theme>>`
     }}
     }
 `;
-
-function Size(this: any, num: number) {
-    const unit = this.unit;
-    const size = this.size;
-    return unit === 'rem' ? Number(Number(num / size).toFixed(2)) : num;
-}
-
-function Unit(this: any, num: number) {
-    const unit = this.unit;
-    const size = this.size;
-    const data = unit === 'rem' ? Number(Number(num / size).toFixed(2)) : num;
-    return `${data}${unit}`;
-}
 
 export default function ThemeConfig(props: IThemeContextProps) {
     const isMobile = useMobile();

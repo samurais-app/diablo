@@ -47,6 +47,6 @@ export function inputSuffixPadding(props: ThemeWithProps<IInputProps>) {
 }
 
 export function inputPrefixPadding(props: ThemeWithProps<IInputProps>) {
-    const { Unit, spacing } = getTheme(props);
-    return `0 ${Unit(spacing.spacing[0])} 0 0`;
+    const theme = getTheme(props);
+    return `0 ${theme.Unit(theme.spacing.spacing[0])} 0 0`;
 }

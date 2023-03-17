@@ -55,12 +55,12 @@ export const dark: Theme = {
         radius: [4, 6, 8, 10, 12],
         padding: [8, 12, 18, 26, 36]
     },
-    Size(this: any, num: number) {
+    Size(num: number) {
         const unit = this.unit;
         const size = this.size;
         return unit === 'rem' ? Number(Number(num / size).toFixed(2)) : num;
     },
-    Unit(this: any, num: number) {
+    Unit(num: number) {
         const unit = this.unit;
         const size = this.size;
         const data = unit === 'rem' ? Number(Number(num / size).toFixed(2)) : num;

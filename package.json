@@ -99,6 +99,9 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
+    "@testing-library/dom": "^9.0.1",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.0.0",
     "@types/node": "^18.14.0",
     "@types/react": "^18.0.28",

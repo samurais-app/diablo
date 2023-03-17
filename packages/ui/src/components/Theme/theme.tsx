@@ -89,7 +89,6 @@ export default function ThemeConfig(props: IThemeContextProps) {
     }, [theme, isMobile]);
     // 初始化时读取状态
     useRenderEffect(() => {
-        console.log('1111');
         setThemeMode(getThemeMode());
         setTheme(getThemeMode());
     }, []);

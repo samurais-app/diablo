@@ -29,7 +29,7 @@
     "url": "https://github.com/samurais-app/diablo/issues"
   },
   "peerDependencies": {
-    "@diabol/tool": "^0.1.0",
+    "@diabol/tool": "^0.4.0",
     "@floating-ui/react-dom": "^1.0.0",
     "@floating-ui/react-dom-interactions": "^0.10.1",
     "resize-observer-polyfill": "^1.5.1"

@@ -1,4 +1,5 @@
-import { isFunction } from '@diabol/tool';
+import { useUpdateEffect } from '@diabol/hooks';
+import { isBoolean, isFunction } from '@diabol/tool';
 import { isString } from '@diabol/tool';
 import { SwitchProps } from '@ui/interfaces';
 import React, { isValidElement, useCallback, useMemo, useState } from 'react';
@@ -27,6 +28,13 @@ export default function Switch({
     if (!isValidElement(activeIcon) || !isValidElement(inactiveIcon)) return undefined;
     return status ? inactiveIcon : activeIcon;
   }, [activeIcon, inactiveIcon, status]);
+
+  useUpdateEffect(() => {
+    if (isBoolean(value) && value !== status) {
+      setStatus(value);
+    }
+  }, [value]);
+  console.log('switch', value, status);
 
   return (
     <SwitchBox size={size} value={status} onClick={_onChange}>

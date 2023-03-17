@@ -65,7 +65,7 @@ const config: GatsbyConfig = {
       options: {
         extensions: ['.mdx', '.md'],
         gatsbyRemarkPlugins: [
-          { resolve: "./plugins/gatsby-mdx-render-section" }
+          { resolve: "./packages/gatsby-mdx-render" }
         ],
       }
     },

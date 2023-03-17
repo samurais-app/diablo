@@ -1,9 +1,10 @@
 // 大纲
 
+import { useRenderEffect } from '@hooks/index';
 import { isArray } from '@tools/index';
 import { IOutlineItemProps, IOutlineProps } from 'components/interfaces/outline';
 import { OutlineItem, OutlineLink, OutlineList } from 'components/styled/outline';
-import React, { Children, cloneElement, createElement, isValidElement, ReactElement, useLayoutEffect, useRef, useState } from 'react';
+import React, { Children, cloneElement, createElement, isValidElement, ReactElement, useRef, useState } from 'react';
 
 function mergeIndex(childs: ReactElement<IOutlineItemProps>[], node = []): ReactElement<IOutlineItemProps>[] {
   return childs.reduce((nodes, item) => {
@@ -59,7 +60,8 @@ export default function Outline(props: Omit<IOutlineProps, 'isChild' | 'height' 
     });
   };
 
-  useLayoutEffect(() => {
+  useRenderEffect(() => {
+    console.log(dom);
     setHeight({
       ul: dom.current?.getBoundingClientRect().height ?? 0,
       li: itemdom.current?.getBoundingClientRect().height ?? 0,

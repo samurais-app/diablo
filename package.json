@@ -23,7 +23,8 @@
     "build:tool": "lerna run build --scope=@diabol/tool --parallel",
     "build:ui": "lerna run build --scope=@diabol/ui --parallel",
     "build:hooks": "lerna run build --scope=@diabol/hooks --parallel",
-    "build": "npm run build:tool && npm run build:hooks && npm run build:ui",
+    "build:gatsby-mdx-render": "lerna run build --scope=@diabol/gatsby-mdx-render --parallel",
+    "build": "npm run build:tool && npm run build:hooks && npm run build:ui && npm run build:gatsby-mdx-render",
     "link": "lerna run link",
     "publish": "lerna publish from-git  --yes"
   },

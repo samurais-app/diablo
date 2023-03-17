@@ -6,5 +6,7 @@ export * from './useMutationObserver';
 export * from './useChildrens';
 export * from './useLatest';
 export * from './useRafState';
+export * from './useRenderEffect';
 export { default as useUnmount } from './useUnmount';
 export { default as useUpdateEffect } from './useUpdateEffect';
+export { default as useLayoutEffectWithTarget } from './useLayoutEffectWithTarget';

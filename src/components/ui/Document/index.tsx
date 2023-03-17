@@ -1,5 +1,5 @@
 import { Icon, ThemeConfig, Navigation } from '@ui/index';
-import React, { memo, useState } from 'react';
+import React, { useState } from 'react';
 import { navigate } from 'gatsby';
 import get from 'lodash.get';
 import { DocumentContent, DocumentLayout, DocumentNavigation, DocumentOutline, GlobalStyled, LogoBox, MainLayout } from 'components/styled/document';
@@ -31,7 +31,7 @@ function renderOutline(items: any[]) {
   });
 }
 
-export default memo(function Document({ location, children, data, pageResources }: any) {
+export default function Document({ location, children, data, pageResources }: any) {
   const isMobile = useMobile();
   const { width } = useSize(DOM.isBrowser ? document?.body : undefined);
   const items = get(data, 'current.tableOfContents.items', []);
@@ -53,7 +53,7 @@ export default memo(function Document({ location, children, data, pageResources 
           logo={
             <LogoBox>
               <Icon type='icon-d' size={30} key="icon" />
-              {isMobile && !path.includes('404') ? <Icon type='icon-liebiao' size={16} key="icon" onClick={() => setShow(!show)} /> : null}
+              {isMobile && !path.includes('404') ? <Icon type='icon-liebiao' size={16} key="icon-2" onClick={() => setShow(!show)} /> : null}
             </LogoBox>
           }
         />
@@ -82,4 +82,4 @@ export default memo(function Document({ location, children, data, pageResources 
       </DocumentLayout>
     </ThemeConfig>
   );
-});
+}

@@ -1,6 +1,7 @@
-import { useLayoutEffect } from 'react';
+import { DOM } from '@diabol/tool';
+import { useLayoutEffect, useEffect } from 'react';
 import createEffectWithTarget from './createEffectWithTarget';
 
-const useEffectWithTarget = createEffectWithTarget(useLayoutEffect);
+const useEffectWithTarget = createEffectWithTarget(DOM.isBrowser ? useLayoutEffect : useEffect);
 
 export default useEffectWithTarget;

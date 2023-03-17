@@ -1,0 +1,32 @@
+{
+  "name": "@diabol/gatsby-mdx-render",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "刘伟 <lemonpaimc@126.com>",
+  "homepage": "https://github.com/samurais-app/diablo/tree/main/packages/gatsby-mdx-render#readme",
+  "license": "MIT",
+  "types": "build/index.d.ts",
+  "main": "build/index.js",
+  "files": [
+    "build"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samurais-app/diablo.git"
+  },
+  "scripts": {
+    "build": "tsc && tsc-alias"
+  },
+  "bugs": {
+    "url": "https://github.com/samurais-app/diablo/issues"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "ts-lib": "^0.0.5",
+    "tsc-alias": "^1.8.2",
+    "typescript": "^4.9.5"
+  }
+}

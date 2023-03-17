@@ -10,13 +10,25 @@ export default function Header({ children, github, ...props }: IHeaderBaseProps 
   size: number
 }) {
   const { update, theme } = useContext(ThemeContent);
+  console.log(theme.mode);
   return (
     <HeaderBox
       actions={[
-        <Switch key="sw" activeIcon={<Icon type="icon-sam" />} value={theme.mode === 'dark'} inactiveIcon={<Icon type="icon-soon" />} onChange={(e) => {
-          update(e ? 'dark' : 'light');
-        }} />,
-        <IconBox type='icon-github' size={20} key="icon" onClick={() => window.open(github, '_self')} />
+        <Switch
+          key="sw"
+          value={theme.mode === 'dark'}
+          activeIcon={<Icon type="icon-sam" />}
+          inactiveIcon={<Icon type="icon-soon" />}
+          onChange={(e) => {
+            update(e ? 'dark' : 'light');
+          }}
+        />,
+        <IconBox
+          type='icon-github'
+          size={20}
+          key="icon"
+          onClick={() => window.open(github, '_self')}
+        />
       ]}
       {...props}
     >

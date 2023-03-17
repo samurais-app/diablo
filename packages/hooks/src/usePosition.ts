@@ -1,7 +1,8 @@
 /* eslint-disable indent */
 import { flip, offset, ReferenceType, shift, Strategy, useFloating } from '@floating-ui/react-dom';
 import { isBoolean, isUndefined } from '@diabol/tool';
-import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useRenderEffect } from './useRenderEffect';
 
 export interface IPosition extends Pick<React.CSSProperties, 'top' | 'left' | 'width'> {
     position: Strategy;
@@ -45,7 +46,7 @@ export function usePosition(): [
         };
     }, [refs.reference.current, update]);
 
-    useLayoutEffect(() => {
+    useRenderEffect(() => {
         if (visible) {
             setShow(true);
         }

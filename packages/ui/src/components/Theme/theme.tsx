@@ -1,17 +1,12 @@
 /* eslint-disable indent */
-import React, { memo, useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { createGlobalStyle, ThemedStyledProps, ThemeProvider } from 'styled-components';
-import { complementaryColor, DOM, merg } from '@diabol/tool';
-import { useMobile } from '@diabol/hooks';
+import { complementaryColor, merg } from '@diabol/tool';
+import { useMobile, useRenderEffect } from '@diabol/hooks';
 import { IThemeProps, Theme, ThemeMode } from '@ui/interfaces';
 import { ThemeContent } from './context';
-import { getThemeConfig, setThemeConfig } from './utils';
+import { getThemeConfig, getThemeMode, setThemeConfig, setThemeMode } from './utils';
 
-
-function setThemeMode(mode: ThemeMode) {
-    if (!DOM.isBrowser) return;
-    localStorage.setItem('diablo-theme', mode);
-}
 
 export interface IThemeContextProps {
     mode?: ThemeMode;
@@ -65,9 +60,9 @@ function Unit(this: any, num: number) {
     return `${data}${unit}`;
 }
 
-export default memo(function ThemeConfig(props: IThemeContextProps) {
+export default function ThemeConfig(props: IThemeContextProps) {
     const isMobile = useMobile();
-    const [theme, setTheme] = useState<ThemeMode>();
+    const [theme, setTheme] = useState<ThemeMode>('light');
     const config = useMemo(() => {
         const data: Theme = getThemeConfig(theme);
         const _theme: Theme = merg(getThemeConfig(theme), {
@@ -75,15 +70,21 @@ export default memo(function ThemeConfig(props: IThemeContextProps) {
             mobile: isMobile,
             unit: isMobile ? 'rem' : 'px' as any,
         });
-        //setThemeConfig(_theme);
+        setThemeConfig(_theme);
         _theme.Size = Size.bind(_theme);
         _theme.Unit = Unit.bind(_theme);
+        console.log(_theme, '<<<<');
         return _theme;
     }, [props.theme, isMobile, theme]);
     const update = useCallback((mode: ThemeMode) => {
-        //setThemeMode(mode);
+        setThemeMode(mode);
         setTheme(mode);
     }, [theme, isMobile]);
+
+    useRenderEffect(() => {
+        console.log(getThemeMode(), theme);
+        setTheme(getThemeMode());
+    }, []);
     return (
         <ThemeContent.Provider value={{ theme: config, update }}>
             <ThemeProvider
@@ -94,4 +95,4 @@ export default memo(function ThemeConfig(props: IThemeContextProps) {
             </ThemeProvider>
         </ThemeContent.Provider>
     );
-});
+};

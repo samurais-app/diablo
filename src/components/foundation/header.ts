@@ -17,7 +17,7 @@ export function headerPadding(props: ThemeWithProps<any>) {
   }
   if (size >= 1400) {
     const padding1 = Size(spacing.padding[0]);
-    const padding2 = Size(spacing.spacing[4] * ((size * 9.5) / 1200));
+    const padding2 = Size(spacing.spacing[4] * ((size * 6.5) / 1200));
     return `${padding1}${unit} ${padding2}${unit} ${padding1}${unit} ${padding2}${unit}`;
   }
   const padding1 = Size(spacing.padding[0]);

@@ -13,8 +13,8 @@ brief: Icon组件提供基础svg图标的使用方式，单色svg图标可以根
 
 ```jsx live=true
 import React from 'react';
-import { Input } from '@diabol/ui';
-
+import { Input, Icon } from '@diabol/ui';
+<Icon type="icon-github" />
 ```
 
 

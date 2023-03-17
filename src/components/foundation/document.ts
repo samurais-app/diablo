@@ -31,7 +31,7 @@ export function docNavigationPadding(props: ThemeWithProps<IDocumentNavigationPr
   }
   if (size >= 1400) {
     const padding1 = Size(spacing.spacing[2] * 3);
-    const padding2 = Size(spacing.spacing[4] * ((size * 9) / 1200));
+    const padding2 = Size(spacing.spacing[4] * ((size * 6) / 1200));
     return `${padding1}${unit} 0${unit} ${padding1}${unit} ${padding2}${unit}`;
   }
   const padding1 = Size(spacing.spacing[2] * 3);
@@ -76,8 +76,8 @@ export function docContentWidth(props: ThemeWithProps<IDocumentContentProps>) {
     return `calc(100vw - ${Size(Number(left))}${unit})`;
   }
   if (props.size >= 1400) {
-    const _left = spacing.spacing[4] * ((size * 9) / 1200) + left;
-    const _right = spacing.spacing[4] * ((size * 10) / 1200) + right;
+    const _left = spacing.spacing[4] * ((size * 6) / 1200) + left;
+    const _right = spacing.spacing[4] * ((size * 6) / 1200) + right;
     return `calc(100vw - ${Size(Number(_left) + Number(_right))}${unit})`;
   }
   return mobile ? '100vw' : `calc(100vw - ${Size(Number(left) + Number(right))}${unit})`;
@@ -91,8 +91,8 @@ export function docContentMargin(props: ThemeWithProps<IDocumentContentProps>) {
     return `0 0 0 ${Size(Number(left))}${unit}`;
   }
   if (props.size >= 1400) {
-    const _left = spacing.spacing[4] * ((size * 9) / 1200) + left;
-    const _right = spacing.spacing[4] * ((size * 10) / 1200);
+    const _left = spacing.spacing[4] * ((size * 6) / 1200) + left;
+    const _right = spacing.spacing[4] * ((size * 6) / 1200);
     return `0 ${Size(Number(_right))}${unit} 0 ${Size(Number(_left))}${unit}`;
   }
   return mobile ? 0 : `0 ${Size(Number(right))}${unit} 0 ${Size(Number(left))}${unit}`;
@@ -118,7 +118,7 @@ export function docOutlinePadding(props: ThemeWithProps<IDocumentOutlineProps>) 
   const { size } = props;
   if (size >= 1400) {
     const padding1 = Size(spacing.padding[4]);
-    const padding2 = Size(spacing.spacing[4] * ((size * 10) / 1200));
+    const padding2 = Size(spacing.spacing[4] * ((size * 6) / 1200));
     return `${padding1}${unit} ${padding2}${unit} ${padding1}${unit} 0${unit}`;
   }
   return `${Size(spacing.padding[4])}${unit} 0`;

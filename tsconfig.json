@@ -37,6 +37,9 @@
       "@hooks/*": [
         "./packages/hooks/src/*"
       ],
+      "@icon/*": [
+        "./packages/icons/src/*"
+      ],
       "components/*": [
         "./src/components/*"
       ],

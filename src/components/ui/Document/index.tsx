@@ -1,10 +1,11 @@
-import { Icon, ThemeConfig, Navigation } from '@ui/index';
+import { ThemeConfig, Navigation } from '@ui/index';
 import React, { useState } from 'react';
 import { navigate } from 'gatsby';
 import get from 'lodash.get';
 import { DocumentContent, DocumentLayout, DocumentNavigation, DocumentOutline, GlobalStyled, LogoBox, MainLayout } from 'components/styled/document';
 import { useMobile, useSize } from '@hooks/index';
 import { itemsArr } from 'site/utils/category';
+import { IconComponent } from 'components/icon';
 import { DOM } from '@tools/index';
 import theme from 'config/theme';
 import Header from '../Header';
@@ -52,8 +53,8 @@ export default function Document({ location, children, data, pageResources }: an
           float
           logo={
             <LogoBox>
-              <Icon type='icon-d' size={30} key="icon" />
-              {isMobile && !path.includes('404') ? <Icon type='icon-liebiao' size={16} key="icon-2" onClick={() => setShow(!show)} /> : null}
+              <IconComponent type='icon-d' size={30} key="icon" />
+              {isMobile && !path.includes('404') ? <IconComponent type='icon-liebiao' size={16} key="icon-2" onClick={() => setShow(!show)} /> : null}
             </LogoBox>
           }
         />

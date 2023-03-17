@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { } from 'gatsby';
-import { Icon, IHeaderBaseProps, Switch, ThemeContent } from '@ui/index';
+import { IHeaderBaseProps, Switch, ThemeContent } from '@ui/index';
+import { IconComponent } from 'components/index';
 import { HeaderBox, IconBox } from '../../styled/header';
 
 
@@ -16,8 +17,8 @@ export default function Header({ children, github, ...props }: IHeaderBaseProps 
         <Switch
           key="sw"
           value={theme.mode === 'dark'}
-          activeIcon={<Icon type="icon-sam" />}
-          inactiveIcon={<Icon type="icon-soon" />}
+          activeIcon={<IconComponent type="icon-sam" />}
+          inactiveIcon={<IconComponent type="icon-soon" />}
           onChange={(e) => {
             update(e ? 'dark' : 'light');
           }}

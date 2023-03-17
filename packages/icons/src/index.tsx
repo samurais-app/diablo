@@ -7,7 +7,6 @@ export const isBrowser = !!(
     window.document &&
     window.document.createElement
 );
-
 export default function withIcon<P>(Component: FunctionComponent<P>) {
     if (isBrowser && !document.getElementById('svg-sprite-icons')) {
         const dom = document.createElement('div');

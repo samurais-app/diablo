@@ -47,7 +47,6 @@
   },
   "dependencies": {
     "@diabol/hooks": "^0.1.0",
-    "@diabol/icon": "^0.1.0",
     "@diabol/tool": "^0.1.0"
   }
 }

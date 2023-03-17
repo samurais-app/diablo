@@ -1,13 +1,12 @@
 import { IconProps } from '@ui/interfaces';
 import React from 'react';
 import classnames from 'classnames';
-import withIcon from '@diabol/icon';
 import { isString } from '@diabol/tool';
 import { IconBox } from './styled';
 
 
 
-const Icon = withIcon(function Icon({
+const Icon = function Icon({
   type,
   size,
   onClick,
@@ -21,5 +20,5 @@ const Icon = withIcon(function Icon({
       <use xlinkHref={`#${type}`} />
     </IconBox>
   );
-});
+}
 export default Icon;

@@ -1,0 +1,158 @@
+name: publish
+
+on:
+  pull_request:
+    paths:
+      - packages/**
+      - lerna.json
+    types: [closed]
+    branches:
+      - main
+      - development
+env:
+  CI: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.14.2
+
+      - name: Upgrade Version
+        run: npm install npm@8.19.3 -g
+
+      - name: Npm Version
+        run: npm --version
+
+      - name: Install
+        run: npm run bootstrap
+
+      - name: Build 
+        run: npm run build
+
+      - name: Test
+        run: npm run test
+
+  publish:
+    needs: test
+    if: always() && needs.test.result == 'success'
+    runs-on: ubuntu-20.04
+    name: publish
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: "0"
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.14.2
+
+      - name: Upgrade Version
+        run: npm install npm@8.19.3 -g
+
+      - name: Npm Version
+        run: npm --version
+
+      - name: cache node_modules
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm run bootstrap
+
+      - name: Build 
+        run: npm run build
+
+      - name: git status
+        id: status
+        shell: bash -ex {0}
+        run: |
+          status=$(git status -s);
+          if [[ -n "$status" ]] ; then
+            echo "::set-output name=status::true"
+          else 
+            echo "::set-output name=status::false"
+          fi
+        env:
+          GITHUB_TOKEN: ${{secrets.NPM}}
+
+      - name: action commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        if: steps.status.outputs.status == 'true'
+        with:
+          commit_message: auto commit
+          commit_options: '--no-verify --signoff'
+          status_options: '--untracked-files=no'
+
+      - name: username
+        run: |
+          git config user.name "${{ github.actor }}"
+        
+      - name: version-bate
+        if: github.base_ref == 'development'
+        run: npm run version:bate
+
+      - name: version-release
+        if: github.base_ref == 'main'
+        run: npm run version:release
+
+      - name: publish
+        run: npm run publish
+        env:
+          GH_TOKEN: ${{ secrets.NPM }}
+
+      - name: Get version
+        shell: bash -ex {0}
+        run: |
+          CURRENT_VERSION=$(node -p 'require("./lerna.json").version')
+          echo "CURRENT_VERSION=${CURRENT_VERSION}" >> $GITHUB_ENV
+
+      - name: Create Release
+        id: create_release
+        if: github.base_ref == 'main'
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ env.CURRENT_VERSION }}
+          release_name: ${{ github.event.pull_request.title }}
+          body: |
+            ${{ github.event.pull_request.body }}
+          draft: false
+          prerelease: false
+
+      - uses: actions/github-script@v6
+        name: 'issues'
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'https://github.com/${{ github.repository }}/releases/tag/v${{ env.CURRENT_VERSION }} is released 🎉'
+            })

@@ -10,6 +10,8 @@ export function InputNumber(props: IInputProps) {
         error,
         onChange,
         border,
+        prefix,
+        suffix,
         ..._props
     } = props;
     const _change = useCallback((event) => {

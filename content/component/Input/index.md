@@ -40,8 +40,10 @@ import { Input } from '@diabol/ui';
 
 ## API参考
 
-| 属性       | 说明                                   | 类型             | 默认值   | 版本 |
-|-----------|----------------------------------------|-----------------|---------|--------- |
-| type      | input输入类型                           | text、number、password、search         | text    |0.0.0 |
-| size      | 组件大小                                | string          | small   | 0.0.0 |
-| border    | 是否拥有边框                            | boolean        | false   | 0.0.0 |
+| 属性       | 说明                  | 类型                           | 默认值   | 版本 |
+|-----------|----------------------|--------------------------------|---------|--------- |
+| type      | input输入类型         | text、number、password、search   | text    |0.4.0     |
+| size      | 组件大小              | small、middle、large                          | small   | 0.4.0    |
+| border    | 是否拥有边框           | boolean                         | false   | 0.4.0    |
+| prefix     | 前缀                  | JSX.Element、string             | empty      | 0.4.0   |
+| suffix     | 后缀                 | JSX.Element、string             | empty      | 0.4.0   |

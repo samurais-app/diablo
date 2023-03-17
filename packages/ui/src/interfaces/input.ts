@@ -1,23 +1,24 @@
-import { Size, IFieldProps } from '@ui/interfaces';
-import { Theme } from '@ui/interfaces';
-import { ThemedStyledProps } from 'styled-components';
+import { IFieldProps, BaseProps } from '@ui/interfaces';
+
+type IInputCommon = Omit<React.InputHTMLAttributes<HTMLInputElement>, FilterAttrs>;
 
 export type InputType = 'text' | 'number' | 'password' | 'search'
+export type FilterAttrs = 'size' | 'type' | 'value' | 'onChange' | 'max' | 'min' | 'prefix' | 'suffix';
 
-export interface IInputBaseProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type' | 'value' | 'onChange' | 'max' | 'min'>, IFieldProps {
+
+
+export interface IInputBaseProps extends IInputCommon, IFieldProps {
     type?: InputType;
-    size?: keyof typeof Size;
-    border?: boolean;
+    prefix?: JSX.Element | string;
+    suffix?: JSX.Element | string;
 }
 
-export interface IInputTextProps extends IInputBaseProps {
+export interface IInputTextProps extends BaseProps<IInputBaseProps> {
     maxLength?: number;
 }
 
-export interface IInputNumberProps extends IInputBaseProps {
+export interface IInputNumberProps extends BaseProps<IInputBaseProps> {
     max?: number;
 }
 
 export type IInputProps = IInputTextProps | IInputNumberProps;
-
-export type ThemeWithInputBaseProps = ThemedStyledProps<IInputProps, Theme>;

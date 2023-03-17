@@ -5,5 +5,13 @@ import { Theme } from './theme';
 export type ThemeWithProps<T> = ThemedStyledProps<T, Theme>;
 
 export type BaseProps<P> = P & {
-  size?: keyof typeof Size;
-} 
+  size?: SizeType;
+  border?: boolean;
+}
+
+export type SizeType = keyof typeof Size;
+
+export type BaseComponentProps = {
+  size?: SizeType;
+  border?: boolean;
+}

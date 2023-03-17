@@ -20,8 +20,8 @@ import { Input, Icon } from '@diabol/ui';
 
 ## API参考
 
-| 属性       | 说明                                   | 类型             | 默认值   | 版本 |
-|-----------|--------------------|-----------------|---------|--------- |
-| type      | input输入类型                           | text、number、password、search         | text    |0.0.0 |
-| size      | 组件大小                                | string          | small   | 0.0.0 |
-| border    | 是否拥有边框                            | boolean        | false   | 0.0.0 |
+| 属性     | 必输  | 说明                                   | 类型             | 默认值   | 版本 |
+|---------|--------|------------------------------------ |-----------------|---------|--------- |
+| type    | 是     | icon信息                                  | string          |     |0.4.0 |
+| size    | 否     | 组件大小                                    | small、middle、large | small   | 0.4.0 |
+| border  | 否     | 是否拥有边框                                | boolean        | false   | 0.4.0 |

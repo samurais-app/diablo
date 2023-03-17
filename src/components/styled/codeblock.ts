@@ -37,9 +37,6 @@ export const CompilerCom = styled(Compiler)`
   display: flex;
   align-items: center;
   justify-content: center;
-  & > div {
-    box-sizing: border-box;
-  }
 `;
 
 export const EditorCom = styled(Editor)`

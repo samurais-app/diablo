@@ -11,6 +11,7 @@ export default function Input(props: IInputProps) {
     ..._props
   } = props;
   const Com = getInputComponent(type);
+  console.log(type, Com);
   const _onChange = useCallback((event) => {
     const func = getInputChange(type);
     func(event, props);

@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 import { ThemeWithProps, IInputProps } from '@ui/interfaces';
-import { inputBgColor, inputBorder, inputBorderRadius, inputCaretColor, inputFontSize, inputPadding } from '@ui/foundation';
+import { inputBgColor, inputBorder, inputBorderRadius, inputCaretColor, inputFontSize, inputPadding, inputPrefixPadding, inputSuffixPadding, inputSuffixPrefixColor } from '@ui/foundation';
 
+const InputPrefixSuffix = styled.div`
+  max-height: 100%;;
+  display: flex;
+  align-items: center;
+  color: ${inputSuffixPrefixColor};
+`;
 
 export const InputContainerStyled = styled.div<ThemeWithProps<IInputProps>>`
-  box-sizing: border-box;
-  width: 200px;
+  min-width: 200px;
   background-color: ${inputBgColor};
   padding: ${inputPadding};
   border-radius: ${inputBorderRadius};
@@ -38,4 +43,12 @@ export const InputStyled = styled.input`
   &:focus {
       outline: none;
   };
+`;
+
+export const InputPrefix = styled(InputPrefixSuffix)`
+  padding: ${inputPrefixPadding};
+`;
+
+export const InputSuffix = styled(InputPrefixSuffix)`
+  padding: ${inputSuffixPadding};
 `;

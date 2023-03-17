@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { navigate } from 'gatsby';
 import { useView } from 'react-view';
 import presetTypescript from '@babel/preset-typescript';
-import { Input, ThemeConfig, Navigation, Popup, Text, Icon } from '@ui/index';
 import * as Component from '@ui/index';
 import { CodeBox, CompilerCom, EditorCom, ErrorCom, ViewBox } from 'components/styled/codeblock';
 import { isFunction } from '@tools/index';
@@ -10,10 +9,7 @@ import { isFunction } from '@tools/index';
 
 function createScope(com: Record<string, any>) {
   return Object.entries(com).reduce((a, b) => {
-    if (isFunction(b[1])) {
-      a[b[0]] = b[1];
-      return a;
-    }
+    a[b[0]] = b[1];
     return a;
   }, {
     React,

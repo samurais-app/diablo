@@ -47,7 +47,7 @@ export default function Document({ location, children, data, pageResources }: an
       <DocumentLayout top={top}>
         <GlobalStyled />
         <Header
-          height={50}
+          height={60}
           size={width}
           github={data?.site?.siteMetadata?.github}
           float
@@ -61,7 +61,7 @@ export default function Document({ location, children, data, pageResources }: an
         {home ?
           children :
           <MainLayout>
-            <DocumentNavigation top={50} width={260} size={width} show={show}>
+            <DocumentNavigation top={60} width={260} size={width} show={show}>
               <Navigation path={location.pathname} onChange={navigate}>
                 {nodes.map((item) => {
                   return <Navigation.Item title={item.title} path={item.key} key={item.key}>{
@@ -70,10 +70,10 @@ export default function Document({ location, children, data, pageResources }: an
                 })}
               </Navigation>
             </DocumentNavigation>
-            <DocumentContent top={50} left={260} right={200} size={width} showNavigation={show} showOutline={!path.includes('404')}>
+            <DocumentContent top={60} left={260} right={200} size={width} showNavigation={show} showOutline={!path.includes('404')}>
               {children}
             </DocumentContent>
-            <DocumentOutline top={50} width={200} size={width} show={!path.includes('404')}>
+            <DocumentOutline top={60} width={200} size={width} show={!path.includes('404')}>
               <Outline>
                 {renderOutline(items)}
               </Outline>

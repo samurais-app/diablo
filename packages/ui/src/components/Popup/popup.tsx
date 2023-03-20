@@ -19,14 +19,20 @@ export const PopupComponent = forwardRef(({ width, onClonse, children, open, the
     ref: backdropApi,
     from: { 'pointer-events': 'none', opacity: 0 },
     enter: { 'pointer-events': 'all', opacity: 0.4 },
-    leave: { 'pointer-events': 'none', opacity: 0 }
+    leave: { 'pointer-events': 'none', opacity: 0 },
+    config: {
+      duration: 300
+    }
   });
 
   const modal = useTransition(status, {
     ref: modalApi,
     from: { transform: 'scale(0)', },
     enter: { transform: 'scale(1)' },
-    leave: { transform: 'scale(0)' }
+    leave: { transform: 'scale(0)' },
+    config: {
+      duration: 300
+    }
   });
 
   const closeHandler = useCallback(() => {

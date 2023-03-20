@@ -8,6 +8,8 @@ export const light: Theme = {
     unit: 'rem',
     mobile: false,
     borderRadius: true,
+    animation: 0.3,
+    transition: 'ease',
     color: {
         primary: '#0A992E',
         transparent: 'transparent',
@@ -41,6 +43,8 @@ export const dark: Theme = {
     unit: 'rem',
     mobile: false,
     borderRadius: true,
+    animation: 0.3,
+    transition: 'ease',
     color: {
         primary: '#0A992E',
         transparent: 'transparent',

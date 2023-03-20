@@ -5,3 +5,4 @@ export * from './switch';
 export * from './text';
 export * from './navigation';
 export * from './popup';
+export * from './button';

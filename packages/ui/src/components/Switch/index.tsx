@@ -8,6 +8,7 @@ import { SwitchBox, SwitchIcon, SwitchText } from './styled';
 export default function Switch({
   value = false,
   size = 'small',
+  className,
   active,
   inactive,
   activeIcon,
@@ -37,7 +38,7 @@ export default function Switch({
   }, [value]);
 
   return (
-    <SwitchBox size={size} value={status} onClick={_onChange}>
+    <SwitchBox size={size} value={status} onClick={_onChange} className={className}>
       {text ? <SwitchText>1</SwitchText> : undefined}
       <SwitchIcon size={size} value={status}>
         {icon}

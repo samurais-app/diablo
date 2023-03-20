@@ -25,7 +25,6 @@ export interface ThemeSpacing {
   padding?: [number, number, number, number, number]
 }
 
-
 export interface Theme {
   mode?: ThemeMode;
   size?: number;
@@ -36,6 +35,8 @@ export interface Theme {
   borderRadius?: boolean;
   color?: ThemeColor;
   spacing?: ThemeSpacing;
+  animation?: number;
+  transition?: string;
 }
 
 export type IThemeConfig = Record<ThemeMode, Theme>;

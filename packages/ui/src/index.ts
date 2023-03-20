@@ -5,5 +5,6 @@ export { default as Layout } from './components/Layout';
 export { default as Switch } from './components/Switch';
 export { default as Text } from './components/Text';
 export { default as Popup } from './components/Popup';
+export { default as Button } from './components/Button';
 export * from './components/Theme';
 export * from './interfaces';

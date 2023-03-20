@@ -4,6 +4,7 @@ import { isFunction, isString, path as pathname } from '@diabol/tool';
 import { NavigatinBox, NavigationChildBox, NavigationItemBox, NavigationLink, RouteLink } from './styled';
 import { NavigationContext } from './context';
 import { useSpring } from '@react-spring/web';
+import { ThemeContent } from '../Theme';
 
 
 export type INavigationItemProps = Omit<INavigationItemBaseProps, 'depth' | 'active'>;
@@ -12,6 +13,7 @@ export type INavigationItemProps = Omit<INavigationItemBaseProps, 'depth' | 'act
 export default memo(function NavigationItem(props: INavigationItemProps) {
   const { title, depth = 1, path, children } = props as INavigationItemBaseProps;
   const { path: parentPath, onChange } = useContext(NavigationContext);
+  const { theme } = useContext(ThemeContent);
   const ul = useRef<HTMLUListElement>();
 
   const childs = useMemo(() => {
@@ -29,6 +31,9 @@ export default memo(function NavigationItem(props: INavigationItemProps) {
       height: open ? ul.current?.clientHeight : 0,
       transform: open ? 'rotateX(0deg)' : 'rotateX(90deg)'
     },
+    config: {
+      duration: theme.animation * 1000
+    }
   });
 
   const onLinkClick = useCallback((_path?: string) => {

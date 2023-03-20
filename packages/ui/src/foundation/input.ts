@@ -23,7 +23,7 @@ export function inputFontSize(props: ThemeWithProps<IInputProps>) {
 export function inputBorderRadius(props?: ThemeWithProps<IInputProps>) {
     const theme = getTheme(props);
     if (!theme.borderRadius) return 0;
-    return `${theme.Size(theme.spacing.radius[0])}${theme.unit}`;
+    return `${theme.Unit(theme.spacing.radius[2])}`;
 }
 
 export function inputBgColor(props?: ThemeWithProps<IInputProps>) {

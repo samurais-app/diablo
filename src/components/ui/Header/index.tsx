@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { } from 'gatsby';
-import { IHeaderBaseProps, Switch, ThemeContent } from '@ui/index';
+import { IHeaderBaseProps, ThemeContent, Input } from '@ui/index';
 import { IconComponent } from 'components/index';
-import { HeaderBox, IconBox } from '../../styled/header';
+import { HeaderBox, IconBox, SwitchBox } from '../../styled/header';
 
 
 
@@ -14,7 +14,8 @@ export default function Header({ children, github, ...props }: IHeaderBaseProps 
   return (
     <HeaderBox
       actions={[
-        <Switch
+        !theme.mobile ? <Input key="search" type='search' /> : null,
+        <SwitchBox
           key="sw"
           value={theme.mode === 'dark'}
           activeIcon={<IconComponent type="icon-sam" />}

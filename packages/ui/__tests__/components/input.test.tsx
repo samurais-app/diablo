@@ -10,10 +10,10 @@ describe('Input Snapshot', () => {
     expect(html).toMatchInlineSnapshot(`
       <DocumentFragment>
         <div
-          class="sc-bALXmG dJsuec"
+          class="sc-lnAgIa mSgYc"
         >
           <input
-            class="sc-ivnCJf FFpuu"
+            class="sc-iKGpAt fGLAYI"
           />
         </div>
       </DocumentFragment>
@@ -26,10 +26,10 @@ describe('Input Snapshot', () => {
     expect(html).toMatchInlineSnapshot(`
       <DocumentFragment>
         <div
-          class="sc-bALXmG dJsuec"
+          class="sc-lnAgIa mSgYc"
         >
           <input
-            class="sc-ivnCJf FFpuu"
+            class="sc-iKGpAt fGLAYI"
             type="number"
           />
         </div>

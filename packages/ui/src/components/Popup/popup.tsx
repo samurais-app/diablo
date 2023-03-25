@@ -1,4 +1,4 @@
-import { useRafState, useUpdateEffect } from '@diabol/hooks';
+import { useRafState, useUnmount, useUpdateEffect } from '@diabol/hooks';
 import React, { ForwardedRef, useCallback, useImperativeHandle, useRef } from 'react';
 import { forwardRef } from 'react';
 import { ThemeProvider } from 'styled-components';
@@ -17,8 +17,8 @@ export const PopupComponent = forwardRef(({ width, onClonse, children, open, the
 
   const backdrop = useTransition(status, {
     ref: backdropApi,
-    from: { 'pointer-events': 'none', opacity: 0 },
-    enter: { 'pointer-events': 'all', opacity: 0.4 },
+    from: { 'pointer-events': 'none', opacity: 0, },
+    enter: { 'pointer-events': 'all', opacity: 1 },
     leave: { 'pointer-events': 'none', opacity: 0 },
     config: {
       duration: 300
@@ -65,12 +65,16 @@ export const PopupComponent = forwardRef(({ width, onClonse, children, open, the
 
 
   useUpdateEffect(() => {
-    if (open) {
+    if (status) {
       BodyLock.disableBodyScroll(ref.current);
     } else {
       BodyLock.enableBodyScroll(ref.current);
     }
-  }, [open]);
+  }, [status]);
+
+  useUnmount(() => {
+    ref.current = undefined;
+  });
 
   return (
     <ThemeProvider theme={theme}>

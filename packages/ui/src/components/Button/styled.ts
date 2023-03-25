@@ -1,6 +1,6 @@
 import { animated } from '@react-spring/web';
 import { keyframes } from 'styled-components';
-import { buttonTextColor, buttonPadding, buttonBg, borderRadius, buttonBorder, buttonActiveBg, buttonHoverBg, buttonLoadingMargin, buttonLoadingWidth, buttonLoadingHeight } from '@ui/foundation';
+import { buttonPadding, buttonBg, borderRadius, buttonBorder, buttonActiveBg, buttonHoverBg, buttonLoadingSize, buttonCursor, buttonColor } from '@ui/foundation';
 import { IButtonBoxProps, ThemeWithProps } from '@ui/interfaces';
 import styled from 'styled-components';
 
@@ -19,10 +19,11 @@ const loading = keyframes`
 export const ButtonBox = styled.button<ThemeWithProps<IButtonBoxProps>>`
   background-color: transparent;
   border: none;
-  cursor: pointer;
   display: flex;
   align-items: center;
-  color: ${buttonTextColor};
+  justify-content: center;
+  cursor: ${buttonCursor};
+  color: ${buttonColor};
   padding: ${buttonPadding};
   background-color: ${buttonBg};
   border-radius: ${borderRadius};
@@ -33,15 +34,20 @@ export const ButtonBox = styled.button<ThemeWithProps<IButtonBoxProps>>`
   &:hover {
     background-color: ${buttonHoverBg};
   }
+  & svg {
+    color: ${buttonColor};
+  }
 `;
 
+export const ButtonContent = styled(animated.div)``;
+
 export const ButtonLoading = styled(animated.b)`
-  width: ${buttonLoadingWidth};
-  height: ${buttonLoadingHeight};
+  height: ${buttonLoadingSize};
+  width: ${buttonLoadingSize};
+  transform-origin: center center;
   animation: ${loading} 0.6s infinite linear;
   & svg {
     width: 100%;
     height: 100%;
   }
-  /* margin-left: ${buttonLoadingMargin}; */
 `;

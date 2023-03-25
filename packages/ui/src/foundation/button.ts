@@ -1,5 +1,6 @@
+import { complementaryColor } from '@diabol/tool';
 import { color } from '@diabol/tool';
-import { IButtonBoxProps, IButtonCommon, ThemeWithProps } from '@ui/interfaces';
+import { IButtonBoxCommonProps, IButtonBoxProps, IButtonCommon, ThemeWithProps } from '@ui/interfaces';
 import { mergeThemeToFoundation } from '@ui/components/Theme';
 
 export const buttonTextColor = mergeThemeToFoundation(({
@@ -13,18 +14,39 @@ export const buttonPadding = mergeThemeToFoundation(({ theme }: ThemeWithProps<I
   return `${Unit(spacing.padding[0])} ${Unit(spacing.padding[2])}`;
 });
 
-export const buttonBg = mergeThemeToFoundation(({ theme }: ThemeWithProps<IButtonBoxProps>) => {
-  return `${theme.color.primary}`;
+
+// 背景颜色
+export const buttonBg = mergeThemeToFoundation(({ disabled, htmlType, theme }: ThemeWithProps<IButtonBoxProps>) => {
+  const { color: { primary, transparent } } = theme;
+  if (disabled) {
+    return color(primary, 0.2, true);
+  }
+  if (htmlType === 'link') {
+    return transparent;
+  }
+  return `${primary}`;
 });
 
-export const buttonActiveBg = mergeThemeToFoundation(({ theme }: ThemeWithProps<IButtonBoxProps>) => {
-  const { color: { primary } } = theme;
+export const buttonActiveBg = mergeThemeToFoundation(({ disabled, htmlType, theme }: ThemeWithProps<IButtonBoxProps>) => {
+  const { color: { primary, transparent } } = theme;
+  if (disabled) {
+    return color(primary, 0.2, true);
+  }
+  if (htmlType === 'link') {
+    return transparent;
+  }
   return `${color(primary, 0.8, false)}`;
 });
 
-export const buttonHoverBg = mergeThemeToFoundation(({ theme }: ThemeWithProps<IButtonBoxProps>) => {
-  const { color: { primary } } = theme;
-  return `${color(primary, 0.1, false)}`;
+export const buttonHoverBg = mergeThemeToFoundation(({ disabled, htmlType, theme }: ThemeWithProps<IButtonBoxProps>) => {
+  const { color: { primary, transparent } } = theme;
+  if (disabled) {
+    return color(primary, 0.2, true);
+  }
+  if (htmlType === 'link') {
+    return transparent;
+  }
+  return disabled ? color(theme.color.primary, 0.2, true) : `${color(primary, 0.1, false)}`;
 });
 
 export const borderRadius = mergeThemeToFoundation(({ theme }: ThemeWithProps<IButtonBoxProps>) => {
@@ -34,17 +56,22 @@ export const borderRadius = mergeThemeToFoundation(({ theme }: ThemeWithProps<IB
 
 export const buttonBorder = mergeThemeToFoundation(({ border, theme }: ThemeWithProps<IButtonBoxProps>) => {
   const { Unit, color } = theme;
+
   return border ? `${Unit(1)} solid ${color.border}` : 'none';
 });
 
-export const buttonLoadingMargin = mergeThemeToFoundation(({ theme }: ThemeWithProps<Pick<IButtonCommon, 'loading'>>) => {
-  return `${theme.Unit(theme.spacing.spacing[2])}`;
+
+export const buttonLoadingSize = mergeThemeToFoundation(({ theme }: ThemeWithProps<Pick<IButtonCommon, 'loading'>>) => {
+  return `${theme.Unit(12)}`;
 });
 
-export const buttonLoadingWidth = mergeThemeToFoundation(({ theme }: ThemeWithProps<Pick<IButtonCommon, 'loading'>>) => {
-  return `${theme.Unit(25)}`;
+export const buttonCursor = mergeThemeToFoundation(({ disabled }: ThemeWithProps<IButtonBoxCommonProps>) => {
+  return disabled ? 'no-drop' : 'pointer';
 });
 
-export const buttonLoadingHeight = mergeThemeToFoundation(({ theme }: ThemeWithProps<Pick<IButtonCommon, 'loading'>>) => {
-  return `${theme.Unit(15)}`;
+export const buttonColor = mergeThemeToFoundation(({ htmlType, theme }: ThemeWithProps<IButtonBoxProps>) => {
+  if (htmlType === 'link') {
+    return theme.color.text;
+  }
+  return complementaryColor(theme.color.text);
 });

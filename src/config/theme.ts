@@ -4,7 +4,7 @@ import { Theme } from '@ui/interfaces';
 const light: Theme = {
   mode: 'light',
   color: {
-    primary: '#409eff',
+    primary: '#4f46e5',
     transparent: 'transparent',
     error: '#fb1f6a',
     background: '#FFFFFF',
@@ -16,7 +16,7 @@ const light: Theme = {
 const dark: Theme = {
   mode: 'dark',
   color: {
-    primary: '#409eff',
+    primary: '#4f46e5',
     transparent: 'transparent',
     error: '#fb1f6a',
     background: '#121212',

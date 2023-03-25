@@ -31,7 +31,7 @@ const Global = createGlobalStyle<ThemedStyledProps<any, Theme>>`
         height: 100vh;
         background-color: ${props => props.theme.color.background};
         overflow: overlay;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: Inter var,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
     }
     ul,li {
         list-style: none;

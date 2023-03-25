@@ -1,21 +1,8 @@
 import { ThemeWithProps } from '@ui/interfaces';
 import { docContentMargin, docContentPaddingTop, docContentWidth, docLayoutHeight, docLayoutTop, docNavigationBg, docNavigationHeight, docNavigationPadding, docNavigationTop, docNavigationTranslate, docNavigationWidth, docOutlinePadding, docOutlineTranslate, logoBoxMargin } from 'components/foundation/document';
 import { IDocumentContentProps, IDocumentLayoutProps, IDocumentNavigationProps, IDocumentOutlineProps } from 'components/interfaces';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
-
-export const GlobalStyled = createGlobalStyle<ThemeWithProps<object>>`
-  * {
-    font-family: Inter,-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
-  }
-  body {
-    margin: 0;
-    background-color: ${props => props.theme.color.background};
-  }
-  svg[aria-hidden="true"] path {
-    fill: currentColor;
-  }
-`;
 
 export const DocumentLayout = styled.div<ThemeWithProps<IDocumentLayoutProps>>`
   width: 100vw;

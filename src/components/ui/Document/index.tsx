@@ -2,7 +2,7 @@ import { ThemeConfig, Navigation } from '@ui/index';
 import React, { useState } from 'react';
 import { navigate } from 'gatsby';
 import get from 'lodash.get';
-import { DocumentContent, DocumentLayout, DocumentNavigation, DocumentOutline, GlobalStyled, LogoBox, MainLayout } from 'components/styled/document';
+import { DocumentContent, DocumentLayout, DocumentNavigation, DocumentOutline, LogoBox, MainLayout } from 'components/styled/document';
 import { useMobile, useSize } from '@hooks/index';
 import { itemsArr } from 'site/utils/category';
 import { IconComponent } from 'components/icon';
@@ -45,7 +45,6 @@ export default function Document({ location, children, data, pageResources }: an
   return (
     <ThemeConfig theme={theme}>
       <DocumentLayout top={top}>
-        <GlobalStyled />
         <Header
           height={60}
           size={width}

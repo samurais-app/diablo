@@ -11,7 +11,7 @@ export const light: Theme = {
     animation: 0.3,
     transition: 'ease',
     color: {
-        primary: '#0A992E',
+        primary: '#4f46e5',
         transparent: 'transparent',
         error: '#fb1f6a',
         background: '#FFFFFF',
@@ -46,7 +46,7 @@ export const dark: Theme = {
     animation: 0.3,
     transition: 'ease',
     color: {
-        primary: '#0A992E',
+        primary: '#4f46e5',
         transparent: 'transparent',
         error: '#fb1f6a',
         background: '#121212',

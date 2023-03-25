@@ -12,6 +12,7 @@ export const PopupBase = styled(animated.div)`
   width: 100%;
   height: 100%;
   background-color: ${popupBaseBg};
+  backdrop-filter: blur(8px);
 `;
 
 export const PopupContainer = styled.div`

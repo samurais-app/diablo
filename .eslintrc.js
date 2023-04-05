@@ -7,6 +7,7 @@ module.exports = {
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/eslint-recommended',
+        "plugin:react/jsx-runtime",
         'prettier',
         'eslint-config-prettier',
     ],
@@ -44,6 +45,7 @@ module.exports = {
                 }
             }
         ],
+        "react/react-in-jsx-scope": "off",
         'no-useless-escape': 'off',
         '@typescript-eslint/no-var-requires': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',

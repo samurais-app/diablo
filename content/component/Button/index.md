@@ -25,7 +25,22 @@ export default function() {
   );
 }
 ```
+### 链接
 
+```jsx live=true
+import React from 'react';
+import { Button } from '@diabol/ui';
+
+export default function() {
+  const [status, setStatus] = useState(false);
+
+
+
+  return (
+    <Button loading={status} onClick={() => setStatus(!status)}>默认</Button>
+  );
+}
+```
 
 ## API参考
 

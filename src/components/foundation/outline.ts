@@ -45,7 +45,7 @@ export function outlineUlTagRadius(props: ThemeWithProps<IOutlineProps>) {
 
 export function outlineLiPadding(props: ThemeWithProps<Omit<IOutlineItemProps, 'index'>>) {
   const { theme } = props;
-  return `0 ${theme.Size(theme.spacing.spacing[2])}${theme.unit}`;
+  return `0 ${theme.Size(theme.spacing.spacing[1])}${theme.unit}`;
 }
 
 export function outlineLinkSize(props: ThemeWithProps<object>) {

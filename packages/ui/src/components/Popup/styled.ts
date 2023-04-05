@@ -31,8 +31,8 @@ export const PopupContainer = styled.div`
 
 export const PopupClose = styled.b<ThemeWithProps<IPopupProps>>`
   position: absolute;
+  height: 0;
   display: ${popupCloseShow};
-  padding: ${popupClosePadding};
   top: ${popupCloseSpacing};
   right: ${popupCloseSpacing};
 `;

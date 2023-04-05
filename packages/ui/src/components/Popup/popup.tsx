@@ -1,20 +1,21 @@
 import { useRafState, useUnmount, useUpdateEffect } from '@diabol/hooks';
-import React, { ForwardedRef, useCallback, useImperativeHandle, useRef } from 'react';
+import { cloneElement, ForwardedRef, useCallback, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { forwardRef } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { PopupBase, PopupBox, PopupClose, PopupContainer } from './styled';
 import { useChain, useSpringRef, useTransition } from '@react-spring/web';
-import { IPopupProps, PopupAction, Theme } from '@ui/interfaces';
+import { IPopupProps, PopupAction, IPopupUpdateProps } from '@ui/interfaces';
 import * as BodyLock from 'body-scroll-lock';
-import { isBoolean, isFunction } from '@diabol/tool';
+import { isBoolean, isFunction, merg } from '@diabol/tool';
 import Icon from '../Icon';
 
-export const PopupComponent = forwardRef(({ width, onClonse, children, open, theme, ...props }: IPopupProps & { theme: Theme }, instance: ForwardedRef<PopupAction>) => {
+export const PopupComponent = forwardRef(({ width, onClonse, children, open, theme, ...props }: IPopupProps, instance: ForwardedRef<PopupAction>) => {
   const ref = useRef();
   const [status, setStatus] = useRafState(open);
+  const [coustomProps, setCoustomProps] = useState<Partial<IPopupUpdateProps>>({});
   const backdropApi = useSpringRef();
   const modalApi = useSpringRef();
-
+  const _props: IPopupUpdateProps = useMemo(() => merg({ width, open, theme, onClonse, ...props }, coustomProps), [width, open, theme, onClonse, props, coustomProps]);
   const backdrop = useTransition(status, {
     ref: backdropApi,
     from: { 'pointer-events': 'none', opacity: 0, },
@@ -48,6 +49,7 @@ export const PopupComponent = forwardRef(({ width, onClonse, children, open, the
     () => ({
       open: () => setStatus(true),
       close: () => setStatus(false),
+      update: (props: IPopupUpdateProps) => setCoustomProps(props),
     }),
     [status],
   );
@@ -78,14 +80,14 @@ export const PopupComponent = forwardRef(({ width, onClonse, children, open, the
 
   return (
     <ThemeProvider theme={theme}>
-      <PopupContainer ref={ref} {...{ ...props, open }}>
+      <PopupContainer ref={ref} {...{ ...merg(props, coustomProps), open }}>
         {backdrop((style, item) => item && (<PopupBase style={style} />))}
-        {modal((style, item) => item && (<PopupBox style={style} width={width}>
+        {modal((style, item) => item && (<PopupBox style={style} width={_props.width}>
           <>
             <PopupClose {...props} onClick={closeHandler}>
-              <Icon type='icon-close' size={12} />
+              <Icon type='icon-close' size={10} />
             </PopupClose>
-            {children}
+            {cloneElement(children, { action: { close: () => setStatus(false) } })}
           </>
         </PopupBox>))}
       </PopupContainer>

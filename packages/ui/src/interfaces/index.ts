@@ -9,3 +9,4 @@ export * from './switch';
 export * from './text';
 export * from './popup';
 export * from './button';
+export * from './outline';

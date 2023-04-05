@@ -73,5 +73,5 @@ export const buttonColor = mergeThemeToFoundation(({ htmlType, theme }: ThemeWit
   if (htmlType === 'link') {
     return theme.color.text;
   }
-  return complementaryColor(theme.color.text);
+  return theme.mode === 'light' ? complementaryColor(theme.color.text) : theme.color.text;
 });

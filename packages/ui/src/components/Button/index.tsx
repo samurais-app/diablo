@@ -21,17 +21,23 @@ export default function Button({
   const contentAni = useSpring({
     ref: contentRef,
     marginRight: loading ? 10 : 0,
+    config: {
+      duration: 200
+    }
   });
   const loadingAni = useTransition(loading, {
     ref: loadingRef,
     from: { opacity: 0, transform: 'scale(0)' },
     enter: { opacity: 1, transform: 'scale(1)' },
     leave: { opacity: 0, transform: 'scale(0)' },
+    config: {
+      duration: 200
+    }
   });
 
   useChain(loading ? [contentRef, loadingRef] : [loadingRef, contentRef], [
     0,
-    loading ? 0.2 : 0.4,
+    loading ? 0.1 : 0.2,
   ]);
 
   return (

@@ -17,7 +17,7 @@ function PopupRoot({ children, open, ...props }: IPopupProps) {
 
 
 
-Popup.useOpen = function open(props: Omit<IPopupProps, 'open' | 'onClonse'>) {
+Popup.useOpen = function open(props: Omit<IPopupProps, 'open' | 'onClonse'>): PopupAction {
   const instance = createRef<PopupAction>();
   const { theme } = useContext(ThemeContent);
   const node = createRoot(creatPopupRoot('popup-box-call'));
@@ -26,13 +26,17 @@ Popup.useOpen = function open(props: Omit<IPopupProps, 'open' | 'onClonse'>) {
   useUnmount(() => {
     node.unmount();
   });
+
   return {
     open: () => {
       instance.current?.open();
     },
-    clonse: () => {
+    close: () => {
       instance.current?.close();
-    }
+    },
+    update(props) {
+      instance.current?.update(props);
+    },
   };
 };
 

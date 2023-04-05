@@ -41,7 +41,6 @@ export default function Document({ location, children, data, pageResources }: an
   const [show, setShow] = useState(false);
   const home = isHome({ location, pageResources });
   const top = path.includes('404') ? 50 : 0;
-
   return (
     <ThemeConfig theme={theme}>
       <DocumentLayout top={top}>

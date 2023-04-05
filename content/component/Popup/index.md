@@ -13,7 +13,7 @@ brief: popup提供通用的弹出逻辑
 
 ```jsx live=true
 import React, { useState } from 'react';
-import { Popup, Text } from '@diabol/ui';
+import { Popup, Input, Text } from '@diabol/ui';
 
 export default () => {
   const [open, setOpen] = useState(false);
@@ -30,7 +30,7 @@ export default () => {
           <Popup open={open2} close onClonse={() => {
             setOpen2(!open2)
           }}>
-            <Text>2</Text>
+            <Input />
           </Popup>
         </div>
       </Popup>
@@ -46,9 +46,13 @@ import React from 'react';
 import { Popup, Text } from '@diabol/ui';
 
 export default () => {
-  const {open, clonse} = Popup.useOpen({
-    close: true,
-    children: <Text>1111</Text>
+  function Com({ action }) {
+    return <Text onClick={action.close}>1111</Text>
+  }
+
+  const {open, close} = Popup.useOpen({
+    close: false,
+    children: <Com />
   });
 
   return (

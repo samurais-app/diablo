@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/media/*"
   ],
   "scripts": {
     "sharp:bug": "cd ./node_modules/sharp && npm run install",
@@ -85,6 +86,9 @@
     "gatsby-transformer-remark": "^6.7.0",
     "gatsby-transformer-sharp": "^5.7.0",
     "lodash.get": "^4.4.2",
+    "mobx": "^6.9.0",
+    "mobx-react-lite": "^3.4.3",
+    "mobx-state-tree": "^5.1.8",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "re-resizable": "^6.9.9",

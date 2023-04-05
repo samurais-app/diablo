@@ -1,5 +1,6 @@
 import { complementaryColor, isString, opacity } from '@diabol/tool';
 import { getTheme, IPopupProps, ThemeWithProps } from '..';
+import { mergeThemeToFoundation } from '@ui/components/Theme';
 
 export function popupContainerShow(props: ThemeWithProps<Omit<IPopupProps, 'children'>>) {
   return props.open ? 'block' : 'none';
@@ -22,15 +23,13 @@ export function popupBoxBg(props: ThemeWithProps<IPopupProps>) {
   return theme.color.background;
 }
 
-export function popupBoxPadding(props: ThemeWithProps<IPopupProps>) {
-  const theme = getTheme(props);
-  return `${theme.Size(theme.spacing.padding[1])}${theme.unit}`;
-}
+export const popupBoxPadding = mergeThemeToFoundation(({ theme }: ThemeWithProps<IPopupProps>) => {
+  return `${theme.Unit(theme.spacing.padding[3])}`;
+});
 
-export function popupCloseSpacing(props: ThemeWithProps<IPopupProps>) {
-  const theme = getTheme(props);
-  return `${theme.Size(theme.spacing.spacing[0])}${theme.unit}`;
-}
+export const popupCloseSpacing = mergeThemeToFoundation(({ theme }: ThemeWithProps<IPopupProps>) => {
+  return `${theme.Unit(theme.spacing.spacing[1])}`;
+});
 
 export function popupCloseShow(props: ThemeWithProps<IPopupProps>) {
   return props.close ? 'inline-block' : 'none';
@@ -49,5 +48,5 @@ export function popupBoxShadow(props: ThemeWithProps<IPopupProps>) {
 
 export function popupBoxBorderRadius(props: ThemeWithProps<IPopupProps>) {
   const theme = getTheme(props);
-  return `${theme.Size(theme.spacing.radius[2])}${theme.unit}`;
+  return `${theme.Size(theme.spacing.radius[3])}${theme.unit}`;
 }
